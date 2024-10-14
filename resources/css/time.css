@@ -1,0 +1,71 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+    --yellowSecondary: #FFF1A8;
+    --bottonAccept: #A2F294;
+    --bottonAcceptSecondary: #4F9552;
+    --bottonRecuse: #F87D7D;
+    --bottonRecuseSecondary: #AC3C3C;
+}
+
+.formCadastrarTime {
+    height: 15rem;
+    width: 37rem;
+    display: flex;
+    
+}
+
+.botaoAddAluno {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 15rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+}
+
+.botaoAddAluno:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    font-weight: 700;
+}
+
+.competicao {
+    padding-top: 3rem;
+    padding-left: 3rem;
+}
+
+.divEditarTime form{
+    width: 30rem;
+    height: 20rem;
+}
+
+.divEditarTime form button{
+    bottom: -19rem;
+    left: 3rem;
+}
+
+.botaoCadastrarTime {
+    position:relative;
+    height: 3rem;
+    width: 20rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    border: 0;
+    cursor: pointer;
+    bottom: -20rem;
+    padding-left: 30px;
+    padding-right: 30px;
+}

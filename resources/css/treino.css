@@ -1,0 +1,42 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+    --yellowSecondary: #FFF1A8;
+    --bottonAccept: #A2F294;
+    --bottonAcceptSecondary: #4F9552;
+    --bottonRecuse: #F87D7D;
+    --bottonRecuseSecondary: #AC3C3C;
+}
+
+.divListarTreinoEscolhido {
+    display:grid;
+    grid-template-columns: repeat(4, 12rem);
+    grid-template-rows: repeat(3, 5rem);
+}
+
+.divListar .observacao h2{
+    width: 45rem;
+    max-width: 45rem;
+    word-wrap:break-word;
+    align-items: center;
+    justify-content: center;
+}
+
+.divListar .observacao{
+    padding-top: 5.9rem;
+}
+
+.campoListarTreinoEscolhido {
+    width: 10rem;
+    display: flex;
+}
+
+.botoes a{
+    padding-left: 3rem;
+    font-size: 1.2rem;
+    padding-top: 16rem;
+    padding-bottom: 3rem;
+}

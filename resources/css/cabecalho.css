@@ -1,0 +1,424 @@
+/*Configuração Padrão*/
+body.padrao {
+    /*Estilização padrão para alinhar o site nas bordas*/
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    box-sizing: border-box;
+    background-color: var(--white);
+    height: 100vh;
+}
+
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+}
+
+/*Parte Azul com o Texto "Educação Física"*/
+
+div.cabecalho {
+    height: 10rem;
+    background-color: var(--blue);
+    display: flex;
+    align-items: center;
+}
+
+a.titulo {
+    text-decoration: none;
+    color: black;
+}
+
+h1.educacao {
+    padding-left: 30px;
+    color: var(--yellow);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-size: 90px;
+    font-style: normal;
+    text-shadow: 1px 1px 5px black;
+}
+
+h1.fisica {
+    padding-left: 30px;
+    color: var(--blue);
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 90px;
+    font-weight: 800;
+    font-style: normal;
+    text-shadow: 
+        -1px -1px 0 var(--yellow), 1px -1px 0 var(--yellow), -1px 1px 0 var(--yellow), 1px 1px 0 var(--yellow),
+        -2px -2px 0 var(--yellow), 2px -2px 0 var(--yellow), -2px 2px 0 var(--yellow), 2px 2px 0 var(--yellow);
+}
+
+/*Parte das opções*/
+
+div.opcoes {
+    cursor: pointer;
+    height: 5rem;
+    background-color: var(--yellow);
+    border-top: 4px solid black;
+    border-bottom: 4px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+h2.opcoes {
+    cursor: pointer;
+    display: block;
+    padding-left: 20px;
+    font-size: 2rem;
+    font-family: "Inter", sans-serif;
+}
+
+/*Subopções*/
+
+div.conjunto {
+    position: absolute;
+    display: block;
+    width: 93%;
+    top: 15.5rem;
+}
+
+/*cada subopção tem uma posição, por isso cada uma tem um estilo*/
+div.subopcoes.um {
+    display: none;
+    position: absolute;
+    background-color: var(--yellow);
+    width: 30rem;
+    height: 8.5rem;
+    margin-left: 3rem;
+    border: 2px solid black;
+    top: 15.4rem;
+    left: 0%;
+    z-index: 1;
+    border-top: 0;
+}
+
+div.subopcoes.dois {
+    display: none;
+    position: absolute;
+    background-color: var(--yellow);
+    width: 25rem;
+    height: 5.3rem;
+    margin-left: 3rem;
+    border: 2px solid black;
+    border-top: 0;
+    top: 15.4rem;
+    left: 30%;
+}
+
+div.subopcoes.tres {
+    display: none;
+    position: absolute;
+    background-color: var(--yellow);
+    width: 20rem;
+    height: 8rem;
+    margin-left: 3rem;
+    border: 2px solid black;
+    top: 15.4rem;
+    border-top: 0;
+    left: 55%;
+}
+
+div.subopcoes.quatro {
+    display: none;
+    position: absolute;
+    background-color: var(--yellow);
+    width: 17rem;
+    height: 5rem;
+    margin-left: 3rem;
+    border: 2px solid black;
+    top: 15.4rem;
+    border-top: 0;
+    left: 75%;
+}
+
+div.laranja {
+    position: absolute;
+    height: 100%;
+    width: 2rem;
+    background-color: var(--orange);
+    border-right: 2px solid black;
+}
+
+h3 {
+    padding-left: 2.4rem;
+    position: relative;
+    margin-block-start: 0rem;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1.3rem;
+}
+
+/*Se passar por cima da opção, as subopções aparecem*/
+/*subopções da opcão 1*/
+div.opcoes div.treinos:hover ~ div.subopcoes.um{
+    display: block;
+    cursor: pointer;
+}
+
+div.subopcoes.um:hover {
+    display: block;
+    cursor: pointer;
+}
+
+/*subopções da opcão 2*/
+.reservas:hover ~ div.subopcoes.dois {
+    display: block;
+    cursor: pointer;
+}
+
+div.subopcoes.dois:hover {
+    display: block;
+    cursor: pointer;
+}
+
+/*subopções da opcão 3*/
+.times:hover ~ div.subopcoes.tres {
+    display: block;
+    cursor: pointer;
+}
+
+div.subopcoes.tres:hover {
+    display: block;
+    cursor: pointer;
+}
+
+/*subopções da opcão 4*/
+.configuracoes:hover ~ div.subopcoes.quatro {
+    display: block;
+    cursor: pointer;
+}
+
+div.subopcoes.quatro:hover {
+    display: block;
+    cursor: pointer;
+}
+
+/*Notificações de Danger e Successs*/
+.notificacao {
+    position: absolute;
+    top: 15.5rem;
+    left: 0;
+}
+
+.success {
+    background-color: rgb(156, 220, 156);
+    font-size: 1.4rem;
+    height: 4rem;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 2rem;
+    font-family: "Inter", sans-serif;
+    border: black solid 0.2rem;
+    border-top: 0;
+    font-style: italic;
+    font-weight: 700;
+    z-index: 0;
+}
+
+.danger {
+    background-color: rgb(234, 130, 130);
+    font-size: 1.4rem;
+    height: 4rem;
+    width: 30rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom-right-radius: 2rem;
+    font-family: "Inter", sans-serif;
+    border: black solid 0.2rem;
+    border-top: 0;
+    font-style: italic;
+    font-weight: 700;
+}
+
+
+/*Menu Hamburguer*/
+
+.caixa {
+    position: absolute;
+    display: inline-table;
+    z-index: 3;
+    height: 45px;
+    width: 45px;
+    top: -4rem;
+    cursor: pointer;
+    margin-left: -0.1%;
+    opacity: 0;
+}
+
+.menuHamburguer {
+    z-index: 0;
+    display: none;
+    position: absolute;
+    top: -4rem;
+    height: 45px;
+    width: 45px;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all ease .2s;
+}
+
+.menuHamburguer span{
+    display: block;
+    width: 35px;
+    height: 5px;
+    margin-bottom: 10px;
+    background-color: var(--blue);
+    border-radius: 3px;
+    margin-left: 5px;
+    margin-top: 3px;
+    transition: all ease .2s;
+}
+
+.opcoesHambuguer {
+    display: none;
+    padding-top: 2rem;
+    position: absolute;
+    left: -25rem;
+    background-color: #E6E8F4;
+    height: 20rem;
+    width: 20rem;
+    top: -4.4rem;
+    transition: all ease .2s;
+    z-index: 1;
+    border: solid 0.2rem black;
+}
+
+.opcoesHambuguer h4 {
+    padding-left: 1rem;
+    font-family: "Inter", sans-serif;
+    font-size: 1.3rem;
+}
+
+.subopcoesHamburguer {
+    display: none;
+    padding-top: 2rem;
+    position: absolute;
+    left: -25rem;
+    background-color: #E6E8F4;
+    height: 15rem;
+    width: 20rem;
+    top: 2rem;
+    border: solid 0.2rem black;
+}
+
+.opcoesHambuguer h4.opcaoUm:hover~ .subopcoesHamburguer.subopcaoUm {
+    display: block;
+    left: 20rem;
+}
+
+.opcoesHambuguer h4.opcaoDois:hover~ .subopcoesHamburguer.subopcaoDois {
+    display: block;
+    left: 20rem;
+}
+
+.opcoesHambuguer h4.opcaoTres:hover~ .subopcoesHamburguer.subopcaoTres {
+    display: block;
+    left: 20rem;
+}
+
+.opcoesHambuguer h4.opcaoQuatro:hover~ .subopcoesHamburguer.subopcaoQuatro {
+    display: block;
+    left: 20rem;}
+
+.subopcoesHamburguer:hover {
+    display: block;
+    left: 20rem;}
+
+/*RESPONSIVIDADE*/
+
+@media (max-width: 1370px) {
+    div.opcoes {
+        cursor: pointer;
+        height: 5rem;
+        justify-content: space-around;
+    }
+
+    div.subopcoes.um {
+        width: 24rem;
+    }
+    
+    div.subopcoes.dois {
+        width: 20rem;
+    }
+    
+    div.subopcoes.tres {
+        width: 16rem;
+    }
+    
+    div.subopcoes.quatro {
+        width: 15rem;
+        height: 7rem;
+    }
+}
+
+@media (max-width: 1110px) {
+    h2.opcoes {
+        display: none;
+    }
+
+    .menuHamburguer {
+        display: block;
+
+    }
+    .caixa:checked ~ .menuHamburguer span:nth-child(1){
+        transform-origin: 0% 0%;
+        transform: rotate(45deg) scaleX(1.25);
+    }
+    
+    .caixa:checked ~ .menuHamburguer span:nth-child(2){
+        opacity: 0;
+    }
+    
+    .caixa:checked ~ .menuHamburguer span:nth-child(3){
+        transform-origin: 0% 100%;
+        transform: rotate(-45deg) scaleX(1.25);
+    }
+
+    .caixa:checked {
+        margin-left: 15rem;
+    }
+
+    .caixa:checked ~ .menuHamburguer {
+        display: block;
+        margin-left: 15rem;
+    }
+
+    .caixa:checked ~ .opcoesHambuguer {
+        display: block;
+        left: -2.4rem;
+    }
+}
+
+@media (max-width: 900px) {
+    h1.educacao {
+        font-size: 70px;
+    }
+    
+    h1.fisica {
+        font-size: 70px;
+    }
+}
+
+@media (max-width: 700px) {
+    h1.educacao {
+        font-size: 55px;
+    }
+    
+    h1.fisica {
+        font-size: 55px;
+    }
+}

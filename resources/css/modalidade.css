@@ -1,0 +1,29 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+    --yellowSecondary: #FFF1A8;
+    --bottonAccept: #A2F294;
+    --bottonAcceptSecondary: #4F9552;
+    --bottonRecuse: #F87D7D;
+    --bottonRecuseSecondary: #AC3C3C;
+}
+
+.formModalidade form { 
+    width: 30rem;
+    height: 15rem;
+}
+
+.formModalidade form button.botao{
+    bottom: -14rem;
+}
+
+.tableListarModalidades {
+    width: 50rem;
+}
+
+.tableListarModalidades .th{
+    height: 1rem;
+}

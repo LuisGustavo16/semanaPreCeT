@@ -1,0 +1,54 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+    --yellowSecondary: #FFF1A8;
+    --bottonAccept: #A2F294;
+    --bottonAcceptSecondary: #4F9552;
+    --bottonRecuse: #F87D7D;
+    --bottonRecuseSecondary: #AC3C3C;
+}
+
+.dataSemana {
+    font-family: "Inter", sans-serif;
+    color: black;
+    word-spacing: 20px;
+    text-shadow: 0 0 0 black;
+}
+
+.tableCronograma caption {
+    border: 0.1rem solid black;
+}
+
+.tableCronograma, .tdCronograma {
+    border: 0.1rem solid black;
+    background-color: var(--yellow);
+ }
+
+ .tableCronograma, .thCronograma {
+    border: 0.1rem solid black;
+    background-color: var(--yellow);
+ }
+
+ .tableCronograma, .tr {
+    height: 4rem;
+ }
+
+ .buttonGerarPDF {
+    font-family: "Inter", sans-serif;
+    position: absolute;
+    bottom: -5%;
+    text-decoration: none;
+    color: var(--blue);
+    font-weight: 600;
+    height: 2rem;
+    width: 8rem;
+    text-align: center;
+ }
+
+ .buttonGerarPDF:hover {
+    color: var(--bottonRecuseSecondary);
+    font-weight: 900;
+ }
