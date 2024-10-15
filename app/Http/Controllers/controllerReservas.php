@@ -29,15 +29,14 @@ class controllerReservas extends Controller
         if (isset($dados)) {
             $dados->delete();
         }
-        $dados = Reserva::all()->where('status', $status);
-        return view('Reservas/listarReservas', compact('dados'));
+        return redirect()->route('indexReserva', ['status' => $status]);
+
     }
 
     function aceitarReserva (string $idReserva) {
         $reserva = Reserva::find($idReserva);
         $reserva->status = 'A';
         $reserva->save();
-        $dados = Reserva::all()->where('status', 'P');
-        return view('../../Reservas/listarReservas', compact(var_name: 'dados'));
+        return redirect()->route('indexReserva', ['status' => 'P']);
     }
 }

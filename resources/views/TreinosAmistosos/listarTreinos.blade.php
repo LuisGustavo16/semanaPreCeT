@@ -1,21 +1,28 @@
 <?php
 $aux = false;
 $classe = 'branco';
+$notificacao = true;
 ?>
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
     <div class="notificacao">
-        @if(session()->get('danger'))
-            <div class="danger">
-                {{ session()->get('danger') }}
-            </div>
-        @elseif(session()->get('success'))
-            <div class="success">
-                {{ session()->get('success') }}
-            </div>
+        @if ($notificacao)
+            @if(session()->get('danger'))
+                <div class="danger">
+                    {{ session()->get('danger') }}
+                    <a onclick="{{$notificacao = false}}" href="" class="apagarNotificacao">X</a>
+                </div>
+            @elseif (session()->get('success'))
+                <div class="success">
+                    {{ session()->get('success') }}
+                    <a onclick="{{$notificacao = false}}" href="" class="apagarNotificacao">X</a>
+                </div>
+            @endif
         @endif
+        
     </div>
+    
     <table>
         <caption>TREINOS & AMISTOSOS</caption>
         <thead>
@@ -42,10 +49,16 @@ $classe = 'branco';
                             <td>{{$item->dia}}</td>
                             <td>{{$item->horario}}</td>
                             <td>
-                                <a href="../treino_amistosos/verTreino/{{$item->idTreino}}">Ver</a>
-                                <a href="../treino_amistosos/editar/{{$item->idTreino}}">Editar</a>
-                                <a href="../treino_amistosos/apagar/{{$item->idTreino}}"
-                                    onclick="return confirm('Deseja apagar o treino do dia {{$item->dia}} ?')">Excluir</a>
+                                <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
+                                    <img class="icone" src="/storage/imagens/verMais.png" alt="verMais">
+                                </a>
+                                <a class="linkIcone"  href="../treino_amistosos/editar/{{$item->idTreino}}">
+                                    <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                </a>
+                                <a class="linkIcone" href="../treino_amistosos/apagar/{{$item->idTreino}}"
+                                    onclick="return confirm('Deseja apagar o treino do dia {{$item->dia}} ?')">
+                                    <img class="icone" src="/storage/imagens/apagar.png" alt="apagar">
+                                </a>
                             </td>
                         </tr>
 

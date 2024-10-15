@@ -14,7 +14,7 @@
 /*Configurações Gerais*/
 table {
     border-collapse: collapse;
-    margin-top: 3rem;
+    margin-top: 5rem;
     height: 10rem;
     width: 85rem;
     background-color: white;
@@ -56,6 +56,18 @@ td {
     padding-bottom: 10px;
     padding-top: 10px;
 }
+
+.linkIcone {
+    text-decoration: none;
+    padding-left: 0.5rem;
+}
+
+.icone {
+    height: 25px;
+    width: 25px;
+    
+}
+
 /*Menu zebrado*/
 .amarelo {
     background-color: var(--yellowSecondary);
