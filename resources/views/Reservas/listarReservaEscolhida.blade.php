@@ -17,7 +17,6 @@
 </style>
 <div id="overlay" style="display: none;"></div>
 <div class="divReservaEscolhida">
-        @csrf
         <div class="tabela">
             <div class="divListar solicitacao">
                 <div class="campoListarTreinoEscolhido">

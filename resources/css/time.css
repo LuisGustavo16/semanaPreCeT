@@ -15,7 +15,7 @@
     height: 15rem;
     width: 37rem;
     display: flex;
-    
+
 }
 
 .botaoAddAluno {
@@ -44,18 +44,18 @@
     padding-left: 3rem;
 }
 
-.divEditarTime form{
+.divEditarTime form {
     width: 30rem;
     height: 20rem;
 }
 
-.divEditarTime form button{
+.divEditarTime form button {
     bottom: -19rem;
     left: 3rem;
 }
 
 .botaoCadastrarTime {
-    position:relative;
+    position: relative;
     height: 3rem;
     width: 20rem;
     border-radius: 2rem;
@@ -68,4 +68,77 @@
     bottom: -20rem;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+
+.fundoPesquisarAluno {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding-bottom: 4rem;
+    grid-template-columns: repeat(1, -30rem);
+    grid-template-rows: repeat(2, 24rem);
+}
+
+.formPesquisarAluno {
+    padding-top: 3rem;
+    height: 5rem;
+    width: 30rem;
+}
+
+.formPesquisarAluno input {
+    width: 24rem;
+}
+
+.botaoPesquisarAluno {
+    position: relative;
+    height: 2rem;
+    width: 10rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    border: 0;
+    cursor: pointer;
+    bottom: -4rem;
+    left: -20.5rem;
+}
+
+.divListarTimeEscolhido {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(2, 50rem);
+    grid-template-rows: repeat(1, 10rem);
+}
+
+.informacoesTimeEscolhido {
+    width: 900px;
+    height: 500px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.tabelaRolagem {
+    width: 900px;
+    height: 419px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+}
+
+.linhaInformacoesAlunos {
+    padding-left: 0.8rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 21rem);
+    grid-template-rows: repeat(4, 1rem);
+}
+
+.linhaTituloAlunos {
+    padding-left: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(3, 21rem);
+    border-bottom: 1px solid black;
 }
