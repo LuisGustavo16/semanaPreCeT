@@ -42,14 +42,6 @@ Route::get('/listarReservaEscolhida', function () {
     return view('Reservas/listarReservaEscolhida');
 }) -> name('listarReservaEscolhida');
 
-Route::get('/listarSolicitacoes', function () {
-    return view('Reservas/listarSolicitacaoReserva');
-}) -> name('listarSolicitacoes');
-
-Route::get('/listarSolicitacaoEscolhida', function () {
-    return view('Reservas/listarSolicitacaoEscolhida');
-}) -> name('listarSolicitacaoEscolhida');
-
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Times*/
 //////////////////////////////////////////////////////////
@@ -93,8 +85,8 @@ Route::get('/modalidades/apagar/{idModalidade}', [App\Http\Controllers\controlle
 /////////////////////////////////////////////
 Route::get ('/reservas/listarReservas/{status}', [App\Http\Controllers\controllerReservas::class, 'index']) ->name('indexReserva'); // Rota para exibir as reservas
 Route::get ('/reservas/reservaEscolhida/{idReserva}', [App\Http\Controllers\controllerReservas::class, 'enviaReservaEscolhido']); // Rota que envia a reserva escolhida para ser vizualizado
-Route::get('/reservas/apagar/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'destroy']); // Rota que apaga uma solicitação de reserva
-Route::get('/reservas/aceitarReserva/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'aceitarReserva']);
+Route::post('/reservas/apagar/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'destroy']); // Rota que apaga uma solicitação de reserva
+Route::post('/reservas/aceitarReserva/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'aceitarReserva']);
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Times*/

@@ -6,12 +6,19 @@ use App\Http\Controllers\Controller;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use Carbon\Carbon;
 
 class controllerReservas extends Controller
 {
     /*Envia todas as reservas de acordo com o tipo para serem listadas*/
     public function index(string $status) {
         $dados = Reserva::all()->where('status', $status);
+        foreach ($dados as $item) {
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
+        }
         return view('Reservas/listarReservas', compact('dados'));
     }
 
@@ -24,7 +31,7 @@ class controllerReservas extends Controller
     }
 
     /*Quando uma reserva é cancelada, rejitada ou expirada*/
-    public function destroy(string $idSolicitacao, string $status) {
+    public function destroy(string $idSolicitacao, string $status, Request $request) {
         $dados = Reserva::find($idSolicitacao);
         if (isset($dados)) {
             $dados->delete();
@@ -33,7 +40,7 @@ class controllerReservas extends Controller
 
     }
 
-    function aceitarReserva (string $idReserva) {
+    function aceitarReserva (string $idReserva, Request $request) {
         $reserva = Reserva::find($idReserva);
         $reserva->status = 'A';
         $reserva->save();

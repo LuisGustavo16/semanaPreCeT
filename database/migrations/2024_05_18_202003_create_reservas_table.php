@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('finalidade');
             $table->string('status');
             $table->string('tipo');
+            $table->string('observacao')->nullable();
             $table->timestamps();
         });
 

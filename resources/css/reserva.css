@@ -101,6 +101,23 @@
 }
 
 /*Reserva Escolhida*/
+
+.formularioEscondido {
+    border-radius: 0rem;
+    box-shadow: 0rem 0rem 0rem var(--white);
+    margin: 0rem;
+    margin-top: 0rem;
+    padding: 0rem;
+    padding-top: 0;
+    background-color: var(--white);
+    border: 0px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 70rem;
+}
+
 .divReservaEscolhida {
     width: 100%;
     justify-content: center;
@@ -149,4 +166,6 @@
     position: absolute;
     bottom: 2rem;
     left: 10rem;
+    background-color: var(--white);
+    border: 0;
 }
