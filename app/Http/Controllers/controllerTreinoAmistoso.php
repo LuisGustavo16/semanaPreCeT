@@ -6,6 +6,7 @@ use App\Models\TreinoAmistoso;
 use App\Models\Modalidade;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class controllerTreinoAmistoso extends Controller
 {
@@ -15,6 +16,10 @@ class controllerTreinoAmistoso extends Controller
         foreach ($dados as $item) {
             $modalidade = Modalidade::find($item->idModalidade);
             $item->nomeModalidade = $modalidade->nome;
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horario = Carbon::parse($item->horario)->format('h:m');
+
         }
         return view('TreinosAmistosos/listarTreinos', compact('dados'));
     }

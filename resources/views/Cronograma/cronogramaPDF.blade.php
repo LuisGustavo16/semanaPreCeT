@@ -92,7 +92,6 @@ if (!function_exists('confereDia')) {
 
 <body>
     <div class="fundo">
-
         <table>
             <thead>
                 <th>Data</th>

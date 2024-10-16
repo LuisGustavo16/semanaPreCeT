@@ -11,6 +11,27 @@
     --bottonRecuseSecondary: #AC3C3C;
 }
 
+/*CSS das tabelas dos treinos*/
+.linkIcone {
+    text-decoration: none;
+    
+}
+
+.icone {
+    height: 35px;
+    width: 35px;
+}
+
+.verMais {
+    padding-left: 0.4rem;
+}
+
+.apagar {
+    height: 38px;
+    width: 38px;
+}
+
+/*CSS da pagina de um treino especifico*/
 .divListarTreinoEscolhido {
     display:grid;
     grid-template-columns: repeat(4, 12rem);
@@ -35,8 +56,40 @@
 }
 
 .botoes a{
-    padding-left: 3rem;
+    text-decoration: none;
+    position: relative;
+    bottom: -9.5rem;
     font-size: 1.2rem;
-    padding-top: 16rem;
-    padding-bottom: 3rem;
+    height: 2rem;
+    width: 7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.editarTreinoEscolhido {
+    color: var(--white);
+    background-color: var(--blue);
+    margin-right: 2rem;
+    font-family: "Inter", sans-serif;
+    border-radius: 1rem;
+}
+
+.editarTreinoEscolhido:hover {
+    box-shadow: 0.1rem 0.1rem 0.7rem black;
+    font-weight: 700;
+}
+
+.apagarTreinoEscolhido {
+    color: var(--white);
+    background-color: var(--bottonRecuseSecondary);
+    margin-right: 2rem;
+    font-family: "Inter", sans-serif;
+    border-radius: 1rem;
+}
+
+.apagarTreinoEscolhido:hover {
+    box-shadow: 0.1rem 0.1rem 0.7rem black;
+    font-weight: 700;
+}
+
