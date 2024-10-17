@@ -33,6 +33,9 @@ class controllerTreinoAmistoso extends Controller
     /*Ao clicar em um treino, os dados dele serão enviados*/
     public function verTreino(string $idTreino) {
         $dados = TreinoAmistoso::find($idTreino);
+        /*Trocar o formato do dia e do horário*/
+        $dados->dia = Carbon::parse($dados->dia)->format('d/m');
+        $dados->horario = Carbon::parse($dados->horario)->format('h:m');
         $modalidade = Modalidade::find($dados->idModalidade);
         if (isset($dados))
             return view('TreinosAmistosos/listarTreinoEscolhido', compact('dados', 'modalidade'));

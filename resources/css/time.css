@@ -11,32 +11,12 @@
     --bottonRecuseSecondary: #AC3C3C;
 }
 
+/*formulário de cadastro de um time*/
 .formCadastrarTime {
     height: 15rem;
     width: 37rem;
     display: flex;
 
-}
-
-.botaoAddAluno {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2rem;
-    width: 15rem;
-    border-radius: 2rem;
-    background-color: var(--blue);
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    font-family: "Inter", sans-serif;
-    cursor: pointer;
-}
-
-.botaoAddAluno:hover {
-    box-shadow: 0.1rem 0.1rem 1rem black;
-    font-weight: 700;
 }
 
 .competicao {
@@ -70,7 +50,7 @@
     padding-right: 30px;
 }
 
-
+/*Página de pesquisa do aluno para adicionar ao time*/
 .fundoPesquisarAluno {
     display: grid;
     align-items: center;
@@ -106,33 +86,80 @@
     left: -20.5rem;
 }
 
+/*Página de listar um time*/
+.fundoTimeEscolhido {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 90%;
+}
+
 .divListarTimeEscolhido {
     display: grid;
     justify-content: center;
-    grid-template-columns: repeat(2, 50rem);
+    grid-template-columns: repeat(2, 47rem);
     grid-template-rows: repeat(1, 10rem);
+    width: 80rem;
 }
 
-.informacoesTimeEscolhido {
+.informacoesAlunosTimeEscolhido {
+    border-radius: 2rem;
+    margin-top: 2rem;
     width: 900px;
     height: 500px;
     background-color: white;
     border: 1px solid black;
 }
 
-.tabelaRolagem {
+.informacoesTimeEscolhido {
+    border-radius: 2rem;
+    margin-top: 2rem;
+    width: 700px;
+    height: 100px;
+    background-color: white;
+    border: 1px solid black;
+    
+}
+
+.linhaInformacoesGerais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter", sans-serif;
+    padding-left: 0.8rem;
+    font-size: 0.9rem;
+    height: 100%;
+}
+
+.linhaInformacoesGerais h2 {
+    font-weight: 400;
+    text-align: center;
+    padding-top: 3px;
+    padding-right: 2rem;
+    padding-left: 5px;
+    font-size: 1.5rem;
+}
+
+.tabelaRolagemAlunos {
     width: 900px;
-    height: 419px;
+    height: 390px;
     overflow-y: auto;
     overflow-x: hidden;
     display: grid;
 }
 
+.linhaTituloAlunos {
+    font-family: "Inter", sans-serif;
+}
+
 .linhaInformacoesAlunos {
+    font-family: "Inter", sans-serif;
     padding-left: 0.8rem;
+    font-size: 0.9rem;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 21rem);
+    grid-template-columns: repeat(3, 20rem);
     grid-template-rows: repeat(4, 1rem);
 }
 
@@ -141,4 +168,87 @@
     display: grid;
     grid-template-columns: repeat(3, 21rem);
     border-bottom: 1px solid black;
+}
+
+.botaoAddAluno {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 15rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    position: relative;
+    left: 300px;
+    top: 2.2rem;
+}
+
+.botaoAddAluno:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    font-weight: 700;
+}
+
+.listarJogosTimeEscolhido {
+    border-radius: 2rem;
+    margin-top: 2rem;
+    width: 700px;
+    height: 367px;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.linhaTituloJogos {
+    padding-left: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(4, 10rem);
+    border-bottom: 1px solid black;
+    font-family: "Inter", sans-serif;
+}
+
+.tabelaRolagemJogos {
+    width: 700px;
+    height: 255px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+}
+
+.linhaInformacoesJogos {
+    font-family: "Inter", sans-serif;
+    padding-left: 0.8rem;
+    font-size: 0.9rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 10rem);
+    grid-template-rows: repeat(4, 1rem);
+}
+
+.botaoAddJogo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    width: 15rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: "Inter", sans-serif;
+    cursor: pointer;
+    position: relative;
+    left: 250px;
+    top: 0.5rem;
+}
+
+.botaoAddJogo:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    font-weight: 700;
 }

@@ -8,7 +8,9 @@ use App\Models\Time;
 use App\Models\AlunosTime;
 use App\Models\Aluno;
 use App\Models\Modalidade;
+use App\Models\JogosTimes;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class controllerTimes extends Controller
 {
@@ -24,12 +26,30 @@ class controllerTimes extends Controller
 
     /*Ao clicar em um treino, os dados dele serão enviados*/
     public function verTime(string $idTime) {
+        /*Informações gerais*/
         $dados = Time::find($idTime);
-        $alunosTimes = AlunosTime::all();
-        $alunos = Aluno::all();
         $modalidade = Modalidade::find($dados->idModalidade);
-        if (isset($dados))
-            return view('Times/listarTimeEscolhido', compact('dados', 'modalidade', 'alunosTimes', 'alunos'));
+        $dados->nomeModalidade = $modalidade->nome;
+        
+        /*Jogos e alunos*/
+        $jogos = JogosTimes::all()->where('idTime', $idTime);
+        foreach ($jogos as $item) {
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horario = Carbon::parse($item->horario)->format('h:m');
+        }
+        $alunos_times = AlunosTime::all()->where('idTime', $idTime);
+        $alunos = [];
+        /*Buscando cada aluno participante do time*/
+        foreach ($alunos_times as $item) {
+            array_push($alunos, Aluno::find($item->idAluno));
+        }
+
+        if (isset($dados)) {
+            return view('Times/listarTimeEscolhido', compact('dados', 'alunos', 'jogos'));
+        } else { 
+            return redirect()->route('indexTime');
+        }
     }
 
     /*Recebe o id de um dado para ser editado e posteriormente edita ele*/

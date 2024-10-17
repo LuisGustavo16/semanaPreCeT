@@ -6,7 +6,12 @@
 @section('content')
     <div class="fundo">
         <table>
-            <caption>Reservas</caption>
+            @if ($status == 'A')
+                <caption>Reservas</caption>
+            @else
+                <caption>Solicitações de Reservas</caption>
+            @endif
+            
             <thead>
                 <tr class="amarelo">
                     <th>Dia</th>

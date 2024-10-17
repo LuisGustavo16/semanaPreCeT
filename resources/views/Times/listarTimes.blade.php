@@ -17,23 +17,29 @@ $classe = 'branco';
         <tbody>
             @foreach ($dados as $item)
                         <?php 
-                                if ($aux == true) {
+                                            if ($aux == true) {
                     $classe = 'amarelo';
                     $aux = false;
                 } elseif ($aux == false) {
                     $classe = 'branco';
                     $aux = true;
                 }
-                            ?>
+                                        ?>
                         <tr class="{{$classe}}">
-                                    <td>{{$item->nomeModalidade}} {{$item->genero}}</td>
-                                    <td>{{$item->competicao}}</td>
-                                    <td>
-                                        <a href="../times/verTime/{{$item->idTime}}">Ver</a>
-                                        <a href="../times/editar/{{$item->idTime}}">Editar</a>
-                                        <a href="../times/apagar/{{$item->idTime}}"
-                                            onclick="return confirm('Deseja apagar o time do {{$item->competicao}} ?')">Excluir</a>
-                                    </td>
+                            <td>{{$item->nomeModalidade}} {{$item->genero}}</td>
+                            <td>{{$item->competicao}}</td>
+                            <td>
+                                <a class="linkIcone" href="../times/verTime/{{$item->idTime}}">
+                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
+                                </a>
+                                <a class="linkIcone" href="../times/editar/{{$item->idTime}}">
+                                    <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                </a>
+                                <a class="linkIcone" href="../times/apagar/{{$item->idTime}}"
+                                    onclick="return confirm('Deseja apagar o time do {{$item->competicao}} ?')">
+                                    <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
+                                </a>
+                            </td>
                         </tr>
 
             @endforeach

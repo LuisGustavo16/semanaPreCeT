@@ -115,6 +115,14 @@ Route::get('/noticias/apagar/{idNoticia}', [App\Http\Controllers\controllerNotic
 
 
 ////////////////////////////////////////////////
+/*Rotas do controller da tabela de JogosTimes*/
+////////////////////////////////////////////////
+Route::get('/jogos/formulariocadastro/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'create']); // Rota para cadastrar
+Route::post('/jogos/cadastrarJogos/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'store']); // Rota para cadastrar
+Route::get('/jogos/apagar/{idJogo}/{idTime}', [App\Http\Controllers\controllerJogosTimes::class, 'destroy']); // Rota para apagar
+
+
+////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
 Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime']); // Rota para exibir

@@ -14,7 +14,7 @@
 .solicitacao{
     padding-top: 1rem;
     width: 60rem;
-    grid-template-columns: repeat(3, 12rem);
+    grid-template-columns: repeat(3, 18rem);
     grid-template-rows: repeat(3, 8rem);
 }
 
@@ -46,6 +46,7 @@
     color: var(--bottonAcceptSecondary);
     font-weight: 800;
     border-radius: 3rem;
+    margin-left: 2rem;
 }
 
 .centralizarBotoes .aceitar:hover {
@@ -67,6 +68,7 @@
     color: var(--bottonRecuseSecondary);
     font-weight: 800;
     border-radius: 3rem;
+    margin-right: 2rem;
 }
 
 .centralizarBotoes .recusar:hover {
@@ -96,10 +98,6 @@
     box-shadow: 0.1rem 0.1rem 1rem black;
 }
 
-.pessoas {
-    width: 20rem;
-}
-
 /*Reserva Escolhida*/
 
 .formularioEscondido {
@@ -111,11 +109,11 @@
     padding-top: 0;
     background-color: var(--white);
     border: 0px solid black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
-    width: 70rem;
+    width: 25rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1rem);
+    grid-template-rows: repeat(3, 5rem);
 }
 
 .divReservaEscolhida {
@@ -125,19 +123,31 @@
     align-items: center;
 }
 
-#observacaoPopup {
+#observacaoPopupAceitar {
     display: grid;
     grid-template-columns: repeat(1, 1rem);
     grid-template-rows: repeat(3, 5rem);
     position: absolute;
-    top: 20rem;
+    top: 17rem;
     height: 25rem;
     width: 25rem;
     background-color: var(--white);
     border: 2px solid black;
 }
 
-#observacaoPopup h1 {
+#observacaoPopupRejeitar {
+    display: grid;
+    grid-template-columns: repeat(1, 1rem);
+    grid-template-rows: repeat(3, 5rem);
+    position: absolute;
+    top: 17rem;
+    height: 25rem;
+    width: 25rem;
+    background-color: var(--white);
+    border: 2px solid black;
+}
+
+#textoPopup {
     font-family: "Inter", sans-serif;
     padding-left: 1rem;
 }
@@ -168,4 +178,8 @@
     left: 10rem;
     background-color: var(--white);
     border: 0;
+}
+
+.campoListarTreinoEscolhidoLinha {
+
 }

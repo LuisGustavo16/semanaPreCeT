@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('status');
             $table->string('tipo');
             $table->string('observacao')->nullable();
+            $table->integer('numeroPessoas');
             $table->timestamps();
         });
 

@@ -10,6 +10,7 @@ import '../css/time.css';
 import '../css/reserva.css';
 import '../css/noticia.css';
 import '../css/cronograma.css';
+import '../css/jogo.css';
 
 /*Padrão do laravel*/
 import '../scss/app.scss';
