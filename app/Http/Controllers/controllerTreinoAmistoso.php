@@ -86,6 +86,17 @@ class controllerTreinoAmistoso extends Controller
             return redirect()->route('indexTreino');
         }
     }
+    public function destroyMany(Request $request) {
+        $dados = $request->input('treino[]');
+        echo ("<var>");
+            print_r($request);
+        echo ("<var/>");
+        /*foreach ($dados as $item) {
+            $item->delete();
+        }
+        $dados->save();
+        return redirect()->route('indexTreino');*/
+    }
 
     /*Envia os dados para serem editados*/
     public function edit(string $idTreino) {

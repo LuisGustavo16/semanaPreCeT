@@ -16,8 +16,8 @@
         <div class="observacao"><h1>Observação:</h1> <h2>{{$dados->observacao}}</h2></div>
 
         <div class="centralizarDiv botoes">
-            <a class="editarTreinoEscolhido" href="../../../treino_amistosos/editar/{{$dados->idTreino}}">Editar</a>
-            <a class="apagarTreinoEscolhido" href="../../../treino_amistosos/apagar/{{$dados->idTreino}}"
+            <a class="editarEscolhido" href="../../../treino_amistosos/editar/{{$dados->idTreino}}">Editar</a>
+            <a class="apagarEscolhido" href="../../../treino_amistosos/apagar/{{$dados->idTreino}}"
                 onclick="return confirm('Deseja apagar o treino ?')">Excluir</a>
         </div>
         

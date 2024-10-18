@@ -54,9 +54,16 @@ $popup = true;
             </div>
 
             <div class="campoListarReservaEscolhida">
+                <h1 class="textoSolicitacao">Tipo:</h1>
+                <h2>{{$dados->tipo}}</h2>
+            </div>
+
+            @if ($dados->status == 'A')
+            <div class="campoListarReservaEscolhida">
                 <h1 class="textoSolicitacao">Observação</h1>
                 <h2>{{$dados->observacao}}</h2>
             </div>
+            @endif
             
         </div>
         <div class="centralizarBotoes ">

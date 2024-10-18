@@ -29,7 +29,14 @@ $classe = 'branco';
                             <h2>{{$jogo->dia}}</h2>
                             <h2>{{$jogo->horario}}</h2>
                             <h2>{{$jogo->local}}</h2>
-                            <h2><a href="/jogos/apagar/{{$jogo->idJogoTime}}/{{$dados->idTime}}">
+                            <h2><a class="linkIcone" href="/jogos/selecionado/{{$jogo->idJogoTime}}">
+                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
+                                </a>
+                                <a class="linkIcone" href="/jogos/editar/{{$jogo->idJogoTime}}">
+                                    <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                </a>
+                                <a class="linkIcone" href="/jogos/apagar/{{$jogo->idJogoTime}}/{{$jogo->idTime}}"
+                                    onclick="return confirm('Deseja apagar o jogo do dia {{$jogo->dia}} ?')">
                                     <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
                                 </a>
                             </h2>
@@ -37,7 +44,7 @@ $classe = 'branco';
                     @endforeach
                 </div>
             </div>
-            <a class="botaoAddJogo" href="/jogos/formulariocadastro/{{$dados->idTime}}">Adicionar Jogo</a>
+            <a class="botaoAddJogo" href="/jogos/formularioCadastro/{{$dados->idTime}}">Adicionar Jogo</a>
         </div>
 
         <div class="informacoesAlunosTimeEscolhido">

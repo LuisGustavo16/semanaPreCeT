@@ -126,7 +126,9 @@
             <a class="titulo" href="{{route("indexTime")}}">
                 <h3>Ver times</h3>
             </a>
-            <h3>Jogos</h3>
+            <a class="titulo" href="{{route("indexJogos")}}">
+                <h3>Jogos</h3>
+            </a>
         </div>
 
         <div class="subopcoes quatro">

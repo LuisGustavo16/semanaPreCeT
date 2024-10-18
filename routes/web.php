@@ -70,6 +70,7 @@ Route::post('/treino_amistosos/atualizar/{idTreino}', [App\Http\Controllers\cont
 Route::get('/treino_amistosos/editar/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'edit']); // Rota que manda o dado a ser editado para o formulário
 Route::get('/treino_amistosos/apagar/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroy']); // Rota para apagar
 Route::get('/treino_amistosos/verTreino/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'verTreino']); // Rota que envia o dado para ser vizualizado
+Route::post('/treino_amistosos/apagarVarios', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroyMany']); // Rota para apagar
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Modalidades*/
@@ -118,12 +119,12 @@ Route::get('/noticias/apagar/{idNoticia}', [App\Http\Controllers\controllerNotic
 /*Rotas do controller da tabela de JogosTimes*/
 ////////////////////////////////////////////////
 Route::get ('/jogos/listarJogos', [App\Http\Controllers\controllerJogosTimes::class, 'index']) ->name('indexJogos'); // Rota para exibir
-Route::get('/jogos/selecionado/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'enviaJogoEscolhido']);
+Route::get('/jogos/selecionado/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'show']);
 Route::get('/jogos/formularioCadastro/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'create']); // Rota para cadastrar
 Route::post('/jogos/cadastrarJogos/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'store']); // Rota para cadastrar
 Route::get('/jogos/apagar/{idJogo}/{idTime}', [App\Http\Controllers\controllerJogosTimes::class, 'destroy']); // Rota para apagar
 Route::get('/jogos/editar/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'edit']); // Rota que manda o dado a ser editado para o formulário
-Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerNoticias::class, 'update']); // Rota para editar
+Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'update']); // Rota para editar
 
 
 ////////////////////////////////////////////////

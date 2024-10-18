@@ -34,8 +34,12 @@
 /*CSS da pagina de um treino especifico*/
 .divListarTreinoEscolhido {
     display:grid;
-    grid-template-columns: repeat(4, 12rem);
+    grid-template-columns: repeat(4, 14rem);
     grid-template-rows: repeat(3, 5rem);
+}
+
+.divListar {
+    width: 60rem;
 }
 
 .divListar .observacao h2{
@@ -67,7 +71,7 @@
     justify-content: center;
 }
 
-.editarTreinoEscolhido {
+.editarEscolhido {
     color: var(--white);
     background-color: var(--blue);
     margin-right: 2rem;
@@ -75,12 +79,12 @@
     border-radius: 1rem;
 }
 
-.editarTreinoEscolhido:hover {
+.editarEscolhido:hover {
     box-shadow: 0.1rem 0.1rem 0.7rem black;
     font-weight: 700;
 }
 
-.apagarTreinoEscolhido {
+.apagarEscolhido {
     color: var(--white);
     background-color: var(--bottonRecuseSecondary);
     margin-right: 2rem;
@@ -88,7 +92,7 @@
     border-radius: 1rem;
 }
 
-.apagarTreinoEscolhido:hover {
+.apagarEscolhido:hover {
     box-shadow: 0.1rem 0.1rem 0.7rem black;
     font-weight: 700;
 }

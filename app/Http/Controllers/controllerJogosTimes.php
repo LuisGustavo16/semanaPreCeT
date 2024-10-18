@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\JogosTimes;
+use App\Models\Modalidade;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Time;
 
@@ -12,6 +14,15 @@ class controllerJogosTimes extends Controller
     public function index()
     {
         $dados = JogosTimes::all();
+        foreach ($dados as $item) {
+            $time = Time::find( $item->idTime);
+            $modalidade = Modalidade::find($time->idModalidade);
+            $item->nomeTime = $modalidade->nome . " " . $time->genero . ' - ' . $time->competicao;
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horario = Carbon::parse($item->horario)->format('h:m');
+        }
+        
         return view("Jogos/listarJogos", compact("dados"));
     }
 
@@ -38,7 +49,12 @@ class controllerJogosTimes extends Controller
     {
         $dados = JogosTimes::find( $idJogoTime );
         $time = Time::find( $dados->idTime);
-        $dados->nomeTime = $time->modalidade . " " . $time->genero;
+        $dados->modalidade = Modalidade::find($time->idModalidade)->nome;
+        $dados->genero = $time->genero;
+        $dados->competicao = $time->competicao;
+        /*Trocar o formato do dia e do horário*/
+        $dados->dia = Carbon::parse($dados->dia)->format('d/m');
+        $dados->horario = Carbon::parse($dados->horario)->format('h:m');
         return view('Jogos/listarJogoEscolhido', compact('dados'));
     }
 
@@ -51,7 +67,6 @@ class controllerJogosTimes extends Controller
     public function update(Request $request, string $idJogoTime)
     {
         $dados = JogosTimes::find( $idJogoTime );
-        $dados->modalidade = $request->input('modalidade');
         $dados->dia = $request->input('dia');
         $dados->horario = $request->input('horario');
         $dados->observacao = $request->input('observacao');
