@@ -117,9 +117,13 @@ Route::get('/noticias/apagar/{idNoticia}', [App\Http\Controllers\controllerNotic
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de JogosTimes*/
 ////////////////////////////////////////////////
-Route::get('/jogos/formulariocadastro/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'create']); // Rota para cadastrar
+Route::get ('/jogos/listarJogos', [App\Http\Controllers\controllerJogosTimes::class, 'index']) ->name('indexJogos'); // Rota para exibir
+Route::get('/jogos/selecionado/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'enviaJogoEscolhido']);
+Route::get('/jogos/formularioCadastro/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'create']); // Rota para cadastrar
 Route::post('/jogos/cadastrarJogos/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'store']); // Rota para cadastrar
 Route::get('/jogos/apagar/{idJogo}/{idTime}', [App\Http\Controllers\controllerJogosTimes::class, 'destroy']); // Rota para apagar
+Route::get('/jogos/editar/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'edit']); // Rota que manda o dado a ser editado para o formulário
+Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerNoticias::class, 'update']); // Rota para editar
 
 
 ////////////////////////////////////////////////

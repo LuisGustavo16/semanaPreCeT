@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\JogosTimes;
 use Illuminate\Http\Request;
+use App\Models\Time;
 
 class controllerJogosTimes extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $dados = JogosTimes::all();
+        return view("Jogos/listarJogos", compact("dados"));
     }
 
     
@@ -33,28 +33,30 @@ class controllerJogosTimes extends Controller
         return redirect()->route('verTime', ['idTime' => $idTime]);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+
+    public function show(string $idJogoTime)
     {
-        //
+        $dados = JogosTimes::find( $idJogoTime );
+        $time = Time::find( $dados->idTime);
+        $dados->nomeTime = $time->modalidade . " " . $time->genero;
+        return view('Jogos/listarJogoEscolhido', compact('dados'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(string $idJogoTime)
     {
-        //
+        $dados = JogosTimes::find( $idJogoTime );
+        return view('Jogos/formEditarJogo', compact('dados'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $idJogoTime)
     {
-        //
+        $dados = JogosTimes::find( $idJogoTime );
+        $dados->modalidade = $request->input('modalidade');
+        $dados->dia = $request->input('dia');
+        $dados->horario = $request->input('horario');
+        $dados->observacao = $request->input('observacao');
+        $dados->save();
+        return view('Jogos/listarJogoEscolhido', compact('dados'));
     }
 
     public function destroy(string $idJogo, string $idTime)

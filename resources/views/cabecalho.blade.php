@@ -76,7 +76,9 @@
                         <a class="titulo" href="{{route("indexTime")}}">
                             <h4>Ver times</h4>
                         </a>
-                        <h4>Jogos</h4>
+                        <a href="{{route("indexJogos")}}">
+                            <h4>Jogos</h4>
+                        </a>
                     </div>
 
                     <div class="subopcoesHamburguer subopcaoQuatro">
