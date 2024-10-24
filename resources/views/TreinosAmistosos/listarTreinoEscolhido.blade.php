@@ -11,6 +11,7 @@
             <div class="campoListarTreinoEscolhido"><h1>Público:</h1> <h2>{{$dados->publico}}</h2></div>
             <div class="campoListarTreinoEscolhido"><h1>Local:</h1> <h2>{{$dados->local}}</h2></div>
             <div class="campoListarTreinoEscolhido"><h1>Responsável:</h1> <h2>{{$dados->responsavel}}</h2></div>
+            <div class="campoListarTreinoEscolhido"><h1>Nº de Alunos:</h1> <h2>{{$dados->numeroMaximoParticipantes}}</h2></div>
         </div>
     
         <div class="observacao"><h1>Observação:</h1> <h2>{{$dados->observacao}}</h2></div>

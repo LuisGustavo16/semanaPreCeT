@@ -16,7 +16,7 @@ if (!function_exists('confereDia')) {
                 }
             }
         }
-        return $qtdLinhas;          
+        return $qtdLinhas;
     }
 }
 
@@ -24,43 +24,46 @@ if (!function_exists('confereDia')) {
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
-
-    <table class="tabelaCronograma">
-        <caption class="dataSemana">{{$inicioSemana}} - {{$fimSemana}}</caption>
-        <thead>
-            <th class="thCronograma">Data</th>
-            <th class="thCronograma">Horário</th>
-            <th class="thCronograma">Modalidade</th>
-            <th class="thCronograma">Gênero</th>
-            <th class="thCronograma">Público</th>
-            <th class="thCronograma">Local</th>
-            <th class="thCronograma">Responsável</th>
-        </thead>
-        <tbody>
-            @foreach ($treinos as $treino)
-                @foreach ($modalidades as $modalidade)
-                    @if ($modalidade->idModalidade == $treino->idModalidade)
-                        <tr>
-                            @if ($aux == 1)
-                                <?php $aux = confereDia($treino->dia, $treinos, $j)?>
-                                <td class="tdCronograma" rowspan="{{confereDia($treino->dia, $treinos, $j)}}">{{$treino->dia}}</td>
-                            @else
-                                <?php $aux--; ?>
-                            @endif
-                            <td class="tdCronograma">{{$treino->horario}}</td>
-                            <td class="tdCronograma">{{$modalidade->nome}}</td>
-                            <td class="tdCronograma">{{$treino->genero}}</td>
-                            <td class="tdCronograma">{{$treino->publico}}</td>
-                            <td class="tdCronograma">{{$treino->local}}</td>
-                            <td class="tdCronograma">{{$treino->responsavel}}</td>
-                        </tr>
-                        <?php $j++; ?>
-                    @endif
+    <div>
+        <table class="tabelaCronograma">
+            <caption class="dataSemana">{{$inicioSemana}} - {{$fimSemana}}</caption>
+            <thead>
+                <th class="thCronograma">Data</th>
+                <th class="thCronograma">Horário</th>
+                <th class="thCronograma">Modalidade</th>
+                <th class="thCronograma">Gênero</th>
+                <th class="thCronograma">Público</th>
+                <th class="thCronograma">Local</th>
+                <th class="thCronograma">Responsável</th>
+            </thead>
+            <tbody>
+                @foreach ($treinos as $treino)
+                    @foreach ($modalidades as $modalidade)
+                        @if ($modalidade->idModalidade == $treino->idModalidade)
+                            <tr>
+                                @if ($aux == 1)
+                                    <?php                $aux = confereDia($treino->dia, $treinos, $j)?>
+                                    <td class="tdCronograma" rowspan="{{confereDia($treino->dia, $treinos, $j)}}">{{$treino->dia}}</td>
+                                @else
+                                    <?php                $aux--; ?>
+                                @endif
+                                <td class="tdCronograma">{{$treino->horarioInicio}} - {{$treino->horarioFim}}</td>
+                                <td class="tdCronograma">{{$modalidade->nome}}</td>
+                                <td class="tdCronograma">{{$treino->genero}}</td>
+                                <td class="tdCronograma">{{$treino->publico}}</td>
+                                <td class="tdCronograma">{{$treino->local}}</td>
+                                <td class="tdCronograma">{{$treino->responsavel}}</td>
+                            </tr>
+                            <?php            $j++; ?>
+                        @endif
+                    @endforeach
                 @endforeach
-            @endforeach
 
-        </tbody>
-    </table>
-    <a class="buttonGerarPDF" href="{{route("gerarPDF")}}">GERAR PDF</a>
+            </tbody>
+        </table>
+        <div class="centralizarBotao">
+            <a class="buttonGerarPDF" href="{{route("gerarPDF")}}">GERAR PDF</a>
+        </div>
+    </div>
 </div>
 @endsection

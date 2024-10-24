@@ -1,0 +1,122 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+}
+
+.divListarAlunoEscolhido {
+    display: flex;
+}
+
+.divInformacoesGeraisAlunos {
+    margin-left: 3rem;
+    margin-bottom: 5rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    height: 40rem;
+    width: 55rem;
+    display: grid;
+    margin-top: 4rem;
+    padding-left: 3rem;
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 0.1rem 0.1rem 1rem black;
+
+}
+
+.cardImagemAluno {
+    border: 2px solid black;
+    border-radius: 2rem;
+    width: 20rem;
+    height: 20rem;
+}
+
+.fotoPerfil {
+    width: 100%;
+    height: 100%;
+}
+
+.linhaPreta {
+    background-color: black;
+    position: relative;
+    height: 3px;
+    top: 15rem;
+    width: 85%;
+}
+
+.linhaDescircaoAlunoEscolhido {
+    display: grid;
+    grid-template-columns: repeat(2, 22rem);
+    height: 1rem;
+}
+
+.informacaoAluno{
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 30rem;
+    word-wrap:break-word;
+    text-align: left;
+    font-family: "Inter", sans-serif;
+}
+
+.descricaoEsportiva {
+    font-weight: 400;
+    max-width: 35rem;
+    word-wrap:break-word;
+    font-family: "Inter", sans-serif;
+}
+
+.campoDescricaoAluno {
+    width: 33rem;
+    font-family: "Inter", sans-serif;
+}
+
+.divColunaInformacoesAluno {
+    padding-top: 10rem;
+    display: grid;
+    grid-template-columns: repeat(2, 32rem);
+    grid-template-rows: repeat(2, 6rem);
+}
+
+/*CSS das informações dos times e dos chekins do aluno*/
+
+.informacoesTimesChekin {
+    margin-left: 3rem;
+    margin-bottom: 5rem;
+    border-radius: 2rem;
+    height: 19.3rem;
+    width: 41.4rem;
+    display: grid;
+    margin-top: 4rem;
+    padding-left: 0rem;
+    background-color: white;
+    border: 3px solid black;
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.linhaTituloTimesChekins {
+    border-bottom: 1px solid black;
+}
+
+.tituloTimeAlunos {
+    padding-left: 2rem;
+    font-family: "Inter", sans-serif;
+}
+
+.tabelaRolagemTimesAluno {
+    width: 660px;
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+}
+.tabelaRolagemTimesAluno h2 {
+    font-weight: 400;
+    padding-top: 3px;
+    padding-left: 20px;
+    font-size: 1.5rem;
+}

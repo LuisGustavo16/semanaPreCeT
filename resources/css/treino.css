@@ -43,7 +43,7 @@
 }
 
 .divListar .observacao h2{
-    width: 45rem;
+    width: 55rem;
     max-width: 45rem;
     word-wrap:break-word;
     align-items: center;
@@ -97,3 +97,31 @@
     font-weight: 700;
 }
 
+.divCentralizaBotaoApagarTreinos {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4rem;
+}
+
+.checkboxTreinos {
+    width: 2rem;
+    accent-color: var(--blue);
+    border-radius: 8px;
+}
+
+.botaoApagarSelecionados {
+    font-size: 1.6rem;
+    color: var(--white);
+    background-color: var(--bottonRecuseSecondary);
+    margin-right: 2rem;
+    font-family: "Inter", sans-serif;
+    border-radius: 1rem;
+    width: 16rem;
+}
+
+.botaoApagarSelecionados:hover {
+    box-shadow: 0.1rem 0.1rem 0.7rem black;
+    font-weight: 700;
+}

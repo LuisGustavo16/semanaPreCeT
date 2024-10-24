@@ -31,14 +31,15 @@
             </div>
 
             <div class="campo">
-                <label for="horario">Horário:</label> <br>
-                <input class="horario" type="time" name="horario" value="{{$dados->horario}}">
+                <label for="horario">*Horário de Inicio:</label><br>
+                <input class="horario" type="time" name="horarioInicio" value="{{$dados->horarioInicio}}" required>
             </div>
 
             <div class="campo">
-                <label for="responsavel">Responsável:</label> <br>
-                <input type="text" name="responsavel" value="{{$dados->responsavel}}">
+                <label for="horario">*Horário de Fim:</label><br>
+                <input class="horario" type="time" name="horarioFim" value="{{$dados->horarioFim}}" required>
             </div>
+
 
         </div>
 
@@ -68,9 +69,18 @@
                 <input type="text" name="local" value="{{$dados->local}}">
             </div>
 
+            <div class="campo">
+                <label for="numeroMaximoParticipantes">*Nº de Alunos:</label><br>
+                <input class="numeroMaximoParticipantes" type="text" name="numeroMaximoParticipantes" value="{{$dados->numeroMaximoParticipantes}}" required>
+            </div>
+
         </div>
 
         <div class="coluna">
+            <div class="campo">
+                <label for="responsavel">Responsável:</label> <br>
+                <input type="text" name="responsavel" value="{{$dados->responsavel}}">
+            </div>
             <div class="campo">
                 <label for="observacao">Observação:</label> <br>
                 <textarea value="{{$dados->observacao}}" name="observacao"></textarea>

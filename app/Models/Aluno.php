@@ -9,7 +9,7 @@ class Aluno extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idAluno';
-    protected $fillable = ['CPF', 'nome', 'dtNascimento', 'matricula', 'RG', 'turma', 'curso'];
+    protected $fillable = ['CPF', 'nome', 'dtNascimento', 'matricula', 'RG', 'turma', 'curso', 'descricaoEsportiva'];
 
     public function Chekin()
     {
@@ -27,11 +27,5 @@ class Aluno extends Model
     {
         #A tabela 'alunos' manda o idAluno para a tabela 'reservas' para poder fazer a relação
         return $this->belongsTo(Reserva::class);
-    }
-
-    public function SolicitacaoReserva()
-    {
-        #A tabela 'alunos' manda o idAluno para a tabela 'SolicitacaoReserva' para poder fazer a relação
-        return $this->belongsTo(SolicitacaoReserva::class);
     }
 }

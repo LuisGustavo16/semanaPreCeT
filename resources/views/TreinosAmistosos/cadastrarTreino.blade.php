@@ -19,8 +19,13 @@
             </div>
 
             <div class="campo">
-                <label for="horario">*Horário:</label><br>
-                <input class="horario" type="time" name="horario" required>
+                <label for="horario">*Horário de Inicio:</label><br>
+                <input class="horario" type="time" name="horarioInicio" required>
+            </div>
+
+            <div class="campo">
+                <label for="horario">*Horário de Fim:</label><br>
+                <input class="horario" type="time" name="horarioFim" required>
             </div>
 
         </div>
@@ -43,6 +48,11 @@
             <div class="campo">
                 <label for="local">*Local:</label><br>
                 <input type="text" name="local" required>
+            </div>
+
+            <div class="campo">
+                <label for="numeroMaximoParticipantes">*Nº de Alunos:</label><br>
+                <input class="numeroMaximoParticipantes" type="text" name="numeroMaximoParticipantes" required>
             </div>
 
         </div>

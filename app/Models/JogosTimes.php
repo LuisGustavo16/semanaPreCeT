@@ -9,9 +9,9 @@ class JogosTimes extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idJogoTime';
-    protected $fillable = ['idTime', 'horario', 'dia', 'local', 'horarioInicio', 'horarioFim', 'status', 'tipo', 'observacao', 'numeroPessoas'];
+    protected $fillable = ['idTime', 'horarioInicio', 'horarioFim', 'dia', 'local', 'horarioInicio', 'horarioFim', 'status', 'tipo', 'observacao', 'numeroPessoas'];
 
-    public function Modalidade()
+    public function Time()
     {
         return $this->hasOne(Time::class, 'idTime');
     }

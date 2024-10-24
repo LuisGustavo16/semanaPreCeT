@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('jogos_times', function (Blueprint $table) {
             $table->bigIncrements('idJogoTime');
             $table->unsignedBigInteger('idTime');
-            $table->time("horario");
+            $table->time("horarioInicio");
+            $table->time("horarioFim");
             $table->date("dia");
             $table->string("local");
             $table->string("observacao")->nullable();

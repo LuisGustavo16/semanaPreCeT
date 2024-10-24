@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('RG');
             $table->string('turma');
             $table->string('curso');
+            $table->string('descricaoEsportiva', 1000)->nullable();
             $table->timestamps();
         });
     }

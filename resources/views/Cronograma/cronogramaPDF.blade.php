@@ -42,16 +42,14 @@ if (!function_exists('confereDia')) {
             --bottonRecuseSecondary: #AC3C3C;
         }
 
-        caption {
+        .caption {
             font-family: "Inter", sans-serif;
             color: black;
             word-spacing: 20px;
             text-shadow: 0 0 0 black;
-            border: 0.1rem solid black;
-            border-bottom: 0;
             padding-top: 1rem;
             padding-bottom: 1rem;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
         }
 
@@ -87,11 +85,26 @@ if (!function_exists('confereDia')) {
             align-items: center;
             justify-content: center;
         }
+
+        .centralizarCronograma {
+            width: 100%;
+            display: grid;
+        }
+
+        .subtitulo {
+            font-family: "Inter", sans-serif;
+            font-size: 1.5rem;
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="fundo">
+    <div class="centralizarCrnograma">
+        <div class="informacoes">
+            <h1 class="caption">Programção Esportiva {{$inicioSemana}} - {{$fimSemana}}</h1>
+            <h1 class="subtitulo">CEFET-MG Campus Varginha</h1>
+        </div>
         <table>
             <thead>
                 <th>Data</th>

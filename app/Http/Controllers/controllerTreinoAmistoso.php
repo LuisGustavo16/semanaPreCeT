@@ -18,8 +18,8 @@ class controllerTreinoAmistoso extends Controller
             $item->nomeModalidade = $modalidade->nome;
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horario = Carbon::parse($item->horario)->format('h:m');
-
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:i');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:i');
         }
         return view('TreinosAmistosos/listarTreinos', compact('dados'));
     }
@@ -35,7 +35,8 @@ class controllerTreinoAmistoso extends Controller
         $dados = TreinoAmistoso::find($idTreino);
         /*Trocar o formato do dia e do horário*/
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
-        $dados->horario = Carbon::parse($dados->horario)->format('h:m');
+        $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:i');
+        $dados->horarioFim = Carbon::parse($dados->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
         $modalidade = Modalidade::find($dados->idModalidade);
         if (isset($dados))
             return view('TreinosAmistosos/listarTreinoEscolhido', compact('dados', 'modalidade'));
@@ -47,7 +48,9 @@ class controllerTreinoAmistoso extends Controller
         if (isset($dados)) {
             $dados->idModalidade = $request->input('idModalidade');
             $dados->dia = $request->input('dia');
-            $dados->horario = $request->input('horario');
+            $dados->horarioInicio = $request->input('horarioInicio');
+            $dados->horarioFim = $request->input('horarioFim');
+            $dados->numeroMaximoParticipantes = $request->input('numeroMaximoParticipantes');
             $dados->genero = $request->input('genero');
             $dados->publico = $request->input('publico');
             $dados->local = $request->input('local');
@@ -66,7 +69,9 @@ class controllerTreinoAmistoso extends Controller
         $dados = new TreinoAmistoso();
         $dados->idModalidade = $request->input('idModalidade');
         $dados->dia = $request->input('dia');
-        $dados->horario = $request->input('horario');
+        $dados->horarioInicio = $request->input('horarioInicio');
+        $dados->horarioFim = $request->input('horarioFim');
+        $dados->numeroMaximoParticipantes = $request->input('numeroMaximoParticipantes');
         $dados->genero = $request->input('genero');
         $dados->publico = $request->input('publico');
         $dados->local = $request->input('local');
@@ -87,15 +92,15 @@ class controllerTreinoAmistoso extends Controller
         }
     }
     public function destroyMany(Request $request) {
-        $dados = $request->input('treino[]');
-        echo ("<var>");
-            print_r($request);
-        echo ("<var/>");
-        /*foreach ($dados as $item) {
-            $item->delete();
+        $dados = $request['treino'];
+        if (isset($dados)) {
+            foreach ($dados as $item) {
+                $treino = TreinoAmistoso::find($item);
+                $treino->delete();
+            }
+            return redirect()->route('indexTreino')->with('success', 'Treinos apagados sucesso!!');
         }
-        $dados->save();
-        return redirect()->route('indexTreino');*/
+        return redirect()->route('indexTreino')->with('danger', 'Selecione ao menos um treino...');
     }
 
     /*Envia os dados para serem editados*/

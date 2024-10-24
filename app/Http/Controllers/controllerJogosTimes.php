@@ -71,6 +71,13 @@ class controllerJogosTimes extends Controller
         $dados->horario = $request->input('horario');
         $dados->observacao = $request->input('observacao');
         $dados->save();
+        /*Pega os dados para listar novamente após salvar*/
+        $time = Time::find( $dados->idTime);
+        $dados->modalidade = Modalidade::find($time->idModalidade)->nome;
+        $dados->genero = $time->genero;
+        $dados->competicao = $time->competicao;
+        /*Trocar o formato do dia e do horário*/
+        $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         return view('Jogos/listarJogoEscolhido', compact('dados'));
     }
 

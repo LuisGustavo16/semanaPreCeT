@@ -15,7 +15,9 @@ return new class extends Migration
             $table->bigIncrements('idTreino');
             $table->unsignedBigInteger('idModalidade');
             $table->date('dia');
-            $table->time('horario');
+            $table->time('horarioInicio');
+            $table->time('horarioFim');
+            $table->integer('numeroMaximoParticipantes');
             $table->string('genero');
             $table->string('publico');
             $table->string('local');

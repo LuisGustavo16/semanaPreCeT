@@ -131,6 +131,7 @@ Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTi
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
 Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime']); // Rota para exibir
+Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show']); // Rota para exibir
 
 
 //////////////////////////////////////////////////////////

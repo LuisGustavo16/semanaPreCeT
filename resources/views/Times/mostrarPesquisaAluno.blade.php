@@ -28,7 +28,7 @@
                     <td>{{$item->nome}}</td>
                     <td>{{$item->turma}} {{$item->curso}}</td>
                     <td>
-                        <a href="">Ver</a>
+                        <a href="/alunos/verPerfilAluno/{{$item->idAluno}}">Ver</a>
                         <a href="../../alunos/adicionarAluno/{{$item->idAluno}}/{{$idTime}}">Adicionar</a>
                     </td>
                 </tr>

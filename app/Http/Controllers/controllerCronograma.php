@@ -38,7 +38,8 @@ class controllerCronograma extends Controller
 
         /*Passa o formato da hora do BD para hora:minuto*/
         foreach ($treinos as $treino) {
-            $treino->horario = Carbon::parse($treino->horario)->format('h:m');
+            $treino->horarioInicio = Carbon::parse($treino->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');            
+            $treino->horarioFim = Carbon::parse($treino->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
         }
 
         $modalidades = Modalidade::all();

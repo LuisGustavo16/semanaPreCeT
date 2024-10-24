@@ -9,7 +9,6 @@
 /*AJUSTES GERAIS*/
 .fundo {
     display:flex;
-    align-items: center;
     justify-content: center;
     height: 100%;
 }
@@ -24,7 +23,7 @@ form {
     background-color: white;
     border: 3px solid black;
     display: flex;
-    height: 25rem;
+    height: 28rem;
     width: 70rem;
 }
 
@@ -96,11 +95,17 @@ textarea {
     font-weight: 400;
     margin-left: 1rem;
     border-radius: 0.3rem;
-    height: 10rem;
-    width: 20rem;
+    height: 14rem;
+    width: 24rem;
     font-family: "Inter", sans-serif;
     resize: none;
    
+}
+
+.numeroMaximoParticipantes {
+    width: 4rem;
+    text-align: center;
+    padding: 0;
 }
 
 /*BOTÃO*/
@@ -115,7 +120,7 @@ button.botao {
     font-family: "Inter", sans-serif;
     border: 0;
     cursor: pointer;
-    bottom: -24rem;
+    bottom: -27rem;
     margin-left: 5rem;
 }
 
@@ -167,8 +172,18 @@ button.botao:hover {
 }
 
 .formularioTreinoEscondido {
+    display: grid;
     box-shadow: 0.1rem 0.1rem 1rem var(--white);
     margin: 0rem;
     background-color: var(--white);
     border: 0px solid black;
+    justify-content: center;
+    width: 100%;
+}
+
+.botaoApagarTreinos {
+    width: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
