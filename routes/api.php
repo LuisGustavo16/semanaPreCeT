@@ -17,3 +17,6 @@ use App\Http\Controllers\API\ReservasController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
+
+Route::post('/cadastrarReserva', [ReservasController::class, 'store']);
+Route::get('/listarReservas', [ReservasController::class, 'index']);

@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\HasApiTokens;
+use Iluminate\Foundation\Auth\User as Authenticatable;
 class AuthController extends Controller
 {
     use ApiResponse;
+    use HasApiTokens;
     public function register(Request $request)
     {
         try {
@@ -26,7 +29,7 @@ class AuthController extends Controller
                 'email' => $request->get('email'),
                 'password' => Hash::make($request->get('password')),
             ]);
-            $token = $user->createToken('auth_token')->plainTextToken;
+            $token = $user->createToken('token-name')->plainTextToken;
             return $this->success([
                 'access_token' => $token,
                 'user' => $user,
