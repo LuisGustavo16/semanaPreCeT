@@ -47,8 +47,10 @@ class AuthController extends Controller
             }
             $user = User::where('email', $request['email'])->firstOrFail();
             $token = $user->createToken('auth_token')->plainTextToken;
+            $expiresAt = now()->addHours(1);
             return $this->success([
                 'token' => $token,
+                'expires_at' => $expiresAt,
                 'user' => $user
             ], "Login realizado!!!");
         } catch (\Throwable $th) {
