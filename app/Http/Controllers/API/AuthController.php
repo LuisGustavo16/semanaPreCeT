@@ -31,7 +31,7 @@ class AuthController extends Controller
             ]);
             $token = $user->createToken('token-name')->plainTextToken;
             return $this->success([
-                'access_token' => $token,
+                'token' => $token,
                 'user' => $user,
             ], "Cadastro realizado com sucesso!!!");
         } catch (\Throwable $th) {
@@ -48,7 +48,7 @@ class AuthController extends Controller
             $user = User::where('email', $request['email'])->firstOrFail();
             $token = $user->createToken('auth_token')->plainTextToken;
             return $this->success([
-                'access_token' => $token,
+                'token' => $token,
                 'user' => $user
             ], "Login realizado!!!");
         } catch (\Throwable $th) {
