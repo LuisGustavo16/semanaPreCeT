@@ -49,10 +49,15 @@ class AuthController extends Controller
             $token = $user->createToken('auth_token')->plainTextToken;
             $expiresAt = now()->addHours(1);
             return $this->success([
-                'token' => $token,
-                'expires_at' => $expiresAt,
+                'token' => [
+                    [
+                        'token' => $token,
+                        'expires_at' => $expiresAt
+                    ]
+                ],
                 'user' => $user
             ], "Login realizado!!!");
+
         } catch (\Throwable $th) {
             return $this->error("Falha ao realizar o login!!!", 401, $th->getMessage());
         }
