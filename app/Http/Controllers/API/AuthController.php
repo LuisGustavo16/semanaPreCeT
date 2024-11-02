@@ -46,15 +46,11 @@ class AuthController extends Controller
                 return $this->error('Dados de autenticação inválidos!!!', 401);
             }
             $user = User::where('email', $request['email'])->firstOrFail();
-            $token = $user->createToken('auth_token')->plainTextToken;
-            $expiresAt = now()->addHours(1);
+            $token = $user->createToken('token-name')->plainTextToken;
+            $expiresAt = now()->addHours(3);
             return $this->success([
-                'token' => [
-                    [
-                        'token' => $token,
-                        'expires_at' => $expiresAt
-                    ]
-                ],
+                'token' => $token,
+                'expires_at' => $expiresAt,
                 'user' => $user
             ], "Login realizado!!!");
 
