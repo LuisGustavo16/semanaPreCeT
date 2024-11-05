@@ -28,11 +28,12 @@ class ReservasController extends Controller
         return $this->success([], "Cadastro realizado com sucesso!!!");
     }
 
-    public function index()       {
+    public function index() {
         $dados = Reserva::all();
-        return (
+        return response()->json([
             'dados' => $dados,
-        );
-    }
+    ]);
+}
+
 
 }
