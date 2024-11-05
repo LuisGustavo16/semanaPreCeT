@@ -31,7 +31,7 @@ class ReservasController extends Controller
     public function index()       {
         $dados = Reserva::all();
         return $this->success([
-            'dados' => $dados,
+            'dados' => json_encode($dados),
         ], "Ok...");
     }
 
