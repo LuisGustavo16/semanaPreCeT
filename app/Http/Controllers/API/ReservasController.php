@@ -30,9 +30,9 @@ class ReservasController extends Controller
 
     public function index()       {
         $dados = Reserva::all();
-        return $this->success([
+        return (
             'dados' => $dados,
-        ], "Ok...");
+        );
     }
 
 }
