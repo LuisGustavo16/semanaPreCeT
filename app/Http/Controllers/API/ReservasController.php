@@ -16,14 +16,14 @@ class ReservasController extends Controller
     {
         try {
         $dados = Reserva::create([
-            'idAluno' => $request->get('idAluno'),
-            'dia' => $request->get('dia'),
-            'horarioInicio' => $request->get('horarioInicio'),
-            'horarioFim' => $request->get('horarioFim'),
-            'finalidade' => $request->get('finalidade'),
-            'status' => $request->get('status'),
-            'tipo' => $request->get('tipo'),
-            'numeroPessoas' => $request->get('numeroPessoas'),
+            'idAluno' => $request['idAluno'],
+            'dia' => $request->[dia'],
+            'horarioInicio' => $request['horarioInicio'],
+            'horarioFim' => $request['horarioFim'],
+            'finalidade' => $request['finalidade'],
+            'status' => $request['status'],
+            'tipo' => $request['tipo'],
+            'numeroPessoas' => $request['numeroPessoas'],
         ]);
 
         return $this->success([], "Cadastro realizado com sucesso!!!");
