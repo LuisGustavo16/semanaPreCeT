@@ -17,7 +17,7 @@ class ReservasController extends Controller
         try {
         $dados = Reserva::create([
             'idAluno' => $request['idAluno'],
-            'dia' => $request[dia'],
+            'dia' => $request['dia'],
             'horarioInicio' => $request['horarioInicio'],
             'horarioFim' => $request['horarioFim'],
             'finalidade' => $request['finalidade'],
