@@ -14,6 +14,7 @@ class ReservasController extends Controller
     use HasApiTokens;
     public function store(Request $request)
     {
+        try {
         $dados = Reserva::create([
             'idAluno' => $request->get('idAluno'),
             'dia' => $request->get('dia'),
@@ -26,6 +27,9 @@ class ReservasController extends Controller
         ]);
 
         return $this->success([], "Cadastro realizado com sucesso!!!");
+        } catch (\Throwable $th) {
+                return $this->error("Erro ao registrar a presença!!!", 401, $th->getMessage());
+            }
     }
 
     public function index() {
