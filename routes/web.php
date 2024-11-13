@@ -3,6 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TreinoAmistosoController;
 
+Route::get('/Cadastro', function () {
+    return view('auth/register');
+}) -> name('register');
+
+Route::get('/Entrar', function () {
+    return view('auth/login');
+}) -> name('login');
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Treinos/Amistosos*/
 //////////////////////////////////////////////////////////
@@ -139,3 +146,6 @@ Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controller
 //////////////////////////////////////////////////////////
 Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma');
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

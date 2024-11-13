@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('noticias', function (Blueprint $table) {
             $table->bigIncrements('idNoticias');
             $table->string("titulo");
-            $table->string("noticia");
+            $table->string("noticia", 4000);
             $table->date('dia');
             $table->time('horario');
             $table->timestamps();
