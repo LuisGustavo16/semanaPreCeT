@@ -15,9 +15,11 @@ return new class extends Migration
          $table->string('turma');
          $table->string('curso');
          $table->string('matricula');
-         $table->string('descricaoEsportiva', 2000);
-         $table->char('tipo', length : 1);
-         $table->char('status', length : 1);
+         $table->string('descricaoEsportiva', 2000)->nullable();
+         $table->string('tipo');
+         $table->string('status');
+         $table->string('genero');
+         $table->date('dataNascimento');
          }) ;
         }
 

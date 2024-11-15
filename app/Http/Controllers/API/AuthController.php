@@ -13,31 +13,6 @@ class AuthController extends Controller
 {
     use ApiResponse;
     use HasApiTokens;
-    public function register(Request $request)
-    {
-        try {
-            $validatedData = Validator::make($request->all(), [
-                'name' => 'required|string|max:255|unique:users',
-                'email' => 'required|string|max:255|unique:users',
-                'password' => 'required|string|min:8'
-            ]);
-            if ($validatedData->fails()) {
-                return $this->error("Falha ao registrar!!!", 403, $validatedData->errors());
-            }
-            $user = User::create([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'password' => Hash::make($request->get('password')),
-            ]);
-            $token = $user->createToken('token-name')->plainTextToken;
-            return $this->success([
-                'token' => $token,
-                'user' => $user,
-            ], "Cadastro realizado com sucesso!!!");
-        } catch (\Throwable $th) {
-            return $this->error("Falha ao registrar!!!", 401, $th->getMessage());
-        }
-    }
 
     public function login(Request $request)
     {

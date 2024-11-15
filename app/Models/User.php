@@ -29,8 +29,16 @@ class User extends Authenticatable
         'matricula',
         'descricaoEsportiva',
         'tipo',
-        'status'
+        'status',
+        'genero',
+        'dataNascimento'
     ];
+
+    public function Reserva()
+    {
+        #A tabela 'alunos' manda o idAluno para a tabela 'reservas' para poder fazer a relação
+        return $this->belongsTo(Reserva::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.

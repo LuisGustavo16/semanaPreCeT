@@ -88,6 +88,9 @@
                         <a class="titulo" href="{{route("indexModalidade")}}">
                             <h4>Ver modalidades</h4>
                         </a>
+                        <a class="titulo" href="{{route("listarAlunosPendentes")}}">
+                            <h4>Ver alunos pendentes</h4>
+                        </a>
                     </div>
                 </div>
 
@@ -138,6 +141,9 @@
             </a>
             <a class="titulo" href="{{route("indexModalidade")}}">
                 <h3>Ver modalidades</h3>
+            </a>
+            <a class="titulo" href="{{route("listarAlunosPendentes")}}">
+                <h3>Ver alunos pendentes</h3>
             </a>
         </div>
 

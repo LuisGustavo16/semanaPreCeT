@@ -27,7 +27,7 @@ return new class extends Migration
         });
 
         Schema::table('reservas', function(Blueprint $table) {
-            $table->foreign('idAluno')->references('idAluno')->on('alunos');
+            $table->foreign('idAluno')->references('id')->on('users');
         });
     }
 

@@ -14,6 +14,6 @@ class Reserva extends Model
     public function Aluno()
     {
         #A tabela 'Reserva' recebe o idAluno para poder fazer a relação
-        return $this->hasOne(Aluno::class, 'idAluno');
+        return $this->hasOne(User::class, 'idAluno');
     }
 }

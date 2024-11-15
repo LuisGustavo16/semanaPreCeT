@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TreinoAmistosoController;
 
@@ -66,6 +67,14 @@ Route::get('/formPesquisarAluno', function () {
 Route::get('/noticias/novaNoticia', function () {
     return view('Noticias/cadastrarNoticia');
 }) -> name('novaNoticia');
+
+//////////////////////////////////////////////////////////
+/*Rotas para as páginas referentes ao cadastro de Alunos*/
+//////////////////////////////////////////////////////////
+Route::get('/Cadastrar', function () {
+    return view('Alunos/cadastrarAluno');
+}) -> name('Cadastrar');
+
 
 ////////////////////////////////////////////////////////
 /*Rotas do controller da tabela de Treinos e Amistosos*/
@@ -139,6 +148,9 @@ Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTi
 ////////////////////////////////////////////////
 Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime']); // Rota para exibir
 Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show']); // Rota para exibir
+Route::post('/alunos/registrar', [App\Http\Controllers\controllerAluno::class, 'register'])->name("cadastroAluno");
+Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes");
+Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro']);
 
 
 //////////////////////////////////////////////////////////

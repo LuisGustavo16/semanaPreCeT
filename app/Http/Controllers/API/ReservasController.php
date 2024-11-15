@@ -7,29 +7,37 @@ use Illuminate\Http\Request;
 use Laravel\Sanctum\HasApiTokens;
 use Iluminate\Foundation\Auth\User as Authenticatable;
 use App\Models\Reserva;
+use Illuminate\Support\Facades\Validator;
 
 class ReservasController extends Controller
 {
     use ApiResponse;
     use HasApiTokens;
     public function store(Request $request)
-    {
-        try {
-        $dados = Reserva::create([
-            'idAluno' => $request->get('idAluno'),
-            'dia' => $request->get('dia'),
-            'horarioInicio' => $request->get('horarioInicio'),
-            'horarioFim' => $request->get('horarioFim'),
-            'finalidade' => $request->get('finalidade'),
-            'status' => $request->get('status'),
-            'tipo' => $request->('tipo'),
-            'numeroPessoas' => $request->get('numeroPessoas'),
-        ]);
-            return $this->success([], "Cadastro realizado com sucesso!!!");
-        } catch (\Throwable $th) {
-                return $this->error("Erro ao registrar a presença!!!", 401, $th->getMessage());
-            }
+{
+    $validator = Validator::make($request->all(), [
+        'idAluno' => 'required|integer',
+        'dia' => 'required|date',
+        'horarioInicio' => 'required',
+        'horarioFim' => 'required',
+        'finalidade' => 'required|string',
+        'status' => 'required|string',
+        'tipo' => 'required|string',
+        'numeroPessoas' => 'required|integer',
+        'local' => 'required|string',
+    ]);
+
+    if ($validator->fails()) {
+        return $this->error("Erro de validação!", 400, $validator->errors());
     }
+
+    try {
+        $dados = Reserva::create($request->all());
+        return $this->success([], "Cadastro realizado com sucesso!!!");
+    } catch (\Throwable $th) {
+        return $this->error("Erro ao registrar a presença!!!", 401, $th->getMessage());
+    }
+}
 
     public function index() {
         $dados = Reserva::all();

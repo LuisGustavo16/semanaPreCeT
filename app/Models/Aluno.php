@@ -22,10 +22,4 @@ class Aluno extends Model
         #A tabela 'alunos' manda o idAluno para a tabela 'AlunosTimes' para poder fazer a relação
         return $this->belongsTo(AlunosTime::class);
     }
-
-    public function Reserva()
-    {
-        #A tabela 'alunos' manda o idAluno para a tabela 'reservas' para poder fazer a relação
-        return $this->belongsTo(Reserva::class);
-    }
 }
