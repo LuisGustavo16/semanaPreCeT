@@ -27,7 +27,11 @@ class AuthController extends Controller
                 'token' => $token,
                 'expires_at' => $expiresAt,
                 'email' => $user->email,
-                'status' => $user->status
+                'status' => $user->status,
+                'nome' => $user->name,
+                'id' => $user->id,
+                'curso' => $user->curso,
+                'turma' => $user->turma
             ], "Login realizado!!!");
 
         } catch (\Throwable $th) {
