@@ -13,8 +13,7 @@ class ReservasController extends Controller
 {
     use ApiResponse;
     use HasApiTokens;
-    public function store(Request $request)
-{
+    public function store(Request $request) {
     $validator = Validator::make($request->all(), [
         'idAluno' => 'required|integer',
         'dia' => 'required|date',
@@ -37,7 +36,7 @@ class ReservasController extends Controller
     } catch (\Throwable $th) {
         return $this->error("Erro ao registrar a presença!!!", 401, $th->getMessage());
     }
-}
+    }
 
     public function index()
     {
