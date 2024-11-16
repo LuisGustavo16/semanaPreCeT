@@ -55,6 +55,3 @@ class ReservasController extends Controller
         ]);
     }
 }
-
-
-}
