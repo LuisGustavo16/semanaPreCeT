@@ -39,11 +39,21 @@ class ReservasController extends Controller
     }
 }
 
-    public function index() {
+    public function index()
+    {
         $dados = Reserva::all();
+        foreach ($dados as $item) {
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
+            $nome = User::find($item->idAluno);
+            $item->nomeAluno = $nome->name;
+        }
         return response()->json([
             'dados' => $dados,
-    ]);
+        ]);
+    }
 }
 
 
