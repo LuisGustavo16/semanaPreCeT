@@ -11,7 +11,7 @@ class Reserva extends Model
     protected $primaryKey = 'idReserva';
     protected $fillable = ['idAluno', 'finalidade', 'dia', 'local', 'horarioInicio', 'horarioFim', 'status', 'tipo', 'observacao', 'numeroPessoas'];
 
-    public function Aluno()
+    public function User()
     {
         #A tabela 'Reserva' recebe o idAluno para poder fazer a relação
         return $this->hasOne(User::class, 'idAluno');
