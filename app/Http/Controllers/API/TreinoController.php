@@ -14,8 +14,15 @@ class TreinoController extends Controller
 {
     use ApiResponse;
     use HasApiTokens;
-    public function index()
+    public function index(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'idAluno' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->error("Erro de validação!", 400, $validator->errors());
+        }
+
         $dados = TreinoAmistoso::all();
         foreach ($dados as $item) {
             /*Trocar o formato do dia e do horário*/
@@ -23,8 +30,10 @@ class TreinoController extends Controller
             $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
             $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
         }
+        $checkins = Chekin::where("idAluno", $request->get('idAluno'))->get();
         return response()->json([
             'dados' => $dados,
+            'checkins' => $checkins
         ]);
     }
 
