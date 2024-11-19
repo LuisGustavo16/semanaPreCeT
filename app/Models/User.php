@@ -36,8 +36,14 @@ class User extends Authenticatable
 
     public function Reserva()
     {
-        #A tabela 'alunos' manda o idAluno para a tabela 'reservas' para poder fazer a relação
+        #A tabela 'users' manda o id para a tabela 'reservas' para poder fazer a relação
         return $this->belongsTo(Reserva::class);
+    }
+
+    public function Chekin()
+    {
+        #A tabela 'users' manda o id para a tabela 'chekins' para poder fazer a relação
+        return $this->belongsTo(Chekin::class);
     }
 
     /**

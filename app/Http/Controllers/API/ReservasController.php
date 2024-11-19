@@ -35,7 +35,7 @@ class ReservasController extends Controller
             $dados = Reserva::create($request->all());
             return $this->success([], "Cadastro realizado com sucesso!!!");
         } catch (\Throwable $th) {
-            return $this->error("Erro ao registrar a presença!!!", 401, $th->getMessage());
+            return $this->error("Erro ao registrar reserva!!!", 401, $th->getMessage());
         }
     }
 

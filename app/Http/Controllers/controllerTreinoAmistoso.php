@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TreinoAmistoso;
 use App\Models\Modalidade;
+use App\Models\Chekin;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -33,13 +35,20 @@ class controllerTreinoAmistoso extends Controller
     /*Ao clicar em um treino, os dados dele serão enviados*/
     public function verTreino(string $idTreino) {
         $dados = TreinoAmistoso::find($idTreino);
+        /*Pegar os chekins do treino*/
+        $chekins = Chekin::all()->where('idTreino', $idTreino);
+        foreach ($chekins as $item) {
+            $aluno = User::find($item->idAluno);
+            $item->nomeAluno = $aluno->name;
+            $item->turmaAluno = $aluno->turma . " " . $aluno->curso;
+        }
         /*Trocar o formato do dia e do horário*/
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:i');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
         $modalidade = Modalidade::find($dados->idModalidade);
         if (isset($dados))
-            return view('TreinosAmistosos/listarTreinoEscolhido', compact('dados', 'modalidade'));
+            return view('TreinosAmistosos/listarTreinoEscolhido', compact('dados', 'modalidade', 'chekins'));
     }
 
     /*Recebe o id de um dado para ser editado e posteriormente edita ele*/
@@ -77,6 +86,7 @@ class controllerTreinoAmistoso extends Controller
         $dados->local = $request->input('local');
         $dados->responsavel = $request->input('responsavel');
         $dados->observacao = $request->input('observacao');
+        $dados->vagasOcupadas = 0;
         if ($dados->save())
             return redirect()->route('indexTreino')->with('success', 'Treino cadastrado com sucesso!!');
         else    

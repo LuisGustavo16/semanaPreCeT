@@ -34,12 +34,21 @@
 /*CSS da pagina de um treino especifico*/
 .divListarTreinoEscolhido {
     display:grid;
-    grid-template-columns: repeat(4, 14rem);
+    grid-template-columns: repeat(4, 13rem);
     grid-template-rows: repeat(3, 5rem);
 }
 
+.pageListarTreinoEscolhido {
+    display:grid;
+    width: 100%;
+    height:100%;
+    padding-left: 3rem;
+    grid-template-columns: repeat(2, 45rem);
+    grid-template-rows: repeat(1, 5rem);
+}
+
 .divListar {
-    width: 60rem;
+    width: 56rem;
 }
 
 .divListar .observacao h2{
@@ -57,6 +66,10 @@
 .campoListarTreinoEscolhido {
     width: 10rem;
     display: flex;
+}
+
+.horarioCampo {
+    font-size: 1rem;
 }
 
 .botoes a{
@@ -124,4 +137,45 @@
 .botaoApagarSelecionados:hover {
     box-shadow: 0.1rem 0.1rem 0.7rem black;
     font-weight: 700;
+}
+
+.listarTreinoEscolhido {
+    margin-left: 17rem;
+    border-radius: 2rem;
+    margin-top: 5rem;
+    width: 700px;
+    height: 402px;
+    background-color: white;
+    border: 2px solid black;
+    box-shadow: 0.1rem 0.1rem 0.7rem black;
+}
+
+.linhaTituloTreino {
+    padding-left: 0.8rem;
+    display: grid;
+    grid-template-columns: repeat(2, 28rem);
+    border-bottom: 1px solid black;
+    font-family: "Inter", sans-serif;
+}
+
+.linhaInformacoesTreino {
+    font-family: "Inter", sans-serif;
+    padding-left: 0.8rem;
+    font-size: 0.9rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 26rem);
+    grid-template-rows: repeat(2, 1rem);
+}
+
+.tabelaRolagemTreino {
+    width: 700px;
+    height: 302px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+}
+
+.h1RolagemTreino {
+   width: 2rem; 
 }

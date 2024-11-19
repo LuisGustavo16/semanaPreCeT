@@ -46,3 +46,32 @@ Content-Type: application/json
 {
 
 }
+
+
+
+##################
+POST http://127.0.0.1:8000/api/realizarChekin HTTP/1.1 
+Content-Type: application/json
+
+{
+    "idAluno": "1",
+    "idTreino": "1"
+}
+
+
+##############################
+GET http://127.0.0.1:8000/api/listarTreinos HTTP/1.1 
+Content-Type: application/json
+
+{
+
+}
+
+##################
+POST http://127.0.0.1:8000/api/cancelarChekin HTTP/1.1 
+Content-Type: application/json
+
+{
+    "idAluno": "1",
+    "idTreino": "1"
+}

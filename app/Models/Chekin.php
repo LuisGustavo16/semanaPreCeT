@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Chekin extends Model
 {
     use HasFactory;
-
-    public function Aluno()
+    protected $fillable = ['idAluno', 'idTreino'];
+    
+    public function User()
     {
         #A tabela 'Chekin' recebe o idAluno para poder fazer a relação
-        return $this->hasOne(Aluno::class, 'idAluno');
+        return $this->hasOne(User::class, 'id');
     }
 
     public function TreinoAmistoso()

@@ -10,7 +10,7 @@ class TreinoAmistoso extends Model
     use HasFactory;
     protected $table = 'treino_amistosos';
     protected $primaryKey = 'idTreino';
-    protected $fillable = ['dia', 'horarioInicio', 'horarioFim', 'genero', 'publico', 'local', 'responsavel', 'observacao', 'numeroMaximoParticipantes'];
+    protected $fillable = ['vagasOcupadas', 'dia', 'horarioInicio', 'horarioFim', 'genero', 'publico', 'local', 'responsavel', 'observacao', 'numeroMaximoParticipantes'];
 
     public function Chekin()
     {

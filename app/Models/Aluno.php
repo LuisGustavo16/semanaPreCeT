@@ -11,12 +11,6 @@ class Aluno extends Model
     protected $primaryKey = 'idAluno';
     protected $fillable = ['CPF', 'nome', 'dtNascimento', 'matricula', 'RG', 'turma', 'curso', 'descricaoEsportiva'];
 
-    public function Chekin()
-    {
-        #A tabela 'alunos' manda o idAluno para a tabela 'chekins' para poder fazer a relação
-        return $this->belongsTo(Chekin::class);
-    }
-
     public function AlunosTime()
     {
         #A tabela 'alunos' manda o idAluno para a tabela 'AlunosTimes' para poder fazer a relação

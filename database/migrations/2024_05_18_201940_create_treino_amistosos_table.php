@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('publico');
             $table->string('local');
             $table->string('responsavel');
+            $table->integer('vagasOcupadas')->nullable();
             $table->string('observacao')->nullable();
             $table->timestamps();
         });

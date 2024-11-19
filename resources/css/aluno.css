@@ -125,7 +125,6 @@
 
 .container {
     display: flex;
-    width: 100%;
     height: 100vh;
     justify-content: center;
     align-items: center;
@@ -154,6 +153,7 @@
 
 .colunaFormAluno {
     width: 100%;
+    padding-top: 3rem;
 }
 
 .linhaFormAluno{
@@ -181,7 +181,7 @@
 }
 
 .inputEmail {
-    width: 24rem;
+    width: 90%;
 }
 .inputCurso {
     width: 30rem;
@@ -203,4 +203,83 @@
     bottom: -35rem;
     left: -73rem;
     margin-left: 5rem;
+}
+
+/*Responsivo da página de cadastro*/
+@media (max-width: 1240px) {
+    .formRegistroAluno {
+        height: 45rem;
+        width: 70%;
+        margin: 5rem
+    }
+
+    .linhaFormAlunoEmail{
+        grid-template-columns: repeat(1, 25rem);
+        grid-template-rows: repeat(2, 8rem);
+    }
+
+    .inputSenha {
+        margin-left: 0rem;
+        margin-right: 4rem;
+    }
+
+    .linhaFormAluno{
+        display: grid;
+        grid-template-columns: repeat(3, 16rem);
+        grid-template-rows: repeat(1, 8rem);
+    }
+
+    .inputMatricula {
+        margin-left: 4rem;
+    }
+
+    .botaoFormAluno {
+        bottom: -43rem;
+        left: -100%;
+    }
+
+    .fundoCadastrarAluno {
+        padding-top: 15rem;
+        padding-bottom: 5rem;
+    }
+
+    @media (max-width: 954px) {
+
+        .linhaFormAluno{
+            display: grid;
+            grid-template-columns: repeat(2, 16rem);
+            grid-template-rows: repeat(1, 8rem);
+        }
+
+        .divSenhas {
+            display: grid;
+            grid-template-columns: repeat(1, 1rem);
+            grid-template-rows: repeat(1, 6rem);
+            width: 100%;
+        }
+
+        .formRegistroAluno {
+            height: 52rem;
+            width: 70%;
+            margin: 5rem
+        }
+
+        .inputEmail {
+            width: 115%;
+        }
+
+        .botaoFormAluno {
+            bottom: -48rem;
+        }
+
+        .formRegistroAluno {
+            height: 75rem;
+        }
+        
+        .linhaFormAluno{
+            display: grid;
+            grid-template-columns: repeat(3, 20rem);
+            grid-template-rows: repeat(1, 8rem);
+        }
+    }
 }

@@ -14,10 +14,8 @@
             @csrf
             <div class="colunaFormAluno">
 
-                <div class="campo">
                     <label for="Nome">*Nome:</label><br>
                     <input class="inputNome" type="text" name="name" required>
-                </div>
 
                 <div class="linhaFormAlunoEmail">
                     <div class="campo">
@@ -71,16 +69,12 @@
                         <input type="date" name="dataNascimento" required>
                     </div>
                     <div class="campo">
-                        <label for="matricula">*Matrícula:</label><br>
-                        <input class="" type="text" name="matricula" required>
+     
+                        <label class="inputMatricula" for="matricula">*Matrícula:</label><br>
+                        <input class="inputMatricula" type="text" name="matricula" required>
                     </div>
                 </div>
 
-                <!--  
-                <div class="campo">
-                    <label for="descricaoEsportiva">*Descrição Esportiva:</label><br>
-                    <textarea name="descricaoEsportiva" required> </textarea>
-                </div>-->
             </div>
 
             <button class="botaoFormAluno" type="submit">Registrar</button>
