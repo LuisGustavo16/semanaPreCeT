@@ -30,8 +30,8 @@ class TreinoController extends Controller
 
     public function realizarChekin(Request $request) {
         $validator = Validator::make($request->all(), [
-            'idAluno' => 'required|string',
-            'idTreino' => 'required|string',
+            'idAluno' => 'required',
+            'idTreino' => 'required',
         ]);
 
         if ($validator->fails()) {
