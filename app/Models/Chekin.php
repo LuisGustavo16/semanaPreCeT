@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Chekin extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'idCheckin';
     protected $fillable = ['idAluno', 'idTreino'];
     
     public function User()
