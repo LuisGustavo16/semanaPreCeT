@@ -21,5 +21,5 @@ Route::post('/cadastrarReserva', [ReservasController::class, 'store']);
 Route::get('/listarReservas', [ReservasController::class, 'index']);
 
 Route::post('/realizarChekin', [TreinoController::class, 'realizarChekin']);
-Route::get('/listarTreinos', [TreinoController::class, 'index']);
+Route::post('/listarTreinos', [TreinoController::class, 'index']);
 Route::post('/cancelarChekin', [TreinoController::class, 'cancelarChekin']);
