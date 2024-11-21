@@ -85,5 +85,17 @@ class TreinoController extends Controller
         }
     }
 
+    public function mostrarChekins(Request $request)
+    {
+        $checkins = Chekin::all()->where('idAluno', $request->get('idAluno'));
+        $dados = [];
+        foreach ($checkins as $item) {
+            array_push($dados, TreinoAmistoso::find($item->idTreino));
+        }
+        return response()->json([
+            'dados' => $dados
+        ]);
+    }
+
 
 }

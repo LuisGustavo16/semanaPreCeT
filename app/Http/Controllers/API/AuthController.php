@@ -51,4 +51,27 @@ class AuthController extends Controller
             return $this->error("Falha ao realizar o logout!!!", 401, $th->getMessage());
         }
     }
+
+    public function update(Request $request)
+    {
+        
+        try {
+            $user = User::find($request->get('idAluno'));
+            $user->update([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'turma' => $request->get('turma'),
+                'curso' => $request->get('curso'),
+                'matricula' => $request->get('matricula'),
+                'descricaoEsportiva' => $request->get('descricaoEsportiva'),
+                'dataNascimento' => $request->get('dataNascimento'),
+                'genero' => $request->get('genero'),
+                'tipo' => "aluno",
+                'status' => 'aceito'
+            ]);
+            return $this->success([], "Perfil editado com sucesso!");
+        } catch (\Throwable $th) {
+            return $this->error("Falha ao editar o perfil!", 401, $th->getMessage());
+        }
+    }
 }

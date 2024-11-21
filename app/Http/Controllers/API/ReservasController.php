@@ -55,5 +55,13 @@ class ReservasController extends Controller
         ]);
     }
 
+    public function mostrarReservas(Request $request)
+    {
+        $dados = Reserva::all()->where('idAluno', $request->get('idAluno'));
+        return response()->json([
+            'dados' => $dados,
+        ]);
+    }
+
 
 }
