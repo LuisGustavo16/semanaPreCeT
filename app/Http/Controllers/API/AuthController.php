@@ -32,7 +32,10 @@ class AuthController extends Controller
                 'name' => $user->name,
                 'descricaoEsportiva' => $user->descricaoEsportiva,
                 'curso' => $user->curso,
-                'turma' => $user->turma
+                'turma' => $user->turma,
+                'dtNascimento' => $user->dataNascimento,
+                'matricula' => $user->matricula,
+                'genero' => $user->genero
             ], "Login realizado!!!");
 
         } catch (\Throwable $th) {
