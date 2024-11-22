@@ -1,7 +1,8 @@
 .formJogo {
-    width: 55rem;
+    width: 40rem;
     display: grid;
-    grid-template-rows: repeat(2, 7rem);
+    grid-template-rows: repeat(2, 14rem);
+    height: 35rem;
 }
 
 .local {
@@ -9,8 +10,8 @@
 }
 
 .enviarJogo {
-    top: 10rem;
-    left: 40rem;
+    top: 7rem;
+    left: 24rem;
     position: relative;
     height: 2rem;
     width: 10rem;
@@ -75,7 +76,7 @@
 
 .linha {
     display: grid;
-    grid-template-columns: repeat(3, 19rem);
+    grid-template-columns: repeat(2, 18rem);
 }
 
 .inputObservacaoJogo {

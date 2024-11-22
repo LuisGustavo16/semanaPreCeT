@@ -4,9 +4,13 @@
     <form class="formJogo" action="/jogos/atualizar/{{$dados->idJogoTime}}" method="POST">
         @csrf
         <div class="linha">
+        <div class="campo">
+                <label for="nome">*Horario de Início:</label><br>
+                <input type="time" name="horarioInicio" value="{{$dados->horarioInicio}}">
+            </div>
             <div class="campo">
-                <label for="nome">*Horario:</label><br>
-                <input type="time" name="horario" value="{{$dados->horario}}">
+                <label for="nome">*Horario de Fim:</label><br>
+                <input type="time" name="horarioFim" value="{{$dados->horarioFim}}">
             </div>
 
             <div class="campo">
@@ -23,7 +27,7 @@
         <div class="linha">
             <div class="campo">
                 <label for="nome">Observação:</label><br>
-                <textarea class="inputObservacaoJogo" name="observacao">{{$dados->observacao}}</textarea>
+                <textarea name="observacao">{{$dados->observacao}}</textarea>
             </div>
         </div>
 

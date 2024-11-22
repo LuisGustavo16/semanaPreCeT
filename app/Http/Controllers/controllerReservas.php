@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reserva;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use Carbon\Carbon;
@@ -29,7 +30,7 @@ class controllerReservas extends Controller
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
-        $aluno = Aluno::find($dados->idAluno);
+        $aluno = User::find($dados->idAluno);
         if (isset($dados))
             return view('Reservas/listarReservaEscolhida', compact('dados', 'aluno'));
     }

@@ -31,7 +31,7 @@ class controllerAluno extends Controller
     }
 
     public function show (string $idAluno) {
-        $dados = Aluno::find($idAluno );
+        $dados = User::find($idAluno );
         /*Formatação da data e calculo da idade*/
         $dataAtual = Carbon::now();
         $dados->idade = $dataAtual->diffInYears($dados->dtNascimento);

@@ -12,7 +12,7 @@ class AlunosTime extends Model
     public function Aluno()
     {
         #A tabela 'AlunosTimes' recebe o idAluno para poder fazer a relação
-        return $this->hasOne(Aluno::class, 'idAluno');
+        return $this->hasOne(User::class, 'id');
     }
 
     public function Time()

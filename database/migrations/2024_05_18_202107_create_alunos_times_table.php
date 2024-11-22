@@ -19,7 +19,7 @@ return new class extends Migration
         });
 
         Schema::table('alunos_times', function(Blueprint $table) {
-            $table->foreign('idAluno')->references('idAluno')->on('alunos');
+            $table->foreign('idAluno')->references('id')->on('users');
             $table->foreign('idTime')->references('idTime')->on('times');
         });
     }

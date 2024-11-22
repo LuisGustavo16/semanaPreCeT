@@ -46,6 +46,12 @@ class User extends Authenticatable
         return $this->belongsTo(Chekin::class);
     }
 
+    public function AlunosTime()
+    {
+        #A tabela 'users' manda o idAluno para a tabela 'AlunosTimes' para poder fazer a relação
+        return $this->belongsTo(AlunosTime::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

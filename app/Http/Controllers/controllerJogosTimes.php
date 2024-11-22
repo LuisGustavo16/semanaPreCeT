@@ -36,7 +36,8 @@ class controllerJogosTimes extends Controller
     {
         $dados = new JogosTimes();
         $dados->dia = $request->input("dia");
-        $dados->horario = $request->input("horario");
+        $dados->horarioInicio = $request->input("horarioInicio");
+        $dados->horarioFim = $request->input("horarioFim");
         $dados->local = $request->input("local");
         $dados->observacao = $request->input("observacao");
         $dados->idTime = $idTime;
@@ -68,7 +69,8 @@ class controllerJogosTimes extends Controller
     {
         $dados = JogosTimes::find( $idJogoTime );
         $dados->dia = $request->input('dia');
-        $dados->horario = $request->input('horario');
+        $dados->horarioInicio = $request->input('horarioInicio');
+        $dados->horarioFim = $request->input('horarioFim');
         $dados->observacao = $request->input('observacao');
         $dados->save();
         /*Pega os dados para listar novamente após salvar*/

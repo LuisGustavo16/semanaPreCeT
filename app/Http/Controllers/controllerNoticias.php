@@ -45,8 +45,8 @@ class controllerNoticias extends Controller
         $dados = Noticia::find($idNoticia);
         $dados->titulo = $request->input('titulo');
         $dados->noticia = $request->input('noticia');
-        $dados->horario = "10:40";        
-        $dados->dia = "2024/07/20";
+        $dados->horario = date('H:i:s');        
+        $dados->dia = date('Y/m/d');
         $dados->save();
         return redirect()->route('inicio');
     }

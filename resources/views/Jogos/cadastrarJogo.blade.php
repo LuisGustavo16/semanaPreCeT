@@ -1,12 +1,16 @@
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
-<form class="formJogo" action="/jogos/atualizar/{{$dados->idJogoTime}}" method="POST">
+<form class="formJogo" action="/jogos/cadastrarJogos/{{$idTime}}" method="POST">
         @csrf
         <div class="linha">
             <div class="campo">
-                <label for="nome">*Horario:</label><br>
-                <input type="time" name="horario"">
+                <label for="nome">*Horario de Início:</label><br>
+                <input type="time" name="horarioInicio">
+            </div>
+            <div class="campo">
+                <label for="nome">*Horario de Fim:</label><br>
+                <input type="time" name="horarioFim">
             </div>
 
             <div class="campo">
