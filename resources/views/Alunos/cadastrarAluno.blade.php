@@ -9,12 +9,19 @@
 </head>
 
 <body class="container">
+    <div>
+    <h1 class="titulo">Crie seu cadastro</h1>
+    <h3 class="desc">Para acessar o aplicativo SIGEE, é necessáio preencher coreamente o formulário abaixo. 
+        Os campos * são de preenchimeno obrigatório.</h3>
+    </div>
+    
     <div class="fundoCadastrarAluno">
-        <form class="formRegistroAluno" action="{{route("cadastroAluno")}}" method="POST">
+        
+        <form class="formRegistroAluno" action="{{route("cadastroAluno method="POST">
             @csrf
             <div class="colunaFormAluno">
 
-                    <label for="Nome">*Nome:</label><br>
+                    <label for="Nome" >*Nome:</label><br>
                     <input class="inputNome" type="text" name="name" required>
 
                 <div class="linhaFormAlunoEmail">

@@ -37,40 +37,31 @@ div.coluna {
 }
 
 label {
-    font-size: 1.4rem;
-    font-weight: 600;
-    font-family: "Inter", sans-serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     text-decoration: dashed;
 }
 
 input {
     padding-left: 0.5rem;
-    font-size: 1.3rem;
-    font-weight: 400;
-    margin-left: 1rem;
-    border-radius: 1rem;
-    height: 1.4rem;
-    width: 14rem;
+    font-size: 1.1rem;
+    height: 2rem;
+    width: 10rem;
     font-family: "Inter", sans-serif;
 }
 
 select {
     padding-left: 0.5rem;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-left: 1rem;
-    border-radius: 1rem;
-    height: 1.8rem;
+    font-size: 1.1rem;
+    height: 2rem;
     width: 10rem;
     font-family: "Inter", sans-serif;
 }
 
 option {
     padding-left: 0.5rem;
-    font-size: 1.2rem;
-    font-weight: 400;
-    margin-left: 1rem;
-    border-radius: 1rem;
+    font-size: 1.1rem;
     height: 1.4rem;
     width: 10rem;
     font-family: "Inter", sans-serif;

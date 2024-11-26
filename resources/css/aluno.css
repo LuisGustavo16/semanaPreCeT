@@ -124,11 +124,23 @@
 /*Página do Formulario de Cadastro dos Alunos*/
 
 .container {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+    display: grid;              
+    place-items: center;        
+    height: 100vh; 
+    padding: 20px;
 }
+
+.titulo {
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    text-align: center;
+}
+
+.desc {
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: larger;
+    text-align: center;
+}
+
 .fundoCadastrarAluno {
     display: flex;
     width: 100%;
@@ -138,17 +150,16 @@
 }
 
 .formRegistroAluno {
-    border-radius: 2rem;
-    box-shadow: 0.1rem 0.1rem 1rem black;
-    margin: 5rem;
-    margin-top: 3rem;
+    box-shadow:  2px 2px 5px black;
     padding: 3rem;
     padding-top: 0;
-    background-color: white;
-    border: 3px solid black;
+    border: 1px solid black;
     display: flex;
-    height: 38rem;
-    width: 70rem;
+    flex-direction: column;
+    height: auto;                     
+    width: 100%;                      
+    max-width: 70rem;                
+    margin: 0 auto;
 }
 
 .colunaFormAluno {
@@ -160,126 +171,100 @@
     display: grid;
     grid-template-columns: repeat(3, 20rem);
     grid-template-rows: repeat(1, 8rem);
+    gap: 20px;
 }
 
 .linhaFormAlunoEmail{
     display: grid;
     grid-template-columns: repeat(3, 25rem);
     grid-template-rows: repeat(1, 8rem);
+    gap: 20px;
 }
 
-.inputNome {
-    width: 90%;
+.inputNome, .inputEmail, .inputCurso {
+    width: 100%;
 }
 
 .divSenhas {
     display: flex;
+    gap: 20px;
 }
 
 .inputSenha {
-    margin-left: 4rem;
-}
-
-.inputEmail {
-    width: 90%;
-}
-.inputCurso {
-    width: 30rem;
+    margin-left: 0;
 }
 
 .botaoFormAluno {
-    position:relative;
-    height: 2rem;
+    height: 3rem;
     width: 10rem;
     padding-left: 2rem;
     padding-right: 2rem;
-    border-radius: 2rem;
+    border-radius: 5px;
     background-color: var(--blue);
     color: white;
-    font-size: 1.4rem;
-    font-family: "Inter", sans-serif;
-    border: 0;
+    font-size: 130%;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: bold;
     cursor: pointer;
-    bottom: -35rem;
-    left: -73rem;
-    margin-left: 5rem;
+    margin: 20px auto;
 }
 
 /*Responsivo da página de cadastro*/
-@media (max-width: 1240px) {
+@media (max-width: 768px) {
     .formRegistroAluno {
-        height: 45rem;
-        width: 70%;
-        margin: 5rem
+        padding: 1.5rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        margin: 0;
+        overflow-x: hidden;
     }
 
-    .linhaFormAlunoEmail{
-        grid-template-columns: repeat(1, 25rem);
-        grid-template-rows: repeat(2, 8rem);
+    .linhaFormAluno {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
     }
 
-    .inputSenha {
-        margin-left: 0rem;
-        margin-right: 4rem;
+    .linhaFormAlunoEmail {
+        grid-template-columns: 1fr;
+        gap: 10px;
     }
 
-    .linhaFormAluno{
-        display: grid;
-        grid-template-columns: repeat(3, 16rem);
-        grid-template-rows: repeat(1, 8rem);
-    }
-
-    .inputMatricula {
-        margin-left: 4rem;
+    .inputNome, .inputEmail, .inputCurso, .inputSenha {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .botaoFormAluno {
-        bottom: -43rem;
-        left: -100%;
-    }
-
-    .fundoCadastrarAluno {
-        padding-top: 15rem;
-        padding-bottom: 5rem;
-    }
-
-    @media (max-width: 954px) {
-
-        .linhaFormAluno{
-            display: grid;
-            grid-template-columns: repeat(2, 16rem);
-            grid-template-rows: repeat(1, 8rem);
-        }
-
-        .divSenhas {
-            display: grid;
-            grid-template-columns: repeat(1, 1rem);
-            grid-template-rows: repeat(1, 6rem);
-            width: 100%;
-        }
-
-        .formRegistroAluno {
-            height: 52rem;
-            width: 70%;
-            margin: 5rem
-        }
-
-        .inputEmail {
-            width: 115%;
-        }
-
-        .botaoFormAluno {
-            bottom: -48rem;
-        }
-
-        .formRegistroAluno {
-            height: 75rem;
-        }
-        
-        .linhaFormAluno{
-            display: grid;
-            grid-template-columns: repeat(3, 20rem);
-            grid-template-rows: repeat(1, 8rem);
-        }
+        width: 100%;
+        font-size: 120%;
     }
 }
+
+@media (max-width: 480px) {
+    .formRegistroAluno {
+        padding: 1rem;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    .linhaFormAluno {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .inputNome, .inputEmail, .inputCurso, .inputSenha {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    .botaoFormAluno {
+        width: 100%;
+        padding: 15px;
+        font-size: 110%;
+    }
+}
+
