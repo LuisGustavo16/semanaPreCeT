@@ -12,7 +12,7 @@
     <div>
         <h1 class="sigee">SIGEE</h1>
     <h1 class="titulo">Crie seu cadastro</h1>
-    <h3 class="desc">Para acessar o aplicativo SIGEE, é necessáio preencher coreamente o formulário abaixo. 
+    <h3 class="desc">Para acessar o aplicativo SIGEE, é necessáio preencher corretamente o formulário abaixo. 
         Os campos * são de preenchimeno obrigatório.</h3>
     </div>
     
