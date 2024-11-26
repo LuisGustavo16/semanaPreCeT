@@ -141,6 +141,12 @@
     text-align: center;
 }
 
+.sigee {
+    font-family: Blippo, fantasy;
+    font-size: 350%;
+    text-align: center;
+}
+
 .fundoCadastrarAluno {
     display: flex;
     width: 100%;
