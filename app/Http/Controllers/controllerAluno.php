@@ -83,7 +83,7 @@ class controllerAluno extends Controller
                 'status' => 'espera',
                 'password' => Hash::make($request->get('password')),
             ]);
-            return view("Alunos/telaEspera");
+            return redirect()->route("telaEspera");
         } catch (\Throwable $th) {
             return redirect()->route("Cadastrar");
         }

@@ -75,6 +75,10 @@ Route::get('/Cadastrar', function () {
     return view('Alunos/cadastrarAluno');
 }) -> name('Cadastrar');
 
+Route::get('/Espera', function () {
+    return view('Alunos/telaEspera');
+}) -> name('telaEspera');
+
 
 ////////////////////////////////////////////////////////
 /*Rotas do controller da tabela de Treinos e Amistosos*/

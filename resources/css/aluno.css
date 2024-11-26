@@ -215,6 +215,13 @@
     margin: 20px auto;
 }
 
+/*tela espera*/
+.msg {
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    text-align: center;    
+    margin: 5rem
+}
+
 /*Responsivo da página de cadastro*/
 @media (max-width: 768px) {
     .formRegistroAluno {

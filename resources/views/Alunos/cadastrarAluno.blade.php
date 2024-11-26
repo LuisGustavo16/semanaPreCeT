@@ -18,7 +18,7 @@
     
     <div class="fundoCadastrarAluno">
         
-        <form class="formRegistroAluno" action="{{route("cadastroAluno method="POST">
+        <form class="formRegistroAluno" action="{{route('cadastroAluno')}}" method="POST">
             @csrf
             <div class="colunaFormAluno">
 
