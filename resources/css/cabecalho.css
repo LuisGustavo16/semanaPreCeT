@@ -29,6 +29,7 @@ div.cabecalho {
 a.titulo {
     text-decoration: none;
     color: black;
+    text-align: left;
 }
 
 h1.educacao {
@@ -135,7 +136,7 @@ div.subopcoes.quatro {
     position: absolute;
     background-color: var(--yellow);
     width: 17rem;
-    height: 8rem;
+    height: 11rem;
     margin-left: 3rem;
     border: 2px solid black;
     top: 15.4rem;

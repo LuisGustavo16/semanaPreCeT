@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Reserva;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use Carbon\Carbon;
 
 class controllerReservas extends Controller
 {
+    public function __construct () {
+        $this -> middleware('auth');
+    }
     /*Envia todas as reservas de acordo com o tipo para serem listadas*/
     public function index(string $status) {
         $dados = Reserva::all()->where('status', $status);
@@ -30,7 +32,7 @@ class controllerReservas extends Controller
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
-        $aluno = User::find($dados->idAluno);
+        $aluno = Aluno::find($dados->idAluno);
         if (isset($dados))
             return view('Reservas/listarReservaEscolhida', compact('dados', 'aluno'));
     }

@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Aluno;
 use App\Models\TreinoAmistoso;
 use App\Models\Modalidade;
 use App\Models\Chekin;
-use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
 class controllerTreinoAmistoso extends Controller
 {
+    public function __construct () {
+        $this -> middleware('auth');
+    }
+
     /*Envia todos os dados para serem listados*/
     public function index() {
         $dados = TreinoAmistoso::all();
@@ -38,7 +42,7 @@ class controllerTreinoAmistoso extends Controller
         /*Pegar os chekins do treino*/
         $chekins = Chekin::all()->where('idTreino', $idTreino);
         foreach ($chekins as $item) {
-            $aluno = User::find($item->idAluno);
+            $aluno = Aluno::find($item->idAluno);
             $item->nomeAluno = $aluno->name;
             $item->turmaAluno = $aluno->turma . " " . $aluno->curso;
         }

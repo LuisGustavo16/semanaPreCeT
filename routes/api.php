@@ -9,6 +9,7 @@ use App\Http\Controllers\API\NoticiaController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/editarPerfil', [AuthController::class, 'update']);
+Route::post('/gerarSenhaADM', [AuthController::class, 'gerarSenhaADM']);
 
 Route::post('/cadastrarReserva', [ReservasController::class, 'store']);
 Route::get('/listarReservas', [ReservasController::class, 'index']);

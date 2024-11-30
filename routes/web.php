@@ -4,13 +4,6 @@ use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TreinoAmistosoController;
 
-Route::get('/Cadastro', function () {
-    return view('auth/register');
-}) -> name('register');
-
-Route::get('/Entrar', function () {
-    return view('auth/login');
-}) -> name('login');
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Treinos/Amistosos*/
 //////////////////////////////////////////////////////////
@@ -79,6 +72,9 @@ Route::get('/Espera', function () {
     return view('Alunos/telaEspera');
 }) -> name('telaEspera');
 
+Route::get('/entrar', function () {
+    return view('Alunos/entrarPerfilAluno');
+}) -> name('entrarAluno');
 
 ////////////////////////////////////////////////////////
 /*Rotas do controller da tabela de Treinos e Amistosos*/
@@ -150,11 +146,14 @@ Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTi
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
-Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime']); // Rota para exibir
-Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show']); // Rota para exibir
+Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])-> middleware('auth');
+Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])-> middleware('auth');
 Route::post('/alunos/registrar', [App\Http\Controllers\controllerAluno::class, 'register'])->name("cadastroAluno");
-Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes");
-Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro']);
+Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")-> middleware('auth');
+Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
+Route::post('/alunos/entrar', [App\Http\Controllers\controllerAluno::class, 'entrarPerfil']);
+Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
+Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'update']);
 
 
 //////////////////////////////////////////////////////////
@@ -162,6 +161,6 @@ Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controlle
 //////////////////////////////////////////////////////////
 Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma');
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
-Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Rotas para a autenticação
+Auth::routes();

@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\User;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -18,6 +17,7 @@ class controllerAluno extends Controller
 {
     use ApiResponse;
     use HasApiTokens;
+
     public function adicionaAlunoTime(string $idAluno, string $idTime)
     {
         $verificador = AlunosTime::where('idAluno', $idAluno)->where('idTime', $idTime)->first();
@@ -31,7 +31,7 @@ class controllerAluno extends Controller
     }
 
     public function show (string $idAluno) {
-        $dados = User::find($idAluno );
+        $dados = Aluno::find($idAluno );
         /*Formatação da data e calculo da idade*/
         $dataAtual = Carbon::now();
         $dados->idade = $dataAtual->diffInYears($dados->dtNascimento);
@@ -70,7 +70,7 @@ class controllerAluno extends Controller
             if ($validatedData->fails()) {
                 return redirect()->route("Cadastrar");
             }
-            $user = User::create([
+            $user = Aluno::create([
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'turma' => $request->get('turma'),
@@ -91,12 +91,12 @@ class controllerAluno extends Controller
 
     public function listarAlunosPendentes()
     {
-        $dados = User::all()->where('status', 'espera');
+        $dados = Aluno::all()->where('status', 'espera');
         return view('Alunos/listarAlunosPendentes', compact("dados"));
     }
     public function aceitarNegarRegistro($idAluno, $opcao)
     {
-        $aluno = User::find($idAluno);
+        $aluno = Aluno::find($idAluno);
         if ($opcao == "aceitar") {
             $aluno->status = "aceito";
             $aluno->save();
@@ -105,6 +105,49 @@ class controllerAluno extends Controller
         }
         return redirect()->route("listarAlunosPendentes");
     }
-    
 
+    public function entrarPerfil(Request $request) {
+        $aluno = Aluno::where('email', $request->get('email'))->first();
+
+        if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
+            return view("Alunos/perfilAluno", compact('aluno'));
+        } else {
+            return redirect()->route("entrarAluno")->with('danger', "Email ou senha inválido(os)!");
+        }
+    }
+
+    public function edit(string $idAluno) {
+        $aluno = Aluno::find($idAluno);
+        return view("Alunos/editarPerfilAluno", compact('aluno'));
+    }
+
+    public function update(Request $request, string $idAluno)
+    {
+        
+        try {
+            $aluno = Aluno::find($idAluno);
+            $aluno->update([
+                'name' => $request->get('name'),
+                'email' => $request->get('email'),
+                'turma' => $request->get('turma'),
+                'curso' => $request->get('curso'),
+                'matricula' => $request->get('matricula'),
+                'descricaoEsportiva' => $request->get('descricaoEsportiva'),
+                'dataNascimento' => $request->get('dataNascimento'),
+                'genero' => $request->get('genero'),
+                'tipo' => $aluno->tipo,
+                'status' => $aluno->status,
+            ]);
+            return view("Alunos/perfilAluno", [
+                'aluno' => $aluno,
+                'success' => "Perfil editado com sucesso!"
+            ]);
+        } catch (\Throwable $th) {
+            $aluno = Aluno::find($idAluno);
+            return view("Alunos/perfilAluno", [
+                'aluno' => $aluno,
+                'danger' => "Erro ao editar perfil!"
+            ]);
+        }
+    }
 }

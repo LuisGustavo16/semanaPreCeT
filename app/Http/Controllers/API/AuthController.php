@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
+use App\Models\Aluno;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -20,7 +21,7 @@ class AuthController extends Controller
             if (!Auth::attempt($request->only('email', 'password'))) {
                 return $this->error('Dados de autenticação inválidos!!!', 401);
             }
-            $user = User::where('email', $request['email'])->firstOrFail();
+            $user = Aluno::where('email', $request['email'])->firstOrFail();
             $token = $user->createToken('token-name')->plainTextToken;
             $expiresAt = now()->addHours(3);
             return $this->success([
@@ -52,26 +53,8 @@ class AuthController extends Controller
         }
     }
 
-    public function update(Request $request)
-    {
-        
-        try {
-            $user = User::find($request->get('idAluno'));
-            $user->update([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'turma' => $request->get('turma'),
-                'curso' => $request->get('curso'),
-                'matricula' => $request->get('matricula'),
-                'descricaoEsportiva' => $request->get('descricaoEsportiva'),
-                'dataNascimento' => $request->get('dataNascimento'),
-                'genero' => $request->get('genero'),
-                'tipo' => "aluno",
-                'status' => 'aceito'
-            ]);
-            return $this->success([], "Perfil editado com sucesso!");
-        } catch (\Throwable $th) {
-            return $this->error("Falha ao editar o perfil!", 401, $th->getMessage());
-        }
+    public function gerarSenhaADM (Request $request) {
+        $senha = Hash::make($request->get('senha'));
+        return $senha;
     }
 }

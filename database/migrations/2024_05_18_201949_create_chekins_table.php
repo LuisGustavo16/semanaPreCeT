@@ -19,7 +19,7 @@ return new class extends Migration
         });
         
         Schema::table('chekins', function(Blueprint $table) {
-            $table->foreign('idAluno')->references('id')->on('users');
+            $table->foreign('idAluno')->references('id')->on('alunos');
             $table->foreign('idTreino')->references('idTreino')->on('treino_amistosos');
         });
     }

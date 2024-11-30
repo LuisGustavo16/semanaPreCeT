@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\View;
 
 class controllerCronograma extends Controller
 {
-
+    public function __construct () {
+        $this -> middleware('auth');
+    }
     public function index()
     {
         /*Pega a semana atual*/

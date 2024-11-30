@@ -1,0 +1,86 @@
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+}
+
+.formLogin {
+    border-radius: 2rem;
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    margin: 5rem;
+    margin-top: 3rem;
+    padding: 3rem;
+    padding-top: 0;
+    background-color: white;
+    border: 3px solid black;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    height: 28rem;
+    width: 30rem;
+    grid-template-columns: repeat(1, 27rem);
+    grid-template-rows: repeat(2, 8rem);
+}
+
+.inputEmailLogin {
+    width: 25rem;
+}
+
+.botaoLogin {
+        position:relative;
+        height: 3rem;
+        width: 10rem;
+        margin-top: 9rem;
+        background-color: var(--blue);
+        color: white;
+        font-size: 1.2rem;
+        font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+        border: 0;
+        cursor: pointer;
+}
+
+.botaoLogin:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
+    font-weight: 600;
+}
+
+.divLinksLogin {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-rows: repeat(2, 2rem);
+}
+
+.linkCadastro {
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: var(--blue);
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+}
+
+.linkCadastro:hover {
+    color: black;
+}
+
+.containerLogin {
+    width: 99%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tituloLogin {
+    width: 100%;
+    text-align: center;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+
+}
+
+/*CSS da página de editar perfil*/
+.editarPerfil {
+    margin-top: 2rem;
+}

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
+use App\Models\Aluno;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ class ReservasController extends Controller
             $item->dia = Carbon::parse($item->dia)->format('d/m');
             $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
             $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
-            $nome = User::find($item->idAluno);
+            $nome = Aluno::find($item->idAluno);
             $item->nomeAluno = $nome->name;
         }
         return response()->json([

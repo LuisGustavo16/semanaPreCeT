@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Time;
 use App\Models\AlunosTime;
@@ -15,6 +14,9 @@ use Carbon\Carbon;
 
 class controllerTimes extends Controller
 {
+    public function __construct () {
+        $this -> middleware('auth');
+    }
     /*Envia todos os dados para serem listados*/
     public function index() {
         $dados = Time::all();
@@ -43,7 +45,7 @@ class controllerTimes extends Controller
         $alunos = [];
         /*Buscando cada aluno participante do time*/
         foreach ($alunos_times as $item) {
-            array_push($alunos, User::find($item->idAluno));
+            array_push($alunos, Aluno::find($item->idAluno));
         }
 
         if (isset($dados)) {
@@ -110,7 +112,7 @@ class controllerTimes extends Controller
 
     /*Envia o id do time para o formulario de pesquisa de aluno, para que quando adicionar o aluno, adionce naquele time*/
     public function pesquisarAluno(string $idTime) {
-        $alunos = User::all();
+        $alunos = Aluno::all();
         return view('Times/pesquisarAluno', compact('idTime', 'alunos'));
     }
 

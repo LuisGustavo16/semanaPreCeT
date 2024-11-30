@@ -108,7 +108,7 @@ button.botao {
     background-color: var(--blue);
     color: white;
     font-size: 1.2rem;
-    font-family: "Inter", sans-serif;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     border: 0;
     cursor: pointer;
     bottom: -27rem;

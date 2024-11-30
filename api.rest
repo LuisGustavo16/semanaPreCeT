@@ -7,20 +7,11 @@ Content-Type: application/json
 }
 
 ##################
-POST http://127.0.0.1:8000/api/editarPerfil HTTP/1.1 
+POST http://127.0.0.1:8000/api/gerarSenhaADM HTTP/1.1 
 Content-Type: application/json
 
 {
-    "idAluno": "1",
-    "name": "Luís", 
-    "email": "guluisgustavo300@gmail.com", 
-    "password": "12345678",
-    "turma": "3",
-    "curso": "Informática",
-    "matricula": "2024020102",
-    "descricaoEsportiva": "jogo futebol",
-    "genero": "masculino",
-    "dataNascimento": "2007-01-26"
+    "senha": "gabriela1975"
 }
 
 

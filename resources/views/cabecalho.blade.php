@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/js/app.js'])
+
 </head>
 
 <body class="padrao">
@@ -15,6 +17,7 @@
         <a class="titulo" href="{{route("inicio")}}">
             <h1 class="fisica">FÍSICA</h1>
         </a>
+        
     </div>
 
     <div class="opcoes">
@@ -90,6 +93,9 @@
                         <a class="titulo" href="{{route("listarAlunosPendentes")}}">
                             <h4>Ver alunos pendentes</h4>
                         </a>
+                        <a class="titulo" href="{{auth()->logout()}}">
+                            <h4>Sair</h4>
+                        </a>
                     </div>
                 </div>
 
@@ -143,6 +149,9 @@
             </a>
             <a class="titulo" href="{{route("listarAlunosPendentes")}}">
                 <h3>Ver alunos pendentes</h3>
+            </a>
+            <a class="titulo" href="{{auth()->logout()}}">
+                <h3>Sair</h3>
             </a>
         </div>
 

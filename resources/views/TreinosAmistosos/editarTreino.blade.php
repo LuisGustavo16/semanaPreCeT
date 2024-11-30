@@ -2,6 +2,7 @@
     $aux = true;
     $aux2 = true;
     $generos = ["Masculino", "Feminino", "Misto"]
+    
 ?>
 
 @extends ('cabecalho')
