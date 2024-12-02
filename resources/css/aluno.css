@@ -216,10 +216,57 @@
 }
 
 /*tela espera*/
+.modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .msg {
     font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    text-align: center;    
-    margin: 5rem
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.h3 {
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-size: 1.2rem;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.contact-info .label {
+    font-weight: bold;
+}
+
+.contact-info .info {
+    color: #333;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #ccc;
 }
 
 /*Responsivo da página de cadastro*/
@@ -280,4 +327,6 @@
         font-size: 110%;
     }
 }
+
+
 
