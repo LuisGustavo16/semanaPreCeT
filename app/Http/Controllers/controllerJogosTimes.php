@@ -10,9 +10,9 @@ use App\Models\Time;
 
 class controllerJogosTimes extends Controller
 {
-    public function __construct () {
+   /* public function __construct () {
         $this -> middleware('auth');
-    }
+    }*/
     public function index()
     {
         $dados = JogosTimes::all();

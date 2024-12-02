@@ -12,10 +12,10 @@ use Carbon\Carbon;
 
 class controllerTreinoAmistoso extends Controller
 {
-    public function __construct () {
+    /*public function __construct () {
         $this -> middleware('auth');
     }
-
+*/
     /*Envia todos os dados para serem listados*/
     public function index() {
         $dados = TreinoAmistoso::all();
@@ -24,8 +24,8 @@ class controllerTreinoAmistoso extends Controller
             $item->nomeModalidade = $modalidade->nome;
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:i');
-            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:i');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');;
+            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');;
         }
         return view('TreinosAmistosos/listarTreinos', compact('dados'));
     }
@@ -48,7 +48,7 @@ class controllerTreinoAmistoso extends Controller
         }
         /*Trocar o formato do dia e do horário*/
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
-        $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:i');
+        $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
         $modalidade = Modalidade::find($dados->idModalidade);
         if (isset($dados))

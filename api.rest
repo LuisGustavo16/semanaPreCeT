@@ -11,7 +11,7 @@ POST http://127.0.0.1:8000/api/gerarSenhaADM HTTP/1.1
 Content-Type: application/json
 
 {
-    "senha": "gabriela1975"
+    "senha": "123"
 }
 
 

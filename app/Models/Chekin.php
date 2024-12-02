@@ -14,7 +14,7 @@ class Chekin extends Model
     public function Aluno()
     {
         #A tabela 'Chekin' recebe o idAluno para poder fazer a relação
-        return $this->hasOne(Aluno::class, 'id');
+        return $this->hasOne(Aluno::class, 'idAluno');
     }
 
     public function TreinoAmistoso()

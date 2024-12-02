@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\View;
 
 class controllerCronograma extends Controller
 {
-    public function __construct () {
+    /*public function __construct () {
         $this -> middleware('auth');
-    }
+    }*/
     public function index()
     {
         /*Pega a semana atual*/
@@ -73,7 +73,7 @@ class controllerCronograma extends Controller
 
         /*Passa o formato da hora do BD para hora:minuto*/
         foreach ($treinos as $treino) {
-            $treino->horario = Carbon::parse($treino->horario)->format('h:m');
+            $treino->horario = Carbon::parse($treino->horario)->timezone('America/Sao_Paulo')->format('H:i');;
         }
 
         $modalidades = Modalidade::all();

@@ -56,7 +56,7 @@ $classe = 'branco';
                                     </td>
                                     <td>{{$item->dia}}</td>
                                     <td>{{$item->horarioInicio}} - {{$item->horarioFim}}</td>
-                                    <td>{{$item->numeroMaximoParticipantes}}</td>
+                                    <td>{{$item->vagasOcupadas}}/{{$item->numeroMaximoParticipantes}}</td>
                                     <td>
                                         <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
                                             <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
