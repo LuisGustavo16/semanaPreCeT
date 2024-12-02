@@ -119,7 +119,7 @@ class controllerTimes extends Controller
     /*Envia os dados dos alunos para poder adicionar no time*/
     public function mostrarAlunosPesquisa(Request $request, string $idTime) {
         $pesquisa = $request->input('nomeAluno');
-        $alunos = DB::table('alunos')->select("nome", "idAluno", "turma", "curso")->where(DB::raw('lower(nome)'), 'like', strtolower($pesquisa) . '%') ->get();
+        $alunos = DB::table('alunos')->select("name", "id", "turma", "curso")->where(DB::raw('lower(name)'), 'like', strtolower($pesquisa) . '%') ->get();
         return view('Times/mostrarPesquisaAluno', compact('alunos', 'idTime'));
     }
 }

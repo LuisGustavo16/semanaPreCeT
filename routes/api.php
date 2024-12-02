@@ -6,6 +6,7 @@ use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ReservasController;
 use App\Http\Controllers\API\TreinoController;
 use App\Http\Controllers\API\NoticiaController;
+use App\Http\Controllers\API\TimeController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/editarPerfil', [AuthController::class, 'update']);
@@ -21,3 +22,6 @@ Route::post('/cancelarChekin', [TreinoController::class, 'cancelarChekin']);
 Route::post('/mostrarChekins', [TreinoController::class, 'mostrarChekins']);
 
 Route::get('/listarNoticias', [NoticiaController::class, 'index']);
+
+Route::post('/listarTimes', [TimeController::class, 'index']);
+Route::post('/listarJogos', [TimeController::class, 'indexJogos']);

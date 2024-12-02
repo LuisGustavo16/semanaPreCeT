@@ -146,11 +146,11 @@ Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTi
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
-Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])-> middleware('auth');
-Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])-> middleware('auth');
+Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])/*-> middleware('auth')*/;
+Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])/*-> middleware('auth')*/;
 Route::post('/alunos/registrar', [App\Http\Controllers\controllerAluno::class, 'register'])->name("cadastroAluno");
-Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")-> middleware('auth');
-Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
+Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")/*-> middleware('auth')*/;
+Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])/*-> middleware('auth')*/;
 Route::post('/alunos/entrar', [App\Http\Controllers\controllerAluno::class, 'entrarPerfil']);
 Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
 Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'update']);

@@ -56,13 +56,13 @@ $classe = 'branco';
             <div class="tabelaRolagemAlunos">
                 @foreach ($alunos as $aluno)
                     <div class="linhaInformacoesAlunos">
-                        <h2 class="nome">{{$aluno->nome}}</h2>
+                        <h2 class="nome">{{$aluno->name}}</h2>
                         <h2>{{$aluno->turma}} {{$aluno->curso}}</h2>
                         <div class="opcoesIcones">
-                            <a href="/alunos/verPerfilAluno/{{$aluno->idAluno}}">
+                            <a href="/alunos/verPerfilAluno/{{$aluno->id}}">
                                 <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
                             </a>
-                            <a class="linkIcone" href="../../../times/retirarAluno/{{$aluno->idAluno}}/{{$dados->idTime}}">
+                            <a class="linkIcone" href="../../../times/retirarAluno/{{$aluno->id}}/{{$dados->idTime}}">
                                 <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
                             </a>
                         </div>

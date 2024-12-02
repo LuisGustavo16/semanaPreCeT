@@ -24,8 +24,8 @@ class controllerTreinoAmistoso extends Controller
             $item->nomeModalidade = $modalidade->nome;
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');;
-            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');;
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
         }
         return view('TreinosAmistosos/listarTreinos', compact('dados'));
     }

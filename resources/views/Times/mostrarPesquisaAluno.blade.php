@@ -25,11 +25,11 @@
                     }
                 ?>
                 <tr class="{{$classe}}">
-                    <td>{{$item->nome}}</td>
+                    <td>{{$item->name}}</td>
                     <td>{{$item->turma}} {{$item->curso}}</td>
                     <td>
-                        <a href="/alunos/verPerfilAluno/{{$item->idAluno}}">Ver</a>
-                        <a href="../../alunos/adicionarAluno/{{$item->idAluno}}/{{$idTime}}">Adicionar</a>
+                        <a href="/alunos/verPerfilAluno/{{$item->id}}">Ver</a>
+                        <a href="../../alunos/adicionarAluno/{{$item->id}}/{{$idTime}}">Adicionar</a>
                     </td>
                 </tr>
 

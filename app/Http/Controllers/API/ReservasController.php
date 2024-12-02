@@ -46,8 +46,8 @@ class ReservasController extends Controller
         foreach ($dados as $item) {
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
-            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
             $nome = Aluno::find($item->idAluno);
             $item->nomeAluno = $nome->name;
         }
