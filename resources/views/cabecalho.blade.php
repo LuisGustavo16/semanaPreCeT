@@ -93,9 +93,6 @@
                         <a class="titulo" href="{{route("listarAlunosPendentes")}}">
                             <h4>Ver alunos pendentes</h4>
                         </a>
-                        <a class="titulo" href="{{auth()->logout()}}">
-                            <h4>Sair</h4>
-                        </a>
                     </div>
                 </div>
 
@@ -150,9 +147,7 @@
             <a class="titulo" href="{{route("listarAlunosPendentes")}}">
                 <h3>Ver alunos pendentes</h3>
             </a>
-            <a class="titulo" href="{{auth()->logout()}}">
-                <h3>Sair</h3>
-            </a>
+            
         </div>
 
     </div>
