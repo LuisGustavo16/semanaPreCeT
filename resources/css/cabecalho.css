@@ -20,7 +20,7 @@ body.padrao {
 /*Parte Azul com o Texto "Educação Física"*/
 
 div.cabecalho {
-    height: 10rem;
+    height: 7rem;
     background-color: var(--blue);
     display: flex;
     align-items: center;
@@ -38,7 +38,7 @@ h1.educacao {
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 800;
-    font-size: 90px;
+    font-size: 70px;
     font-style: normal;
     text-shadow: 1px 1px 5px black;
 }
@@ -48,7 +48,7 @@ h1.fisica {
     color: var(--blue);
     font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
-    font-size: 90px;
+    font-size: 70px;
     font-weight: 800;
     font-style: normal;
     text-shadow: 
@@ -60,10 +60,10 @@ h1.fisica {
 
 div.opcoes {
     cursor: pointer;
-    height: 5rem;
+    height: 3rem;
     background-color: var(--yellow);
-    border-top: 4px solid black;
-    border-bottom: 4px solid black;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,8 +75,8 @@ h2.opcoes {
     cursor: pointer;
     display: block;
     padding-left: 20px;
-    font-size: 2rem;
-    font-family: "Inter", sans-serif;
+    font-size: 25px;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;;
 }
 
 /*Subopções*/
@@ -93,11 +93,11 @@ div.subopcoes.um {
     display: none;
     position: absolute;
     background-color: var(--yellow);
-    width: 30rem;
-    height: 8.5rem;
+    width: 25rem;
+    height: 7rem;
     margin-left: 3rem;
     border: 2px solid black;
-    top: 15.4rem;
+    top: 10.15rem;
     left: 0%;
     z-index: 1;
     border-top: 0;
@@ -107,12 +107,12 @@ div.subopcoes.dois {
     display: none;
     position: absolute;
     background-color: var(--yellow);
-    width: 25rem;
-    height: 5.3rem;
+    width: 20rem;
+    height: 4rem;
     margin-left: 3rem;
     border: 2px solid black;
     border-top: 0;
-    top: 15.4rem;
+    top: 10.15rem;
     left: 30%;
     z-index: 1;
 }
@@ -121,11 +121,11 @@ div.subopcoes.tres {
     display: none;
     position: absolute;
     background-color: var(--yellow);
-    width: 20rem;
-    height: 8rem;
+    width: 15rem;
+    height: 7rem;
     margin-left: 3rem;
     border: 2px solid black;
-    top: 15.4rem;
+    top: 10.15rem;
     border-top: 0;
     left: 55%;
     z-index: 1;
@@ -136,19 +136,19 @@ div.subopcoes.quatro {
     position: absolute;
     background-color: var(--yellow);
     width: 17rem;
-    height: 11rem;
+    height: 9rem;
     margin-left: 3rem;
     border: 2px solid black;
-    top: 15.4rem;
+    top: 10.15rem;
     border-top: 0;
-    left: 75%;
+    left: 82%;
     z-index: 1;
 }
 
 div.laranja {
     position: absolute;
     height: 100%;
-    width: 2rem;
+    width: 1rem;
     background-color: var(--orange);
     border-right: 2px solid black;
 }
@@ -159,7 +159,7 @@ h3 {
     margin-block-start: 0rem;
     font-family: "Inter", sans-serif;
     font-weight: 400;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
 }
 
 /*Se passar por cima da opção, as subopções aparecem*/

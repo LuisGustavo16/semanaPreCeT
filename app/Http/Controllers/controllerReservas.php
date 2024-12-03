@@ -10,9 +10,9 @@ use Carbon\Carbon;
 
 class controllerReservas extends Controller
 {
-   /* public function __construct () {
+   public function __construct () {
         $this -> middleware('auth');
-    }*/
+    }
     /*Envia todas as reservas de acordo com o tipo para serem listadas*/
     public function index(string $status) {
         $dados = Reserva::all()->where('status', $status);

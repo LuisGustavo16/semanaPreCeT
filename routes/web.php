@@ -4,6 +4,9 @@ use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TreinoAmistosoController;
 
+// Rotas para a autenticação
+Auth::routes();
+
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Treinos/Amistosos*/
 //////////////////////////////////////////////////////////
@@ -161,6 +164,3 @@ Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::
 //////////////////////////////////////////////////////////
 Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma');
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
-
-// Rotas para a autenticação
-Auth::routes();

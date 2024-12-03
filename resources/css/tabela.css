@@ -25,12 +25,12 @@ table {
 caption {
     background-color: white;
     font-family: "Inter", sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--blue);
-    text-shadow: 0.1rem 0.1rem 0rem black;
+    text-shadow: 0.1rem 0.01rem 0rem black;
     word-spacing: 0.5rem;
-    border: 1px solid black;
+    border: 0.5px solid black;
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
@@ -40,9 +40,9 @@ thead {
 }
 
 th {
-    font-family: "Inter", sans-serif;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     text-align: left;
-    font-size: 2rem;
+    font-size: 1.5rem;
     padding: 0.5rem;
     padding-left: 2rem;
 }
@@ -51,10 +51,8 @@ td {
     font-family: "Inter", sans-serif;
     text-align: left;
     padding-left: 30px;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     height: 0.7rem;
-    padding-bottom: 10px;
-    padding-top: 10px;
 }
 
 /*Menu zebrado*/

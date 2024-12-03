@@ -28,7 +28,7 @@ $classe = 'branco';
         </div>
 
         <table>
-            <caption>TREINOS & AMISTOSOS</caption>
+            <caption>ALUNOS PENDENTES</caption>
             <thead>
                 <tr class="amarelo">
                     <th>Nome</th>

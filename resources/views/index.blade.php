@@ -28,7 +28,7 @@ if (!function_exists('formaTextoNoticia')) {
             <div class="divNoticia">
                 <a class="linkNoticia" href="/noticias/selecionado/{{$item->idNoticias}}">
                     <h1 class="noticia">{{$item->titulo}}</h1>
-                    <h4 class="conteudoNoticia">{{$frase = formaTextoNoticia($item->noticia, 30)}}</h4>
+                    <h4 class="conteudoNoticia">{{$frase = formaTextoNoticia($item->noticia, 20)}}</h4>
                     <div>
                         <a class="botaoNoticia" href="/noticias/editar/{{$item->idNoticias}}">Editar</a>
                         <a class="botaoNoticia" href="/noticias/apagar/{{$item->idNoticias}}">Apagar</a>

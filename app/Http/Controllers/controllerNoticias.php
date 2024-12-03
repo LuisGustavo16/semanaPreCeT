@@ -8,9 +8,9 @@ use App\Models\Noticia;
 
 class controllerNoticias extends Controller
 {
-   /* public function __construct () {
+   public function __construct () {
         $this -> middleware('auth');
-    }*/
+    }
     public function index()
     {
         $dados = Noticia::all();

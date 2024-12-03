@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class controllerModalidades extends Controller
 {
-    /*public function __construct()
+    public function __construct()
     {
         $this->middleware('auth');
-    }*/
+    }
     /*Envia todos os dados para serem listados*/
     public function index()
     {

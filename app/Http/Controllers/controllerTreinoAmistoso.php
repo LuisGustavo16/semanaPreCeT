@@ -12,10 +12,9 @@ use Carbon\Carbon;
 
 class controllerTreinoAmistoso extends Controller
 {
-    /*public function __construct () {
+    public function __construct () {
         $this -> middleware('auth');
     }
-*/
     /*Envia todos os dados para serem listados*/
     public function index() {
         $dados = TreinoAmistoso::all();

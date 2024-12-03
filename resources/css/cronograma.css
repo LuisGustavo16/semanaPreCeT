@@ -14,7 +14,8 @@
 .dataSemana {
     font-family: "Inter", sans-serif;
     color: black;
-    word-spacing: 20px;
+    word-spacing: 10px;
+    font-size: 30px;
     text-shadow: 0 0 0 black;
 }
 

@@ -66,7 +66,7 @@
 /*Titulo da noticia e conteúdo da noticia*/
 .noticia {
     font-family: "Inter", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1rem;
     text-align: left;
     color: var(--blue);
     text-decoration: none;
