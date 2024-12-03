@@ -18,9 +18,9 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            if (!Auth::attempt($request->only('email', 'password'))) {
+            /*if (!Auth::attempt($request->only('email', 'password'))) {
                 return $this->error('Dados de autenticação inválidos!!!', 401);
-            }
+            }*/
             $user = Aluno::where('email', $request['email'])->firstOrFail();
             $token = $user->createToken('token-name')->plainTextToken;
             $expiresAt = now()->addHours(3);
