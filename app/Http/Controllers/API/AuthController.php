@@ -18,10 +18,23 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            /*if (!Auth::attempt($request->only('email', 'password'))) {
-                return $this->error('Dados de autenticação inválidos!!!', 401);
-            }*/
-            $user = Aluno::where('email', $request['email'])->firstOrFail();
+        // Validação dos campos obrigatórios na requisição
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
+
+        // Buscar o aluno pelo e-mail
+        $user = Aluno::where('email', $request->email)->first();
+
+        // Verificar se o aluno foi encontrado e a senha é válida
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return $this->error('Dados de autenticação inválidos!!!', 401);
+        }
+
+        // Gerar o token de autenticação
+        $token = $user->createToken('token-name')->plainTextToken;
+        $expiresAt = now()->addHours(3);
             $token = $user->createToken('token-name')->plainTextToken;
             $expiresAt = now()->addHours(3);
             return $this->success([
