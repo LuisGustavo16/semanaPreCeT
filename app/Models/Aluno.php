@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno extends Model
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
+    use HasApiTokens;
     protected $fillable = ['name', 'email', 'password', 'turma', 'curso', 'matricula', 'descricaoEsportiva', 'tipo', 'status', 'genero', 'dataNascimento'];
 
     public function Reserva()
