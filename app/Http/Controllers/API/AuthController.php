@@ -35,8 +35,6 @@ class AuthController extends Controller
         // Gerar o token de autenticação
         $token = $user->createToken('token-name')->plainTextToken;
         $expiresAt = now()->addHours(3);
-            $token = $user->createToken('token-name')->plainTextToken;
-            $expiresAt = now()->addHours(3);
             return $this->success([
                 'token' => $token,
                 'expires_at' => $expiresAt,
