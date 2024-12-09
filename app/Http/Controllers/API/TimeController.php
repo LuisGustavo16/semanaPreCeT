@@ -28,29 +28,46 @@ class TimeController extends Controller
             array_push($times, $dados);
         }
         return response()->json([
-            'times' => $times       
+            'times' => $times
         ]);
     }
 
     public function indexJogos(Request $request)
     {
         try {
-        $jogos = JogosTimes::where("idTime", $request->get("idTime"))->get();
-        foreach ($jogos as $item) {
-            /*Trocar o formato do dia e do horário*/
-            $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
-            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
+            $jogos = JogosTimes::where("idTime", $request->get("idTime"))->get();
+            foreach ($jogos as $item) {
+                /*Trocar o formato do dia e do horário*/
+                $item->dia = Carbon::parse($item->dia)->format('d/m');
+                $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+                $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
+            }
+            $time = Time::find($request->get('idTime'));
+            $modalidade = Modalidade::find($time->idModalidade);
+            return response()->json([
+                'jogos' => $jogos,
+                'time' => $time,
+                'modalidade' => $modalidade
+            ]);
+        } catch (Exception $e) {
+            return $e;
         }
-        $time = Time::find($request->get('idTime'));
-        $modalidade = Modalidade::find($time->idModalidade);
-        return response()->json([
-            'jogos' => $jogos,
-            'time' => $time,
-            'modalidade' => $modalidade  
-        ]);   
-    } catch (Exception $e) {
-        return $e;
     }
+
+    public function indexAlunos(Request $request)
+    {
+        try {
+            $alunosTimes = AlunosTime::where("idTime", $request->get("idTime"))->get();
+            $alunos = [];
+            foreach ($alunosTimes as $item) {
+                $dados = Aluno::find($item->idAluno);
+                array_push($alunos, $dados);
+            }
+            return response()->json([
+                'alunos' => $alunos
+            ]);
+        } catch (Exception $e) {
+            return $e;
+        }
     }
 }

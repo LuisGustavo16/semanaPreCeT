@@ -23,7 +23,6 @@
             <div>
                 <label for="tipo_usuario">*Tipo de Usuário:</label><br>
                 <select name="tipo_usuario" id="tipo_usuario" required>
-                    <option value="">Selecione</option>
                     <option value="professor">Professor/Ajudante</option>
                     <option value="aluno_tecnico">Aluno Técnico</option>
                     <option value="aluno_graduacao">Aluno Graduação</option>

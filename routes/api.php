@@ -25,3 +25,4 @@ Route::get('/listarNoticias', [NoticiaController::class, 'index']);
 
 Route::post('/listarTimes', [TimeController::class, 'index']);
 Route::post('/listarJogos', [TimeController::class, 'indexJogos']);
+Route::post('/listarAlunos', [TimeController::class, 'indexAlunos']);

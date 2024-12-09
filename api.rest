@@ -7,9 +7,9 @@ Content-Type: application/json
 }
 
 ##################
-POST http://127.0.0.1:8000/api/gerarSenhaADM HTTP/1.1 
+POST http://127.0.0.1:8000/api/listarAlunos HTTP/1.1 
 Content-Type: application/json
 
 {
-    "senha": "1"
+    "idTime": "1"
 }
