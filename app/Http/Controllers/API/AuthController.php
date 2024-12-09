@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Aluno;
 use App\Models\User;
 use App\Traits\ApiResponse;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -45,7 +46,7 @@ class AuthController extends Controller
                 'descricaoEsportiva' => $user->descricaoEsportiva,
                 'curso' => $user->curso,
                 'turma' => $user->turma,
-                'dtNascimento' => $user->dataNascimento,
+                'dtNascimento' => Carbon::parse($user->dataNascimento)->format('d/m/y'),
                 'matricula' => $user->matricula,
                 'genero' => $user->genero
             ], "Login realizado!!!");

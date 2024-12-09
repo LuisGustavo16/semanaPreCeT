@@ -17,6 +17,11 @@ class NoticiaController extends Controller
     public function index()
     {
         $dados = Noticia::all();
+        /*Passa o formato da hora do BD para hora:minuto*/
+        foreach ($dados as $item) {
+            $item->horario = Carbon::parse($item->horario)->timezone('America/Sao_Paulo')->format('H:i'); 
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+        }
         return response()->json([
             'dados' => $dados,
         ]);
