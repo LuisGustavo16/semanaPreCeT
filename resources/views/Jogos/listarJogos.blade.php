@@ -51,11 +51,11 @@ $notificacao = true;
                             <td>{{$item->horario}}</td>
                             <td>{{$item->local}}</td>
                             <td>
-                                <a class="linkIcone" href="/jogos/selecionado/{{$item->idJogoTime}}">
-                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
-                                </a>
                                 <a class="linkIcone"  href="/jogos/editar/{{$item->idJogoTime}}">
                                     <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                </a>
+                                <a class="linkIcone" href="/jogos/selecionado/{{$item->idJogoTime}}">
+                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
                                 </a>
                                 <a class="linkIcone" href="/jogos/apagar/{{$item->idJogoTime}}/{{$item->idTime}}"
                                     onclick="return confirm('Deseja apagar o jogo do dia {{$item->dia}} ?')">

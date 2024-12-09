@@ -215,6 +215,12 @@
     margin: 20px auto;
 }
 
+select {
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+
 /*tela espera*/
 .modal {
     display: flex;

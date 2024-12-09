@@ -29,15 +29,15 @@ $classe = 'branco';
                             <td>{{$item->nomeModalidade}} {{$item->genero}}</td>
                             <td>{{$item->competicao}}</td>
                             <td>
-                                <a class="linkIcone" href="../times/verTime/{{$item->idTime}}">
-                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
-                                </a>
                                 <a class="linkIcone" href="../times/editar/{{$item->idTime}}">
-                                    <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                    <img class="icone" src="/storage/assets/editar.png" alt="editar">   
+                                </a>
+                                <a class="linkIcone" href="../times/verTime/{{$item->idTime}}">
+                                    <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
                                 </a>
                                 <a class="linkIcone" href="../times/apagar/{{$item->idTime}}"
                                     onclick="return confirm('Deseja apagar o time do {{$item->competicao}} ?')">
-                                    <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
+                                    <img class="icone apagar" src="/storage/assets/excluir.png" alt="apagar">
                                 </a>
                             </td>
                         </tr>

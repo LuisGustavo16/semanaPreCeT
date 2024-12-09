@@ -35,7 +35,7 @@
                             <td>{{$item->dia}}</td>
                             <td>{{$item->horarioInicio}} - {{$item->horarioFim}}</td>
                             <td>{{$item->local}}</td>
-                            <td><a href="../../reservas/reservaEscolhida/{{$item->idReserva}}">Ver</a></td>
+                            <td><a href="../../reservas/reservaEscolhida/{{$item->idReserva}}"><img src="{{asset('storage/assets/ver.png')}}" alt="" style="width: 40px; height: 40px;"></a></td>
                         </tr>
                 @endforeach
             </tbody>
