@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('idReserva');
             $table->unsignedBigInteger('idAluno');
             $table->date('dia');
+            $table->date('diaCancelamento')->nullable();
             $table->string('local');
             $table->time('horarioInicio');
             $table->time('horarioFim');

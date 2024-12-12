@@ -155,7 +155,7 @@
     align-items: center;
 }
 
-.formRegistroAluno {
+.formRegistroInicio {
     box-shadow:  2px 2px 5px black;
     padding: 3rem;
     padding-top: 0;
@@ -164,6 +164,19 @@
     flex-direction: column;
     height: auto;                     
     width: 100%;                      
+    max-width: 70rem;                
+    margin: 0 auto;
+}
+
+.formRegistroAluno {
+    box-shadow:  2px 2px 5px black;
+    padding: 3rem;
+    padding-top: 0;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    height: auto;                     
+    width: 40%;                      
     max-width: 70rem;                
     margin: 0 auto;
 }
@@ -187,6 +200,9 @@
     gap: 20px;
 }
 
+.labelTipoUser {
+    padding-top: 3rem;
+}
 .inputNome, .inputEmail, .inputCurso {
     width: 100%;
 }

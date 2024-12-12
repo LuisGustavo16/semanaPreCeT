@@ -28,12 +28,13 @@ $classe = 'branco';
         </div>
 
         <table>
-            <caption>ALUNOS PENDENTES</caption>
+            <caption>USUÁRIOS PENDENTES</caption>
             <thead>
                 <tr class="amarelo">
                     <th>Nome</th>
                     <th>Turma</th>
                     <th>Matricula</th>
+                    <th>Tipo</th>
                     <th>Opções</th>
                 </tr>
             </thead>
@@ -52,6 +53,7 @@ $classe = 'branco';
                                     <td>{{$item->name}}</td>
                                     <td>{{$item->turma}} {{$item->curso}}</td>
                                     <td>{{$item->matricula}}</td>
+                                    <td>{{$item->tipo}}</td>
                                     <td>
                                         <a href="/alunos/aceitarNegarRegistro/{{$item->id}}/{{'aceitar'}}">Aceitar</a>
                                         <a href="/alunos/aceitarNegarRegistro/{{$item->id}}/{{'negar'}}">Negar</a>

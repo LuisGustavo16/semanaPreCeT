@@ -19,14 +19,14 @@ return new class extends Migration {
             $table->string('password');
             $table->rememberToken();
             //Dados do aluno
-            $table->string('turma');
-            $table->string('curso');
-            $table->string('matricula');
+            $table->string('turma')->nullable();
+            $table->string('curso')->nullable();
+            $table->string('matricula')->nullable();
             $table->string('descricaoEsportiva', 2000)->nullable();
             $table->string('tipo');
             $table->string('status');
-            $table->string('genero');
-            $table->date('dataNascimento');
+            $table->string('genero')->nullable();
+            $table->date('dataNascimento')->nullable();
             $table->timestamps();
         });
     }

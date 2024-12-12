@@ -14,6 +14,7 @@
 .solicitacao{
     padding-top: 1rem;
     width: 60rem;
+    height: 32rem;
     grid-template-columns: repeat(3, 18rem);
     grid-template-rows: repeat(3, 8rem);
 }
@@ -83,7 +84,7 @@
     height: 3rem;
     width: 12rem;
     display: flex;
-    align-items: center;
+    text-align: center;
     justify-content: center;
     font-family: "Inter", sans-serif;
     text-decoration: none;
@@ -135,6 +136,24 @@
     border: 2px solid black;
 }
 
+#observacaoPopupCancelarDia {
+    display: grid;
+    grid-template-columns: repeat(1, 1rem);
+    grid-template-rows: repeat(3, 5rem);
+    position: absolute;
+    top: 17rem;
+    height: 30rem;
+    width: 25rem;
+    background-color: var(--white);
+    border: 2px solid black;
+}
+
+.diaCancelamento {
+    position: absolute;
+    bottom: 6rem;
+    left: 1.2rem;
+}
+
 #observacaoPopupRejeitar {
     display: grid;
     grid-template-columns: repeat(1, 1rem);
@@ -151,6 +170,16 @@
     font-family: "Inter", sans-serif;
     padding-left: 1rem;
 }
+
+#textoPopupData {
+    font-family: "Inter", sans-serif;
+    padding-left: 1rem;
+    font-size: 1.7rem;
+    width: 25rem;
+    position: absolute;
+    bottom: 7rem;
+}
+
 
 .inputPopup {
     width: 23rem;

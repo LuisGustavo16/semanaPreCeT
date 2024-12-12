@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Reserva;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
+use App\Models\Mensagem;
 use Carbon\Carbon;
 
 class controllerReservas extends Controller
@@ -30,6 +31,7 @@ class controllerReservas extends Controller
         $dados = Reserva::find($idReserva);
         /*Trocar o formato do dia e do horário*/
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
+        $dados->diaCancelamento = Carbon::parse($dados->diaCancelamento)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
         $aluno = Aluno::find($dados->idAluno);
@@ -43,6 +45,14 @@ class controllerReservas extends Controller
         $dados->observacao = $request->input('observacao');
         $dados->status = 'N';
         $dados->save();
+
+        //Cria a mensagem para enviar ao aluno
+        $mensagem = new Mensagem();
+        $mensagem->conteudo = "Sua reserva no " . $dados->local . " do dia " . $dados->dia . " foi cancelada, pelo seguinte motivo: " .  $dados->observacao;
+        $mensagem->idAluno = $dados->idAluno;
+        $mensagem->dia = Carbon::now();
+        $mensagem->horario = Carbon::now();
+        $mensagem->save();
         return redirect()->route('indexReserva', ['status' => $status]);
 
     }
@@ -52,6 +62,39 @@ class controllerReservas extends Controller
         $reserva->status = 'A';
         $reserva->observacao = $request->input('observacao');
         $reserva->save();
+
+        //Cria a mensagem para enviar ao aluno
+        $mensagem = new Mensagem();
+        $mensagem->conteudo = "Sua reserva no " . $reserva->local . " do dia " . $reserva->dia . " foi aceita.";
+        $mensagem->idAluno = $reserva->idAluno;
+        $mensagem->dia = Carbon::now();
+        $mensagem->horario = Carbon::now();
+        $mensagem->save();
         return redirect()->route('indexReserva', ['status' => 'P']);
     }
+
+    function cancelarRegular(string $idReserva, Request $request) {
+        // Encontrar a reserva pelo id
+        $reserva = Reserva::find($idReserva);
+        
+        // Verificar se a data de cancelamento é antes da data da reserva
+        if ($request->input('diaCancelamento') < $reserva->dia) {
+            // Se for, retorna com uma mensagem de erro (danger)
+            session()->flash('status', 'danger');
+            session()->flash('message', 'A data de cancelamento não pode ser anterior à data da reserva.');
+            return redirect()->route('indexReserva', ['status' => 'A']);
+        }
+    
+        // Atualiza a reserva com a data de cancelamento e observação
+        $reserva->diaCancelamento = $request->input('diaCancelamento');
+        $reserva->observacao = $request->input('observacao');
+        $reserva->save();
+        $dia = Carbon::parse($reserva->diaCancelamento)->format('d/m');
+    
+        // Retorna com uma mensagem de sucesso (success)
+        session()->flash('status', 'success');
+        session()->flash('message', 'Reserva regular cancelada com sucesso para o dia ' . $dia . ".");
+        return redirect()->route('indexReserva', ['status' => 'A']);
+    }
+    
 }

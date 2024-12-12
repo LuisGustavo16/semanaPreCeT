@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +16,7 @@
         <a class="titulo" href="{{route("inicio")}}">
             <h1 class="fisica">FÍSICA</h1>
         </a>
-        
+
     </div>
 
     <div class="opcoes">
@@ -147,11 +146,11 @@
             <a class="titulo" href="{{route("listarAlunosPendentes")}}">
                 <h3>Ver alunos pendentes</h3>
             </a>
-            
+
         </div>
 
     </div>
-    </div>
+
 
     <div>
         @hasSection ('content')

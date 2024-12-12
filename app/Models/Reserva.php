@@ -9,7 +9,7 @@ class Reserva extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idReserva';
-    protected $fillable = ['idAluno', 'finalidade', 'dia', 'local', 'horarioInicio', 'horarioFim', 'status', 'tipo', 'observacao', 'numeroPessoas'];
+    protected $fillable = ['idAluno','diaCancelamento' ,'finalidade', 'dia', 'local', 'horarioInicio', 'horarioFim', 'status', 'tipo', 'observacao', 'numeroPessoas'];
 
     public function Aluno()
     {

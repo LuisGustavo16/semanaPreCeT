@@ -53,42 +53,6 @@ class controllerAluno extends Controller
         }
     }
 
-    public function register(Request $request)
-    {
-        try {
-            $validatedData = Validator::make($request->all(), [
-                'name' => 'required|string|max:255|unique:users',
-                'email' => 'required|string|max:255|unique:users',
-                'password' => 'required|string',
-                'turma' => 'required|string',
-                'curso' => 'required|string',
-                'matricula' => 'required|string',
-                'descricaoEsportiva' => 'string',
-                'genero' => 'required|string',
-                'dataNascimento' => 'required|string'
-            ]);
-            if ($validatedData->fails()) {
-                return redirect()->route("Cadastrar");
-            }
-            $user = Aluno::create([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'turma' => $request->get('turma'),
-                'curso' => $request->get('curso'),
-                'matricula' => $request->get('matricula'),
-                'descricaoEsportiva' => $request->get('descricaoEsportiva'),
-                'dataNascimento' => $request->get('dataNascimento'),
-                'genero' => $request->get('genero'),
-                'tipo' => "aluno",
-                'status' => 'espera',
-                'password' => Hash::make($request->get('password')),
-            ]);
-            return redirect()->route("telaEspera");
-        } catch (\Throwable $th) {
-            return redirect()->route("Cadastrar");
-        }
-    }
-
     public function listarAlunosPendentes()
     {
         $dados = Aluno::all()->where('status', 'espera');

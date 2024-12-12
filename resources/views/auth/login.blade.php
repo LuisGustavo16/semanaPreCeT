@@ -55,7 +55,7 @@
             </form>
             <div class="divLinksLogin">
                 <a class="linkCadastro" href="{{route("entrarAluno")}}">Entrar como estudante</a>
-                <a class="linkCadastro" href="/Cadastrar">Se registrar como estudante</a>
+                <a class="linkCadastro" href="/CadastroInicial">Registre-se</a>
             </div>
         </div>
 </body>
