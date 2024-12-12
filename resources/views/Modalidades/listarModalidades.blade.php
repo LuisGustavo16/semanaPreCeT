@@ -28,7 +28,7 @@
                             <td>{{$item->nome}}</td>
                             <td>
                                 <a href="../modalidades/editar/{{$item->idModalidade}}"><img src="{{asset('storage/assets/editar.png')}}" alt="" style="width: 40px; height: 40px;"></a>
-                                <a href="../modalidades/apagar/{{$item->idModalidade}}" onclick="return confirm('Deseja apagar a modalidade {{$item->nome}} ?')"><img src="{{asset('storage/assets/excluir.png')}}" alt="" style="width: 40px; height: 40px;"></a>
+                                <a href="../modalidades/apagar/{{$item->idModalidade}}" onclick="return confirm('Deseja apagar a modalidade {{$item->nome}} ?')"><img src="{{asset('storage/assets/apagar.png')}}" alt="" style="width: 40px; height: 40px;"></a>
                             </td>
                         </tr>
                 @endforeach

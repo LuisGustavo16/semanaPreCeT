@@ -37,7 +37,7 @@ $classe = 'branco';
                                 </a>
                                 <a class="linkIcone" href="../times/apagar/{{$item->idTime}}"
                                     onclick="return confirm('Deseja apagar o time do {{$item->competicao}} ?')">
-                                    <img class="icone apagar" src="/storage/assets/excluir.png" alt="apagar">
+                                    <img class="icone apagar" src="/storage/assets/apagar.png" alt="apagar">
                                 </a>
                             </td>
                         </tr>
