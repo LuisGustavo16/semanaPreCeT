@@ -65,7 +65,7 @@ $classe = 'branco';
                                             <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
                                         </a>
                                         <a class="linkIcone" href="../treino_amistosos/apagar/{{$item->idTreino}}"
-                                            onclick="return confirm('Deseja apagar o treino do dia {{$item->dia}} ?')">
+                                            onclick="return confirm('Deseja apagar o treino do dia {{$item->dia}}?')">
                                             <img class="icone apagar" src="/storage/assets/excluir.png" alt="apagar">
                                         </a>
                                     </td>
@@ -76,8 +76,9 @@ $classe = 'branco';
         </table>
         <div class="divCentralizaBotaoApagarTreinos">
             <button class="botaoApagarSelecionados" type="submit">Apagar selecionados</buttonc>
-
         </div>
+        <a onclick="return confirm('Deseja apagar todos os treinos antigos?')"
+        href="{{route('apagarTreinosAntigos')}}">Apagar Treinos antigos</a>
     </form>
 
 </div>

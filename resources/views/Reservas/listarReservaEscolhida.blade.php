@@ -59,61 +59,70 @@ $popup = true;
             </div>
 
             @if ($dados->status == 'A')
-            <div class="campoListarReservaEscolhida">
-                <h1 class="textoSolicitacao">Observação</h1>
-                <h2>{{$dados->observacao}}</h2>
-            </div>
+                <div class="campoListarReservaEscolhida">
+                    <h1 class="textoSolicitacao">Observação</h1>
+                    <h2>{{$dados->observacao}}</h2>
+                </div>
             @endif
 
             @if ($dados->tipo == 'regular')
-            <div class="campoListarReservaEscolhida">
-                <h1 class="textoSolicitacao">Dia de cancelamento:</h1>
-                <h2>{{$dados->diaCancelamento}}</h2>
-            </div>
+                <div class="campoListarReservaEscolhida">
+                    <h1 class="textoSolicitacao">Dia de cancelamento:</h1>
+                    @if ($dados->diaCancelamento != null)
+                        <h2>{{$dados->diaCancelamento}}</h2>
+                    @endif
+                </div>
             @endif
-            
+
         </div>
         <div class="centralizarBotoes ">
             @if ($dados->status == 'A')
-                <a onclick="togglePopup(false, 'rejeitar')" class="cancelar" href="#">Cancelar reserva permanentemente</a>
-                <a onclick="togglePopup(false, 'aceitar')" class="cancelar" href="#">Cancelar reserva apenas em um dia</a>
+                @if ($dados->tipo == 'regular')
+                    <a onclick="togglePopup(false, 'rejeitar')" class="cancelar" href="#">Cancelar reserva permanentemente</a>
+                    <a onclick="togglePopup(false, 'cancelarDia')" class="cancelar" href="#">Cancelar reserva apenas em um
+                        dia</a>
+                @else
+                    <a onclick="togglePopup(false, 'rejeitar')" class="cancelar" href="#">Cancelar reserva</a>
+                @endif
             @else
                 <a onclick="togglePopup(false, 'rejeitar')" class="recusar" href="#">Rejeitar</a>
                 <a onclick="togglePopup(false, 'aceitar')" class="aceitar" href="#">Aceitar</a>
             @endif
 
-                <div id="observacaoPopupRejeitar" style="display: none;">
-                    <form method="post" class="formularioEscondido" action="/reservas/apagar/{{$dados->idReserva}}/P">
-                        @csrf
-                        <h1 id="textoPopup">Observação:</h1>
-                        <textarea class="inputPopup" name="observacao" id=""></textarea>
-                        <a onclick="togglePopup(true, 'rejeitar')" class="cancelarPopup" href="#">Cancelar</a>
-                        <button type="submit" class="aceitarPopup" href="#">Enviar</button>
-                    </form>
-                </div>
+            <div id="observacaoPopupRejeitar" style="display: none;">
+                <form method="post" class="formularioEscondido" action="/reservas/apagar/{{$dados->idReserva}}/P">
+                    @csrf
+                    <h1 id="textoPopup">Observação:</h1>
+                    <textarea class="inputPopup" name="observacao" id=""></textarea>
+                    <a onclick="togglePopup(true, 'rejeitar')" class="cancelarPopup" href="#">Cancelar</a>
+                    <button type="submit" class="aceitarPopup" href="#">Enviar</button>
+                </form>
+            </div>
 
-                <div id="observacaoPopupAceitar" style="display: none;">
-                    <form method="post" class="formularioEscondido" action="/reservas/aceitarReserva/{{$dados->idReserva}}/P">
-                        @csrf
-                        <h1 id="textoPopup">Observação:</h1>
-                        <textarea class="inputPopup" name="observacao" id=""></textarea>
+            <div id="observacaoPopupAceitar" style="display: none;">
+                <form method="post" class="formularioEscondido"
+                    action="/reservas/aceitarReserva/{{$dados->idReserva}}/P">
+                    @csrf
+                    <h1 id="textoPopup">Observação:</h1>
+                    <textarea class="inputPopup" name="observacao" id=""></textarea>
 
-                        <a onclick="togglePopup(true, 'aceitar')" class="cancelarPopup" href="#">Cancelar</a>
-                        <button type="submit" class="aceitarPopup" href="#">Enviar</button>
-                    </form>
-                </div>
+                    <a onclick="togglePopup(true, 'aceitar')" class="cancelarPopup" href="#">Cancelar</a>
+                    <button type="submit" class="aceitarPopup" href="#">Enviar</button>
+                </form>
+            </div>
 
-                <div id="observacaoPopupCancelarDia" style="display: none;">
-                    <form method="post" class="formularioEscondido" action="/reservas/cancelarRegular/{{$dados->idReserva}}">
-                        @csrf
-                        <h1 id="textoPopup">Observação:</h1>
-                        <textarea class="inputPopup" name="observacao" id=""></textarea>
-                        <h1 id="textoPopupData">Data do caneclamento:</h1>
-                        <input class="diaCancelamento" type="date" name="diaCancelamento">
-                        <a onclick="togglePopup(true, 'aceitar')" class="cancelarPopup" href="#">Cancelar</a>
-                        <button type="submit" class="aceitarPopup" href="#">Enviar</button>
-                    </form>
-                </div>
+            <div id="observacaoPopupCancelarDia" style="display: none;">
+                <form method="post" class="formularioEscondido"
+                    action="/reservas/cancelarRegular/{{$dados->idReserva}}">
+                    @csrf
+                    <h1 id="textoPopup">Observação:</h1>
+                    <textarea class="inputPopup" name="observacao" id=""></textarea>
+                    <h1 id="textoPopupData">Data do caneclamento:</h1>
+                    <input class="diaCancelamento" type="date" name="diaCancelamento">
+                    <a onclick="togglePopup(true, 'aceitar')" class="cancelarPopup" href="#">Cancelar</a>
+                    <button type="submit" class="aceitarPopup" href="#">Enviar</button>
+                </form>
+            </div>
         </div>
     </div>
 

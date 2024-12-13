@@ -36,6 +36,7 @@ $classe = 'branco';
                 <th>Dia</th>
                 <th>Horário</th>
                 <th>Local</th>
+                <th>Tipo</th>
                 <th>Opções</th>
             </tr>
         </thead>
@@ -51,9 +52,14 @@ $classe = 'branco';
                 }
                                 ?>
                         <tr class="{{$classe}}">
-                            <td>{{$item->dia}}</td>
+                            <td>{{$item->dia}}
+                                @if ($item->tipo == 'regular' && $item->diaCancelamento != null)
+                                    (Cancelada) 
+                                @endif
+                            </td>
                             <td>{{$item->horarioInicio}} - {{$item->horarioFim}}</td>
                             <td>{{$item->local}}</td>
+                            <td>{{$item->tipo}}</td>
                             <td><a href="../../reservas/reservaEscolhida/{{$item->idReserva}}"><img
                                         src="{{asset('storage/assets/ver.png')}}" alt="" style="width: 40px; height: 40px;"></a>
                             </td>

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Mensagem;
+use App\Models\TreinoAmistoso;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
@@ -9,6 +11,7 @@ use Hash;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
 use App\Models\Time;
+use App\Models\Chekin;
 use App\Models\AlunosTime;
 use Laravel\Sanctum\HasApiTokens;
 use Validator;
@@ -26,17 +29,29 @@ class controllerAluno extends Controller
             $dados->idAluno = $idAluno;
             $dados->idTime = $idTime;
             $dados->save();
+
+            //Cria a mensagem para enviar ao aluno
+            $time = Time::find($idTime);
+            $modalidade = Modalidade::find($time->idModalidade);
+            $mensagem = new Mensagem();
+            $mensagem->conteudo = 'Você foi adicionado ao time ' . $modalidade->nome . ' ' . $time->genero . 
+            ' Veja as informações detalhadas na página de times.';
+            $mensagem->idAluno = $dados->idAluno;
+            $mensagem->dia = Carbon::now();
+            $mensagem->horario = Carbon::now();
+            $mensagem->save();
         }
         return redirect()->route('verTime', ['idTime' => $idTime]);
     }
 
-    public function show (string $idAluno) {
-        $dados = Aluno::find($idAluno );
+    public function show(string $idAluno)
+    {
+        $dados = Aluno::find($idAluno);
         /*Formatação da data e calculo da idade*/
         $dataAtual = Carbon::now();
         $dados->idade = $dataAtual->diffInYears($dados->dtNascimento);
         $dados->dtNascimento = Carbon::parse($dados->dtNascimento)->format('d/m/y');
-        /*Chekins e Times de cada aluno*/
+        /*Times do aluno*/
         $alunos_time = AlunosTime::all()->where('idAluno', $idAluno);
         $times = Time::all();
         $timesAluno = [];
@@ -48,8 +63,17 @@ class controllerAluno extends Controller
                 }
             }
         }
+        /*Checkins do aluno*/
+        $checkins = Chekin::all()->where("idAluno", $idAluno);
+        $treinosCheckin = [];
+        foreach ($checkins as $item) {
+            $treino = TreinoAmistoso::find($item->idTreino);
+            $modalidade = Modalidade::find($treino->idModalidade);
+            array_push($treinosCheckin, $treino->dia . ' (' . $treino->horarioInicio . ' - ' .
+                $treino->horarioFim . ' ' . $treino->local . ', ' . $modalidade->nome . ' ' . $treino->genero);
+        }
         if (isset($dados)) {
-            return view('Alunos/verPerfilAluno', compact("dados", "timesAluno"));
+            return view('Times/verPerfilAluno', compact("dados", "timesAluno", "treinosCheckin"));
         }
     }
 
@@ -64,13 +88,14 @@ class controllerAluno extends Controller
         if ($opcao == "aceitar") {
             $aluno->status = "aceito";
             $aluno->save();
-        } else  {
+        } else {
             $aluno->delete();
         }
         return redirect()->route("listarAlunosPendentes");
     }
 
-    public function entrarPerfil(Request $request) {
+    public function entrarPerfil(Request $request)
+    {
         $aluno = Aluno::where('email', $request->get('email'))->first();
 
         if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
@@ -80,14 +105,15 @@ class controllerAluno extends Controller
         }
     }
 
-    public function edit(string $idAluno) {
+    public function edit(string $idAluno)
+    {
         $aluno = Aluno::find($idAluno);
         return view("Alunos/editarPerfilAluno", compact('aluno'));
     }
 
     public function update(Request $request, string $idAluno)
     {
-        
+
         try {
             $aluno = Aluno::find($idAluno);
             $aluno->update([

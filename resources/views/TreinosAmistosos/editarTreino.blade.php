@@ -47,7 +47,7 @@
         <div class="coluna">
             <div class="campo">
                 <label for="genero">*Gênero:</label><br>
-                <select type="checkbox" name="genero">
+                <select class="selectGenero" type="checkbox" name="genero">
                     @foreach ($generos as $genero)
                         @if ($aux2)
                             <option value="{{$dados->genero}}">{{$dados->genero}}</option>

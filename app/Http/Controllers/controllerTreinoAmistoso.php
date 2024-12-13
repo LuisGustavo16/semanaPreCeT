@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Aluno;
+use App\Models\Mensagem;
 use App\Models\TreinoAmistoso;
 use App\Models\Modalidade;
 use App\Models\Chekin;
@@ -100,6 +101,20 @@ class controllerTreinoAmistoso extends Controller
     public function destroy(string $id) {
         $dados = TreinoAmistoso::find($id);
         if (isset($dados)) {
+            //Cria a mensagem para enviar ao aluno
+            $modalidade = Modalidade::find($dados->idModalidade);
+            $checkins = Chekin::where('idTreino', $id)->get();
+            foreach($checkins as $item) {
+                $mensagem = new Mensagem();
+                $mensagem->conteudo = 'O treino de ' . $modalidade->nome . ' ' . $dados->genero . 
+                ', do dia ' . $dados->horarioInicio . ' - ' . $dados->horarioFim . ' que iria ocorrer no(a) ' . $dados->local . ' foi cancelado';
+                $mensagem->idAluno = $item->idAluno;
+                $mensagem->dia = Carbon::now();
+                $mensagem->horario = Carbon::now();
+                $mensagem->save();
+            }
+            
+
             $dados->delete();
             return redirect()->route('indexTreino');
         }
@@ -123,6 +138,15 @@ class controllerTreinoAmistoso extends Controller
         $nomeModalidade = Modalidade::find($dados->idModalidade);
         if (isset($dados))
             return view('TreinosAmistosos/editarTreino', compact('dados', 'modalidades', 'nomeModalidade'));
+    }
+
+    public function apagarTreinosAntigos() {
+        $dataHoje = new Carbon();
+        $dados = TreinoAmistoso::where('dia', '<', $dataHoje)->get();
+        foreach ($dados as $item) {
+            $item->delete();
+        }
+        return redirect()->route('indexTreino')->with('success', 'Treinos apagados sucesso!!');
     }
 
 }

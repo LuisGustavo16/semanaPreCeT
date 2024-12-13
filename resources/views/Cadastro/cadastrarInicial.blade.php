@@ -53,6 +53,10 @@
     </div>
     <button class="botaoFormAluno" type="submit">Registrar</button>
     </form>
+    <div class="divLinksLogin">
+                <a class="linkCadastro" href="/login">Entrar como administrador</a>
+                <a class="linkCadastro" href="{{route("entrarAluno")}}">Entrar como estudante</a>
+            </div>
     </div>
 </body>
 

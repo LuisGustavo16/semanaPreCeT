@@ -57,7 +57,7 @@ class controllerCadastro extends Controller
                 return view("Cadastro/cadastrarAluno", compact("user"));
             }
         } catch (\Throwable $th) {
-            return redirect()->route("CadastrarInicio");
+            return redirect()->route("CadastroInicial");
         }
     }
 

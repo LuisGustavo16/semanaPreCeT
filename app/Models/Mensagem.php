@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Mensagem extends Model
 {
     use HasFactory;
-    protected $fillable = ['idAluno', 'conteudo', 'horarioFim', 'dia', 'horario'];
+    protected $fillable = ['idAluno', 'conteudo', 'dia', 'horario'];
 
 }

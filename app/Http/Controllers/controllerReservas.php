@@ -31,7 +31,8 @@ class controllerReservas extends Controller
         $dados = Reserva::find($idReserva);
         /*Trocar o formato do dia e do horário*/
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
-        $dados->diaCancelamento = Carbon::parse($dados->diaCancelamento)->format('d/m');
+        if ($dados->diaCancelamento)
+            $dados->diaCancelamento = Carbon::parse($dados->diaCancelamento)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
         $aluno = Aluno::find($dados->idAluno);
@@ -48,7 +49,8 @@ class controllerReservas extends Controller
 
         //Cria a mensagem para enviar ao aluno
         $mensagem = new Mensagem();
-        $mensagem->conteudo = "Sua reserva no " . $dados->local . " do dia " . $dados->dia . " foi cancelada, pelo seguinte motivo: " .  $dados->observacao;
+        $diaReserva = Carbon::parse($dados->dia)->format('d/m');
+        $mensagem->conteudo = "Sua reserva no " . $dados->local . " do dia " . $diaReserva . " foi cancelada, pelo seguinte motivo: " .  $dados->observacao;
         $mensagem->idAluno = $dados->idAluno;
         $mensagem->dia = Carbon::now();
         $mensagem->horario = Carbon::now();
@@ -65,7 +67,8 @@ class controllerReservas extends Controller
 
         //Cria a mensagem para enviar ao aluno
         $mensagem = new Mensagem();
-        $mensagem->conteudo = "Sua reserva no " . $reserva->local . " do dia " . $reserva->dia . " foi aceita.";
+        $diaReserva = Carbon::parse($reserva->dia)->format('d/m');
+        $mensagem->conteudo = "Sua reserva no " . $reserva->local . " do dia " . $diaReserva . " foi aceita, com  aseguinte observação: " . $reserva->observacao;
         $mensagem->idAluno = $reserva->idAluno;
         $mensagem->dia = Carbon::now();
         $mensagem->horario = Carbon::now();

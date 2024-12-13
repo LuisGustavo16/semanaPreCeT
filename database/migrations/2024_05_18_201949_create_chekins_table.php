@@ -16,11 +16,13 @@ return new class extends Migration
             $table->unsignedBigInteger('idAluno');
             $table->unsignedBigInteger('idTreino');
             $table->timestamps();
-        });
-        
-        Schema::table('chekins', function(Blueprint $table) {
+    
+            // Definição das chaves estrangeiras
             $table->foreign('idAluno')->references('id')->on('alunos');
-            $table->foreign('idTreino')->references('idTreino')->on('treino_amistosos');
+            $table->foreign('idTreino')
+                ->references('idTreino')
+                ->on('treino_amistosos')
+                ->onDelete('cascade'); // Deleção em cascata configurada corretamente
         });
     }
 

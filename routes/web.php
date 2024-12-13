@@ -70,7 +70,7 @@ Route::get('/noticias/novaNoticia', function () {
 
 Route::get('/entrarPerfil', function () {
     return view('Alunos/entrarPerfilAluno');
-}) -> name('Cadastro');
+});
 
 Route::get('/CadastroInicial', function () {
     return view('Cadastro/cadastrarInicial');
@@ -108,7 +108,8 @@ Route::post('/treino_amistosos/atualizar/{idTreino}', [App\Http\Controllers\cont
 Route::get('/treino_amistosos/editar/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'edit']); // Rota que manda o dado a ser editado para o formulário
 Route::get('/treino_amistosos/apagar/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroy']); // Rota para apagar
 Route::get('/treino_amistosos/verTreino/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'verTreino']); // Rota que envia o dado para ser vizualizado
-Route::post('/treino_amistosos/apagarVarios', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroyMany']); // Rota para apagar
+Route::post('/treino_amistosos/apagarVarios', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroyMany']); // Rota para apagar vários
+Route::get('/treino_amistosos/apagarTreinosAntigos', [App\Http\Controllers\controllerTreinoAmistoso::class, 'apagarTreinosAntigos'])->name('apagarTreinosAntigos'); // Rota para apagar os treinos antigos
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Modalidades*/
@@ -147,6 +148,7 @@ Route::get ('/times/formPesquisarAluno/{idTime}', [App\Http\Controllers\controll
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Noticias*/
 ////////////////////////////////////////////////
+Route::get ('/home', [App\Http\Controllers\controllerNoticias::class, 'index']) ->name('inicio'); // Rota para exibir
 Route::get ('/', [App\Http\Controllers\controllerNoticias::class, 'index']) ->name('inicio'); // Rota para exibir
 Route::post('/noticias/cadastrarNoticia', [App\Http\Controllers\controllerNoticias::class, 'store'])->name('cadastrarNoticia'); // Rota para cadastrar
 Route::get('/noticias/selecionado/{idNoticia}', [App\Http\Controllers\controllerNoticias::class, 'enviaNoticiaEscolhida']); // Rota que manda os dados de uma noticia para ela ser listada
@@ -163,6 +165,7 @@ Route::get('/jogos/selecionado/{idJogo}', [App\Http\Controllers\controllerJogosT
 Route::get('/jogos/formularioCadastro/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'create']); // Rota para cadastrar
 Route::post('/jogos/cadastrarJogos/{idtime}', [App\Http\Controllers\controllerJogosTimes::class, 'store']); // Rota para cadastrar
 Route::get('/jogos/apagar/{idJogo}/{idTime}', [App\Http\Controllers\controllerJogosTimes::class, 'destroy']); // Rota para apagar
+Route::get('/jogos/apagarJogosAntigos', [App\Http\Controllers\controllerJogosTimes::class, 'apagarJogosAntigos'])->name('apagarJogosAntigos'); // Rota para apagar os jogos antigos
 Route::get('/jogos/editar/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'edit']); // Rota que manda o dado a ser editado para o formulário
 Route::post('/jogos/atualizar/{idJogo}', [App\Http\Controllers\controllerJogosTimes::class, 'update']); // Rota para editar
 

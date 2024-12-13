@@ -17,7 +17,7 @@
 <body class="container">
     <div>
         <h1 class="sigee">SIGEE</h1>
-        <h1 class="titulo">Perfil do Estudante</h1>
+        <h1 class="titulo">Perfil do {{$aluno->tipo}}</h1>
     </div>
     <div class="divNotificacao" style="display: flex;">
         @if(isset($danger))
@@ -50,35 +50,54 @@
 
                 </div>
 
-                <div class="linhaFormAluno">
-                    <div class="campo">
-                        <label for="turma">*Série</label><br>
-                        <input type="text" name="turma" required value="{{$aluno->turma}}" readonly>
+                @if ($aluno->tipo == 'Aluno')
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="turma">*Série</label><br>
+                            <input type="text" name="turma" required value="{{$aluno->turma}}" readonly>
+                        </div>
+
+                        <div class="campo">
+                            <label for="curso">*Curso:</label><br>
+                            <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
+                        </div>
+
                     </div>
 
+
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="dataNascimento">*Data de Nascimento:</label><br>
+                            <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}" readonly>
+                        </div>
+                        <div class="campo">
+
+                            <label class="inputMatricula" for="matricula">*Matrícula:</label><br>
+                            <input class="inputMatricula" type="text" name="matricula" required
+                                value="{{$aluno->matricula}}" readonly>
+                        </div>
+
+                    </div>
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="genero">*Gênero:</label><br>
+                            <input type="text" name="genero" required value="{{$aluno->genero}}" readonly>
+                        </div>
+                    </div>
+
+                @elseif ($aluno->tipo == 'Universitário')
                     <div class="campo">
                         <label for="curso">*Curso:</label><br>
-                        <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
-                    </div>
-                    <div class="campo">
-                        <label for="genero">*Gênero:</label><br>
-                        <input type="text" name="genero" required value="{{$aluno->genero}}" readonly>
-                    </div>
-                </div>
-
-
-                <div class="linhaFormAluno">
-                    <div class="campo">
-                        <label for="dataNascimento">*Data de Nascimento:</label><br>
-                        <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}" readonly>
+                        <input style="width: 15rem;" type="text" name="curso" required value="{{$aluno->curso}}" readonly>
                     </div>
                     <div class="campo">
 
                         <label class="inputMatricula" for="matricula">*Matrícula:</label><br>
-                        <input class="inputMatricula" type="text" name="matricula" required
-                            value="{{$aluno->matricula}}" readonly>
+                        <input class="inputMatricula" type="text" name="matricula" required value="{{$aluno->matricula}}"
+                            readonly>
                     </div>
-                </div>
+                @endif
+
 
             </div>
         </form>

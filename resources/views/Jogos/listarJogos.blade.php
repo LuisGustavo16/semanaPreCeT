@@ -63,9 +63,11 @@ $notificacao = true;
                                 </a>
                             </td>
                         </tr>
-
+                        
             @endforeach
         </tbody>
     </table>
+    <a onclick="return confirm('Deseja apagar todos os jogos antigos?')"
+        href="{{route('apagarJogosAntigos')}}">Apagar Jogos antigos</a>
 </div>
 @endsection

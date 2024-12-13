@@ -32,7 +32,7 @@
 
         <div class="coluna">
             <div class="campo">
-                <label for="genero">*Gênero:</label><br>
+                <label class="selectGenero"  for="genero">*Gênero:</label><br>
                 <select type="checkbox" name="genero" required>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>

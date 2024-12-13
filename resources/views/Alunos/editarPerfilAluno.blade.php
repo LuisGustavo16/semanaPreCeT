@@ -1,3 +1,14 @@
+<?php
+$aux = true;
+$aux2 = true;
+$aux3 = true;
+$aux4 = true;
+$generos = ["Masculino", "Feminino", "Misto"];
+$cursos = ['Edificações', 'Informática', 'Mecatrônica'];
+$cursosGraduacao = ['Sistemas de Informação', 'Engenharia Civil'];
+$turmas = ['1º', '2º', '3º']
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,13 +22,13 @@
 <body class="container">
     <div>
         <h1 class="sigee">SIGEE</h1>
-        <h1 class="titulo">Perfil do Estudante</h1>
+        <h1 class="titulo">Perfil do {{$aluno->tipo}}</h1>
     </div>
 
     <div class="fundoCadastrarAluno">
 
-    
-    <form class="formRegistroAluno" action="/alunos/editarPerfil/{{$aluno->id}}" method="POST">
+
+        <form class="formRegistroAluno" action="/alunos/editarPerfil/{{$aluno->id}}" method="POST">
             @csrf
             <div class="colunaFormAluno">
 
@@ -31,47 +42,94 @@
                     </div>
 
                 </div>
+                @if ($aluno->tipo == 'Aluno')
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="turma">*Série</label><br>
+                            <select class="selectGenero" type="checkbox" name="curso">
+                                @foreach ($turmas as $item)
+                                    @if ($aux3)
+                                        <option value="{{$aluno->turma}}">{{$aluno->turma}}</option>
+                                        {{$aux3 = false}}
+                                    @endif
+                                    @if ($item != $aluno->turma)
+                                        <option value="{{$item}}">{{$item}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
 
-                <div class="linhaFormAluno">
-                    <div class="campo">
-                        <label for="turma">*Série</label><br>
-                        <select type="checkbox" name="turma" required value="{{$aluno->turma}}">
-                            <option value="1º">1º Ano</option>
-                            <option value="2º">2º Ano</option>
-                            <option value="3º">3º Ano</option>
-                        </select>
+                        <div class="campo">
+                            <label for="curso">*Curso:</label><br>
+                            <select class="selectGenero" type="checkbox" name="curso">
+                                @foreach ($cursos as $item)
+                                    @if ($aux2)
+                                        <option value="{{$aluno->curso}}">{{$aluno->curso}}</option>
+                                        {{$aux2 = false}}
+                                    @endif
+                                    @if ($item != $aluno->curso)
+                                        <option value="{{$item}}">{{$item}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+
                     </div>
 
+
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="dataNascimento">*Data de Nascimento:</label><br>
+                            <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}">
+                        </div>
+                        <div class="campo">
+
+                            <label class="inputMatricula" for="matricula">*Matrícula:</label><br>
+                            <input class="inputMatricula" type="text" name="matricula" required
+                                value="{{$aluno->matricula}}">
+                        </div>
+                    </div>
+
+                    <div class="linhaFormAluno">
+                        <div class="campo">
+                            <label for="genero">*Gênero:</label><br>
+                            <select class="selectGenero" type="checkbox" name="genero">
+                                @foreach ($generos as $genero)
+                                    @if ($aux)
+                                        <option value="{{$aluno->genero}}">{{$aluno->genero}}</option>
+                                        {{$aux = false}}
+                                    @endif
+                                    @if ($genero != $aluno->genero)
+                                        <option value="{{$genero}}">{{$genero}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                @elseif ($aluno->tipo == 'Universitário')
                     <div class="campo">
                         <label for="curso">*Curso:</label><br>
-                        <select type="checkbox" name="curso" required value="{{$aluno->curso}}">
-                            <option value="Edificações">Edificações</option>
-                            <option value="Informática">Informática</option>
-                            <option value="Mecatrônica">Mecatrônica</option>
-                        </select>
-                    </div>
-                    <div class="campo">
-                        <label for="genero">*Gênero:</label><br>
-                        <select type="checkbox" name="genero" required value="{{$aluno->genero}}">
-                            <option value="Masculino">Masculino</option>
-                            <option value="Feminino">Feminino</option>
-                        </select>
-                    </div>
-                </div>
-
-
-                <div class="linhaFormAluno">
-                    <div class="campo">
-                        <label for="dataNascimento">*Data de Nascimento:</label><br>
-                        <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}">
+                        <select class="" type="checkbox" name="curso">
+                                @foreach ($cursosGraduacao as $item)
+                                    @if ($aux4)
+                                        <option value="{{$aluno->curso}}">{{$aluno->curso}}</option>
+                                        {{$aux4 = false}}
+                                    @endif
+                                    @if ($item != $aluno->curso)
+                                        <option value="{{$item}}">{{$item}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                     </div>
                     <div class="campo">
 
                         <label class="inputMatricula" for="matricula">*Matrícula:</label><br>
-                        <input class="inputMatricula" type="text" name="matricula" required
-                            value="{{$aluno->matricula}}">
+                        <input class="inputMatricula" type="text" name="matricula" required value="{{$aluno->matricula}}">
                     </div>
-                </div>
+
+                @endif
+
 
             </div>
             <button class="botaoFormAluno" type="submit">Enviar</button>

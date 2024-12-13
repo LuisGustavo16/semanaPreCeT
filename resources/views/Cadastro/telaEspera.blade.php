@@ -18,6 +18,10 @@
                 <p><span class="label">Telefone:</span> <span class="info">(35) 98828-9379</span></p>
             </div>
         </div>
+        <div class="divLinksLogin">
+                <a class="linkCadastro" href="/login">Entrar como administrador</a>
+                <a class="linkCadastro" href="/CadastroInicial">Se registrar como estudante</a>
+            </div>
     </div>
 </body>
 </html>

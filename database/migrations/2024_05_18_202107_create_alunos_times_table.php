@@ -20,7 +20,7 @@ return new class extends Migration
 
         Schema::table('alunos_times', function(Blueprint $table) {
             $table->foreign('idAluno')->references('id')->on('alunos');
-            $table->foreign('idTime')->references('idTime')->on('times');
+            $table->foreign('idTime')->references('idTime')->on('times')->onDelete('cascade');;
         });
     }
 
