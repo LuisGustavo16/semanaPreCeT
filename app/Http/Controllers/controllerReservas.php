@@ -16,10 +16,12 @@ class controllerReservas extends Controller
     }
     /*Envia todas as reservas de acordo com o tipo para serem listadas*/
     public function index(string $status) {
+        Carbon::setLocale('pt_BR');
         $dados = Reserva::all()->where('status', $status);
         foreach ($dados as $item) {
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->diaSemana = Carbon::parse($item->dia)->translatedFormat('l');
             $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
             $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
         }
@@ -33,6 +35,8 @@ class controllerReservas extends Controller
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         if ($dados->diaCancelamento)
             $dados->diaCancelamento = Carbon::parse($dados->diaCancelamento)->format('d/m');
+            $dados->diaSemana = Carbon::parse($dados->dia)->format('d/m');
+            $dados->diaSemana = Carbon::parse($dados->diaSemana)->translatedFormat('l');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
         $aluno = Aluno::find($dados->idAluno);

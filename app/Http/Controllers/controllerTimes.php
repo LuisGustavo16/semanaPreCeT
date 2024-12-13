@@ -122,4 +122,17 @@ class controllerTimes extends Controller
         $alunos = DB::table('alunos')->select("name", "id", "turma", "curso")->where(DB::raw('lower(name)'), 'like', strtolower($pesquisa) . '%')->where('tipo', 'Aluno')->get();
         return view('Times/mostrarPesquisaAluno', compact('alunos', 'idTime'));
     }
+
+    /*Apagar vários*/
+    public function destroyMany(Request $request) {
+        $dados = $request['times'];
+        if (isset($dados)) {
+            foreach ($dados as $item) {
+                $time = Time::find($item);
+                $time->delete();
+            }
+            return redirect()->route('indexTime')->with('success', 'Times apagados sucesso!!');
+        }
+        return redirect()->route('indexTime')->with('danger', 'Selecione ao menos um time...');
+    }
 }

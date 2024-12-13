@@ -25,7 +25,7 @@ $popup = true;
 
             <div class="campoListarReservaEscolhida">
                 <h1 class="textoSolicitacao">Dia:</h1>
-                <h2>{{$dados->dia}}</h2>
+                <h2>{{$dados->dia}} [{{$dados->diaSemana}}]</h2>
             </div>
 
             <div class="campoListarReservaEscolhida">
@@ -119,7 +119,7 @@ $popup = true;
                     <textarea class="inputPopup" name="observacao" id=""></textarea>
                     <h1 id="textoPopupData">Data do caneclamento:</h1>
                     <input class="diaCancelamento" type="date" name="diaCancelamento">
-                    <a onclick="togglePopup(true, 'aceitar')" class="cancelarPopup" href="#">Cancelar</a>
+                    <a onclick="togglePopup(true, 'cancelarDia')" class="cancelarPopup" href="#">Cancelar</a>
                     <button type="submit" class="aceitarPopup" href="#">Enviar</button>
                 </form>
             </div>

@@ -52,7 +52,7 @@ $classe = 'branco';
                 }
                                 ?>
                         <tr class="{{$classe}}">
-                            <td>{{$item->dia}}
+                            <td>{{$item->dia}} [{{$item->diaSemana}}]
                                 @if ($item->tipo == 'regular' && $item->diaCancelamento != null)
                                     (Cancelada) 
                                 @endif

@@ -143,6 +143,7 @@ Route::get('/times/retirarAluno/{idAluno}/{idTime}', [App\Http\Controllers\contr
 Route::get ('/times/enviaModalidades', [App\Http\Controllers\controllerTimes::class, 'enviaModalidade'])->name('enviaModalidadeTimes'); 
 Route::post ('/times/mostrarAlunosPesquisa/{idTime}', [App\Http\Controllers\controllerTimes::class, 'mostrarAlunosPesquisa'])->name('pesquisarAluno');
 Route::get ('/times/formPesquisarAluno/{idTime}', [App\Http\Controllers\controllerTimes::class, 'pesquisarAluno']); 
+Route::post('/times/apagarVarios', [App\Http\Controllers\controllerTimes::class, 'destroyMany']);
 
 
 ////////////////////////////////////////////////

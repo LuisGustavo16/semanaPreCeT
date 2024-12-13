@@ -2,9 +2,30 @@
 $aux = false;
 $classe = 'branco';
 ?>
+<script>
+    function statusNotificacao() {
+        const notificacao = document.getElementsByClassName("divNotificacao")[0];
+        notificacao.style.display = 'none';
+    }
+</script>
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
+<form class="formularioTreinoEscondido" action="/times/apagarVarios" method="post">
+        @csrf
+        <div class="divNotificacao" style="display: flex;">
+                @if(session()->get('danger'))
+                    <div class="danger">
+                        {{ session()->get('danger') }}
+                        <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
+                    </div>
+                @elseif (session()->get('success'))
+                    <div class="success">
+                        {{ session()->get('success') }}
+                        <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
+                    </div>
+                @endif
+        </div>
     <table>
         <caption>TIMES</caption>
         <thead>
@@ -26,6 +47,9 @@ $classe = 'branco';
                 }
                                         ?>
                         <tr class="{{$classe}}">
+                        <td>
+                            <input class="checkboxTimes" type="checkbox" name="times[]" value="{{$item->idTime}}">
+                        </td>
                             <td>{{$item->nomeModalidade}} {{$item->genero}}</td>
                             <td>{{$item->competicao}}</td>
                             <td>
@@ -45,5 +69,9 @@ $classe = 'branco';
             @endforeach
         </tbody>
     </table>
+    <div class="divCentralizaBotaoApagarTimes">
+            <button class="botaoApagarSelecionados" type="submit">Apagar selecionados</button>
+        </div>
+        </form>
 </div>
 @endsection

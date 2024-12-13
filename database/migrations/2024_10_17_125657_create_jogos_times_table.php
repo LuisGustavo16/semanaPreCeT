@@ -23,7 +23,7 @@ return new class extends Migration
         });
 
         Schema::table('jogos_times', function(Blueprint $table) {
-            $table->foreign('idTime')->references('idTime')->on('times');
+            $table->foreign('idTime')->references('idTime')->on('times')->onDelete('cascade');;
         });
     }
 
