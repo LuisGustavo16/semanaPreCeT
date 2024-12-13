@@ -13,6 +13,7 @@ import '../css/cronograma.css';
 import '../css/jogo.css';
 import '../css/aluno.css';
 import '../css/login.css';
+import '../css/mensagem.css';
 
 /*Padrão do laravel*/
 import '../scss/app.scss';

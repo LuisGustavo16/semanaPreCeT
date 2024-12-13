@@ -140,4 +140,61 @@ class controllerAluno extends Controller
             ]);
         }
     }
+
+
+    /*teste <mensagens>*/
+    // listar e pesquisar alunos
+    public function pesquisarAlunos(Request $request)
+{
+    $query = $request->get('query');
+    $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
+        ->orWhere('email', 'LIKE', '%' . $query . '%')
+        ->get();
+
+    return view('Mensagens.pesquisarAlunos', compact('alunos'));
+}
+
+//enviar mensagens
+public function enviarMensagem(Request $request, string $idAluno)
+{
+    $request->validate([
+        'conteudo' => 'required|string|max:500',
+    ]);
+
+    Mensagem::create([
+        'idAluno' => $idAluno,
+        'conteudo' => $request->conteudo,
+        'dia' => now()->format('Y-m-d'),
+        'horario' => now()->format('H:i:s'),
+    ]);
+
+    return redirect()->route('pesquisarAlunos')->with('success', 'Mensagem enviada com sucesso!');
+}
+
+public function formEnviarMensagem($idAluno)
+{
+    $aluno = Aluno::find($idAluno);
+
+    if (!$aluno) {
+        return redirect()->route('pesquisarAlunos')->with('error', 'Aluno não encontrado.');
+    }
+
+    return view('Mensagens.enviarMensagem', compact('aluno'));
+}
+
+public function pesquisarAlunosAjax(Request $request)
+{
+    // Pega a pesquisa
+    $query = $request->get('query');
+    
+    // Realiza a busca
+    $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
+        ->orWhere('email', 'LIKE', '%' . $query . '%')
+        ->get();
+
+    // Retorna a resposta em formato JSON
+    return response()->json($alunos);
+}
+
+
 }

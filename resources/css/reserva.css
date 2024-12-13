@@ -209,6 +209,17 @@
     border: 0;
 }
 
-.campoListarTreinoEscolhidoLinha {
+.apagarantigas {
+    background-color: var(--bottonRecuse);
+    width: 250px;
+    height: 40px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top: 25;
+}
 
+.text {
+    color: black;
+    font-size: large;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;;;
 }

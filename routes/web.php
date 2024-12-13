@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TreinoAmistosoController;
+use App\Http\Controllers\controllerAluno;
 
 // Rotas para a autenticação
 Auth::routes();
@@ -128,7 +129,7 @@ Route::get ('/reservas/reservaEscolhida/{idReserva}', [App\Http\Controllers\cont
 Route::post('/reservas/apagar/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'destroy']); // Rota que apaga uma solicitação de reserva
 Route::post('/reservas/aceitarReserva/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'aceitarReserva']);
 Route::post('/reservas/cancelarRegular/{idReserva}', [App\Http\Controllers\controllerReservas::class, 'cancelarRegular']);
-
+Route::get('/treino_amistosos/apagarReservasAntigas', [App\Http\Controllers\controllerReservas::class, 'apagarReservasAntigas'])->name('apagarReservasAntigas'); // Rota para apagar as reservas antigas
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Times*/
@@ -196,3 +197,10 @@ Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno:
 //////////////////////////////////////////////////////////
 Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma');
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
+
+Route::get('/mensagens/pesquisar', [controllerAluno::class, 'pesquisarAlunos'])->name('pesquisarAlunos');
+Route::get('/mensagens/enviar/{idAluno}', [controllerAluno::class, 'formEnviarMensagem'])->name('formEnviarMensagem');
+Route::post('/mensagens/enviar/{idAluno}', [controllerAluno::class, 'enviarMensagem'])->name('enviarMensagem');
+
+// Rota para pesquisar alunos via AJAX
+Route::get('/pesquisarAlunosAjax', [ControllerAluno::class, 'pesquisarAlunosAjax'])->name('pesquisarAlunosAjax');

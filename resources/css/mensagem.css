@@ -1,0 +1,56 @@
+/* Estilos gerais */
+.fundo {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.formPesquisarAluno {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.formPesquisarAluno input {
+    padding: 10px;
+    width: 300px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.alunosTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.alunosTable th, .alunosTable td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.alunosTable th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.alunosTable tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.alunosTable tr:hover {
+    background-color: #f1f1f1;
+}
+
+.alunosTable td a {
+    text-decoration: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: #007bff;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+
+

@@ -103,5 +103,14 @@ class controllerReservas extends Controller
         session()->flash('message', 'Reserva regular cancelada com sucesso para o dia ' . $dia . ".");
         return redirect()->route('indexReserva', ['status' => 'A']);
     }
+
+    public function apagarReservasAntigas() {
+        $dataHoje = new Carbon();
+        $dados = Reserva::where('dia', '<', $dataHoje)->get();
+        foreach ($dados as $item) {
+            $item->delete();
+        }
+        return redirect()->route('indexReserva')->with('success', 'Reservas apagadas com sucesso!!');
+    }
     
 }
