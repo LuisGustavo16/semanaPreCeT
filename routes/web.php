@@ -142,7 +142,6 @@ Route::get('/times/editar/{idTime}', [App\Http\Controllers\controllerTimes::clas
 Route::get('/times/apagar/{idTime}', [App\Http\Controllers\controllerTimes::class, 'destroy']); // Rota para apagar
 Route::get('/times/retirarAluno/{idAluno}/{idTime}', [App\Http\Controllers\controllerTimes::class, 'deleteAlunoTime']);
 Route::get ('/times/enviaModalidades', [App\Http\Controllers\controllerTimes::class, 'enviaModalidade'])->name('enviaModalidadeTimes'); 
-Route::post ('/times/mostrarAlunosPesquisa/{idTime}', [App\Http\Controllers\controllerTimes::class, 'mostrarAlunosPesquisa'])->name('pesquisarAluno');
 Route::get ('/times/formPesquisarAluno/{idTime}', [App\Http\Controllers\controllerTimes::class, 'pesquisarAluno']); 
 Route::post('/times/apagarVarios', [App\Http\Controllers\controllerTimes::class, 'destroyMany']);
 
@@ -185,7 +184,7 @@ Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
-Route::get ('/alunos/adicionarAluno/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])/*-> middleware('auth')*/;
+Route::get ('/alunos/adicionarAluno/{idAluno}/{idTime}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])/*-> middleware('auth')*/;
 Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])/*-> middleware('auth')*/;
 Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")/*-> middleware('auth')*/;
 Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])/*-> middleware('auth')*/;
@@ -199,8 +198,8 @@ Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'i
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
 
 Route::get('/mensagens/pesquisar', [controllerAluno::class, 'pesquisarAlunos'])->name('pesquisarAlunos');
-Route::get('/mensagens/enviar/{idAluno}', [controllerAluno::class, 'formEnviarMensagem'])->name('formEnviarMensagem');
-Route::post('/mensagens/enviar/{idAluno}', [controllerAluno::class, 'enviarMensagem'])->name('enviarMensagem');
+Route::get('/mensagens/formEnviar/{idAluno}', [controllerAluno::class, 'formEnviarMensagem'])->name('formEnviar');
+Route::post('/mensagens/enviarMensagem/{idAluno}', [controllerAluno::class, 'enviarMensagem'])->name('enviarMensagem');
 
 // Rota para pesquisar alunos via AJAX
 Route::get('/pesquisarAlunosAjax', [ControllerAluno::class, 'pesquisarAlunosAjax'])->name('pesquisarAlunosAjax');

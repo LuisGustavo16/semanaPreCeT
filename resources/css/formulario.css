@@ -124,38 +124,27 @@ button.botao:hover {
 }
 
 .fundoPesquisarAluno {
-    display:grid;
+    display: grid;
     align-items: center;
     justify-content: center;
-    height: 100%;
-    padding-bottom: 4rem;
-    grid-template-columns: repeat(1, -30rem);
-    grid-template-rows: repeat(2, 24rem);
+    width: 100%;
+    height: 2rem;
 }
 
 .formPesquisarAluno {
-    padding-top: 3rem;
-    height: 5rem;
-    width: 30rem;
+    padding-top: 0rem;
+    background-color: var(--white);
+    border: 0rem solid var(--white);
+    box-shadow: 0rem 0rem black;
+    padding: 0rem;
+    margin: 0rem;
+    margin-top: 4rem;
+    height: 4rem;
 }
 
-.formPesquisarAluno input {
-    width: 24rem;
-}
-
-.botaoPesquisarAluno {
-    position:relative;
-    height: 2rem;
-    width: 10rem;
-    border-radius: 2rem;
-    background-color: var(--blue);
-    color: white;
-    font-size: 1.2rem;
-    font-family: "Inter", sans-serif;
-    border: 0;
-    cursor: pointer;
-    bottom: -4rem;
-    left: -20.5rem;
+#search {
+    width: 100%;
+    margin: 0rem;
 }
 
 .centralizaForm {

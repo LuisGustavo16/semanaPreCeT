@@ -50,23 +50,6 @@
     padding-right: 30px;
 }
 
-/*Página de pesquisa do aluno para adicionar ao time*/
-.fundoPesquisarAluno {
-    display: grid;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    padding-bottom: 4rem;
-    grid-template-columns: repeat(1, -30rem);
-    grid-template-rows: repeat(2, 24rem);
-}
-
-.formPesquisarAluno {
-    padding-top: 3rem;
-    height: 5rem;
-    width: 30rem;
-}
-
 .formPesquisarAluno input {
     width: 24rem;
 }

@@ -1,14 +1,4 @@
 /* Estilos gerais */
-.fundo {
-    padding: 20px;
-    background-color: #f9f9f9;
-}
-
-.formPesquisarAluno {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
 
 .formPesquisarAluno input {
     padding: 10px;
@@ -19,7 +9,7 @@
 }
 
 .alunosTable {
-    width: 100%;
+    width: 80rem;
     border-collapse: collapse;
     margin-top: 20px;
 }

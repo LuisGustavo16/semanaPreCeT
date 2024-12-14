@@ -188,8 +188,8 @@ public function pesquisarAlunosAjax(Request $request)
     $query = $request->get('query');
     
     // Realiza a busca
-    $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
-        ->orWhere('email', 'LIKE', '%' . $query . '%')
+    $alunos = Aluno::where('name', 'LIKE', '' . $query . '%')
+        ->orWhere('email', 'LIKE', ''. $query . '%')
         ->get();
 
     // Retorna a resposta em formato JSON

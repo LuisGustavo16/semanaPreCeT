@@ -116,13 +116,6 @@ class controllerTimes extends Controller
         return view('Times/pesquisarAluno', compact('idTime', 'alunos'));
     }
 
-    /*Envia os dados dos alunos para poder adicionar no time*/
-    public function mostrarAlunosPesquisa(Request $request, string $idTime) {
-        $pesquisa = $request->input('nomeAluno');
-        $alunos = DB::table('alunos')->select("name", "id", "turma", "curso")->where(DB::raw('lower(name)'), 'like', strtolower($pesquisa) . '%')->where('tipo', 'Aluno')->get();
-        return view('Times/mostrarPesquisaAluno', compact('alunos', 'idTime'));
-    }
-
     /*Apagar vários*/
     public function destroyMany(Request $request) {
         $dados = $request['times'];
