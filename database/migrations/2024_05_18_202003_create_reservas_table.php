@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->string('observacao')->nullable();
             $table->integer('numeroPessoas');
+            $table->date('diaEncerramento')->nullable();
             $table->timestamps();
         });
 

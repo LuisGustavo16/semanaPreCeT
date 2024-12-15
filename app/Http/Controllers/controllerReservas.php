@@ -14,6 +14,18 @@ class controllerReservas extends Controller
    public function __construct () {
         $this -> middleware('auth');
     }
+
+    private function gerarMensagemAutomatica($idAluno, $conteudo)
+    {
+        //Cria a mensagem para enviar ao aluno
+        $mensagem = new Mensagem();
+        $mensagem->conteudo = $conteudo;
+        $mensagem->idAluno = $idAluno;
+        $mensagem->dateTime = Carbon::now();
+        $mensagem->tipo = 'Sistema';
+        $mensagem->save();
+    }
+
     /*Envia todas as reservas de acordo com o tipo para serem listadas*/
     public function index(string $status) {
         Carbon::setLocale('pt_BR');
@@ -50,15 +62,6 @@ class controllerReservas extends Controller
         $dados->observacao = $request->input('observacao');
         $dados->status = 'N';
         $dados->save();
-
-        //Cria a mensagem para enviar ao aluno
-        $mensagem = new Mensagem();
-        $diaReserva = Carbon::parse($dados->dia)->format('d/m');
-        $mensagem->conteudo = "Sua reserva no " . $dados->local . " do dia " . $diaReserva . " foi cancelada, pelo seguinte motivo: " .  $dados->observacao;
-        $mensagem->idAluno = $dados->idAluno;
-        $mensagem->dia = Carbon::now();
-        $mensagem->horario = Carbon::now();
-        $mensagem->save();
         return redirect()->route('indexReserva', ['status' => $status]);
 
     }
@@ -70,13 +73,10 @@ class controllerReservas extends Controller
         $reserva->save();
 
         //Cria a mensagem para enviar ao aluno
-        $mensagem = new Mensagem();
         $diaReserva = Carbon::parse($reserva->dia)->format('d/m');
-        $mensagem->conteudo = "Sua reserva no " . $reserva->local . " do dia " . $diaReserva . " foi aceita, com  aseguinte observação: " . $reserva->observacao;
-        $mensagem->idAluno = $reserva->idAluno;
-        $mensagem->dia = Carbon::now();
-        $mensagem->horario = Carbon::now();
-        $mensagem->save();
+        $this->gerarMensagemAutomatica($reserva->idAluno, "Sua reserva no " . $reserva->local . " do dia " . 
+            $diaReserva . " foi aceita, com  a seguinte observação: " . $reserva->observacao);
+
         return redirect()->route('indexReserva', ['status' => 'P']);
     }
 
@@ -103,14 +103,4 @@ class controllerReservas extends Controller
         session()->flash('message', 'Reserva regular cancelada com sucesso para o dia ' . $dia . ".");
         return redirect()->route('indexReserva', ['status' => 'A']);
     }
-
-    public function apagarReservasAntigas() {
-        $dataHoje = new Carbon();
-        $dados = Reserva::where('dia', '<', $dataHoje)->get();
-        foreach ($dados as $item) {
-            $item->delete();
-        }
-        return redirect()->route('indexReserva')->with('success', 'Reservas apagadas com sucesso!!');
-    }
-    
 }

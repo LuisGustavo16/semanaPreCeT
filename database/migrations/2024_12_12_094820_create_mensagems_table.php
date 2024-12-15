@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string("conteudo");
-            $table->date("dia");
-            $table->time("horario");
+            $table->string('tipo');
+            $table->dateTime("dateTime");
             $table->unsignedBigInteger('idAluno');
         });
 

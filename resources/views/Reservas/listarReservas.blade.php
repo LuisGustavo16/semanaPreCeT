@@ -66,10 +66,6 @@ $classe = 'branco';
                         </tr>
             @endforeach
         </tbody>
-        <div class='apagarantigas'>
-        <a class='text' onclick="return confirm('Deseja apagar todas as reservas antigas?')"
-        href="{{route('apagarReservasAntigas')}}">Apagar reservas antigas</a>
-        </div>
         
     </table>
     

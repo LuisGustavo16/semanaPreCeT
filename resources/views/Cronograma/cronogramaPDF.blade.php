@@ -4,14 +4,14 @@ $aux = 1;
 
 if (!function_exists('confereDia')) {
     /*Caso tenha dias iguais, une as células*/
-    function confereDia($data, $treinosConefrir, $posicaoAtual)
+    function confereDia($data, $atvConefrir, $posicaoAtual)
     {
         $qtdLinhas = 0;
-        for ($i = 0; $i < count($treinosConefrir); $i++) {
-            if (($posicaoAtual + $i) < (count($treinosConefrir))) {
-                $treino = $treinosConefrir[$posicaoAtual + $i];
-                $diaTreino = str($treino->dia);
-                if (($data) == ($diaTreino)) {
+        for ($i = 0; $i < count($atvConefrir); $i++) {
+            if (($posicaoAtual + $i) < (count($atvConefrir))) {
+                $item = $atvConefrir[$posicaoAtual + $i];
+                $diaAtv = str($item['dia']);
+                if (($data) == ($diaAtv)) {
                     $qtdLinhas++;
                 }
             }
@@ -105,39 +105,43 @@ if (!function_exists('confereDia')) {
             <h1 class="caption">Programção Esportiva {{$inicioSemana}} - {{$fimSemana}}</h1>
             <h1 class="subtitulo">CEFET-MG Campus Varginha</h1>
         </div>
-        <table>
+        <table class="tabelaCronograma">
             <thead>
-                <th>Data</th>
-                <th>Horário</th>
-                <th>Modalidade</th>
-                <th>Gênero</th>
-                <th>Público</th>
-                <th>Local</th>
-                <th>Responsável</th>
+                <th class="thCronograma">Data</th>
+                <th class="thCronograma">Atividade</th>
+                <th class="thCronograma">Horário</th>
+                <th class="thCronograma">Modalidade</th>
+                <th class="thCronograma">Local</th>
+                <th class="thCronograma">Gênero/Time</th>
+                <th class="thCronograma">Público</th>
+                <th class="thCronograma">Responsável</th>
             </thead>
             <tbody>
-                @foreach ($treinos as $treino)
-                    @foreach ($modalidades as $modalidade)
-                        @if ($modalidade->idModalidade == $treino->idModalidade)
-                            <tr>
-                                @if ($aux == 1)
-                                    <?php                $aux = confereDia($treino->dia, $treinos, $j)?>
-                                    <td rowspan="{{confereDia($treino->dia, $treinos, $j)}}">{{$treino->dia}}</td>
-                                @else
-                                    <?php                $aux--; ?>
-                                @endif
-                                <td>{{$treino->horario}}</td>
-                                <td>{{$modalidade->nome}}</td>
-                                <td>{{$treino->genero}}</td>
-                                <td>{{$treino->publico}}</td>
-                                <td>{{$treino->local}}</td>
-                                <td>{{$treino->responsavel}}</td>
-                            </tr>
-                            <?php            $j++; ?>
+                @foreach ($atividades as $item)
+                    <tr>
+                        @if ($aux == 1)
+                            <?php        $aux = confereDia($item['dia'], $atividades, $j)?>
+                            <td class="tdCronograma" rowspan="{{confereDia($item['dia'], $atividades, $j)}}">{{$item['dia']}}
+                            </td>
+                        @else
+                            <?php        $aux--; ?>
                         @endif
-                    @endforeach
+                        <td class="tdCronograma">{{$item['tipo']}}</td>
+                        <td class="tdCronograma">{{$item['horarioInicio']}} - {{$item['horarioFim']}}</td>
+                        <td class="tdCronograma">{{$item['modalidade']}}</td>
+                        <td class="tdCronograma">{{$item['local']}}</td>
+                        @if ($item['tipo'] == 'Treino')
+                            <td class="tdCronograma">{{$item['genero']}}</td>
+                            <td class="tdCronograma">{{$item['publico']}}</td>
+                            <td class="tdCronograma">{{$item['responsavel']}}</td>
+                        @else
+                            <td class="tdCronograma">{{$item['time']}}</td>
+                            <td class="tdCronograma">---</td>
+                            <td class="tdCronograma">---</td>
+                        @endif
+                    </tr>
+                    <?php    $j++; ?>
                 @endforeach
-
             </tbody>
         </table>
     </div>

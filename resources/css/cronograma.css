@@ -26,11 +26,13 @@
 .tableCronograma, .tdCronograma {
     border: 0.1rem solid black;
     background-color: var(--yellow);
+    text-align: center;
  }
 
  .tableCronograma, .thCronograma {
     border: 0.1rem solid black;
     background-color: var(--yellow);
+    text-align: center;
  }
 
  .tableCronograma, .tr {

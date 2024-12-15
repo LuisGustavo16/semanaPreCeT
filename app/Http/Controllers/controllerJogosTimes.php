@@ -16,6 +16,17 @@ class controllerJogosTimes extends Controller
     {
         $this->middleware('auth');
     }
+
+    private function gerarMensagemAutomatica($idAluno, $conteudo)
+    {
+        //Cria a mensagem para enviar ao aluno
+        $mensagem = new Mensagem();
+        $mensagem->conteudo = $conteudo;
+        $mensagem->idAluno = $idAluno;
+        $mensagem->dateTime = Carbon::now();
+        $mensagem->tipo = 'Sistema';
+        $mensagem->save();
+    }
     public function index()
     {
         $dados = JogosTimes::all();
@@ -53,13 +64,8 @@ class controllerJogosTimes extends Controller
         $modalidade = Modalidade::find($time->idModalidade);
         $timesAlunos = AlunosTime::where("idTime", $idTime)->get();
         foreach ($timesAlunos as $item) {
-            $mensagem = new Mensagem();
-            $mensagem->conteudo = 'Um novo jogo foi cadastrado no time ' . $modalidade->nome . ' ' . $time->genero . ', para o dia ' .
-                $dados->dia . '. Veja as informações detalhadas na página de times.';
-            $mensagem->idAluno = $item->idAluno;
-            $mensagem->dia = Carbon::now();
-            $mensagem->horario = Carbon::now();
-            $mensagem->save();
+            $this->gerarMensagemAutomatica($item->idAluno, 'Um novo jogo foi cadastrado no time ' . $modalidade->nome .
+             ' ' . $time->genero . ', para o dia ' . $dados->dia . '. Veja as informações detalhadas na página de times.');
         }
         return redirect()->route('verTime', ['idTime' => $idTime]);
     }

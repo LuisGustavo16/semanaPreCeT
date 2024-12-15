@@ -1,5 +1,18 @@
 /* Estilos gerais */
 
+:root {
+    /*Cores do Site*/
+    --white: #E6E8F4;
+    --blue: #00198E;
+    --yellow: #FFDF2B;
+    --orange: #FFC24B;
+    --yellowSecondary: #FFF1A8;
+    --bottonAccept: #A2F294;
+    --bottonAcceptSecondary: #4F9552;
+    --bottonRecuse: #F87D7D;
+    --bottonRecuseSecondary: #AC3C3C;
+}
+
 .formPesquisarAluno input {
     padding: 10px;
     width: 300px;
@@ -42,5 +55,67 @@
     margin-right: 5px;
 }
 
+.formChat {
+    border-radius: 2rem;
+    box-shadow: 0rem 0rem 1rem var(--white);
+    margin: 5rem;
+    margin-top: 3rem;
+    padding: 3rem;
+    padding-top: 0;
+    background-color: var(--white);
+    border: 0px solid black;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
 
+.textChat {
+    height: 1.8rem;
+    width: 40rem;
+    resize: both;
+    background-color: white;
+}
 
+.botaoChat {
+    height: 2rem;
+    background-color: var(--blue);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.botaoChat:hover {
+    box-shadow: 0.1rem 0.1rem 0.5rem black;
+}
+
+.tabelaRolagemMensagem {
+    width: 900px;
+    height: 390px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: grid;
+    border: 2px solid black;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.cardMensagem {
+    background-color: white;
+    margin-bottom: 2rem;
+    display: block;
+    align-items: center;
+    padding: 1.4rem;
+    border-radius: 2rem;
+}
+
+.h3Mensagem {
+    padding: 0rem;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+.h6Mensagem {
+    font-weight: 400;
+    font-size: 1.4rem;
+}

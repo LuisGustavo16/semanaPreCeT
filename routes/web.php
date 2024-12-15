@@ -129,7 +129,6 @@ Route::get ('/reservas/reservaEscolhida/{idReserva}', [App\Http\Controllers\cont
 Route::post('/reservas/apagar/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'destroy']); // Rota que apaga uma solicitação de reserva
 Route::post('/reservas/aceitarReserva/{idReserva}/{status}', [App\Http\Controllers\controllerReservas::class, 'aceitarReserva']);
 Route::post('/reservas/cancelarRegular/{idReserva}', [App\Http\Controllers\controllerReservas::class, 'cancelarRegular']);
-Route::get('/treino_amistosos/apagarReservasAntigas', [App\Http\Controllers\controllerReservas::class, 'apagarReservasAntigas'])->name('apagarReservasAntigas'); // Rota para apagar as reservas antigas
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Times*/

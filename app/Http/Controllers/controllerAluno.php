@@ -21,6 +21,17 @@ class controllerAluno extends Controller
     use ApiResponse;
     use HasApiTokens;
 
+    private function gerarMensagemAutomatica($idAluno, $conteudo)
+    {
+        //Cria a mensagem para enviar ao aluno
+        $mensagem = new Mensagem();
+        $mensagem->conteudo = $conteudo;
+        $mensagem->idAluno = $idAluno;
+        $mensagem->dateTime = Carbon::now();
+        $mensagem->tipo = 'Sistema';
+        $mensagem->save();
+    }
+
     public function adicionaAlunoTime(string $idAluno, string $idTime)
     {
         $verificador = AlunosTime::where('idAluno', $idAluno)->where('idTime', $idTime)->first();
@@ -33,13 +44,8 @@ class controllerAluno extends Controller
             //Cria a mensagem para enviar ao aluno
             $time = Time::find($idTime);
             $modalidade = Modalidade::find($time->idModalidade);
-            $mensagem = new Mensagem();
-            $mensagem->conteudo = 'Você foi adicionado ao time ' . $modalidade->nome . ' ' . $time->genero . 
-            ' Veja as informações detalhadas na página de times.';
-            $mensagem->idAluno = $dados->idAluno;
-            $mensagem->dia = Carbon::now();
-            $mensagem->horario = Carbon::now();
-            $mensagem->save();
+            $this->gerarMensagemAutomatica($idAluno, 'Você foi adicionado ao time ' . 
+            $modalidade->nome . ' ' . $time->genero . '. Veja as informações detalhadas na página de times.');
         }
         return redirect()->route('verTime', ['idTime' => $idTime]);
     }
@@ -150,7 +156,7 @@ class controllerAluno extends Controller
     $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
         ->orWhere('email', 'LIKE', '%' . $query . '%')
         ->get();
-
+    
     return view('Mensagens.pesquisarAlunos', compact('alunos'));
 }
 
@@ -164,8 +170,8 @@ public function enviarMensagem(Request $request, string $idAluno)
     Mensagem::create([
         'idAluno' => $idAluno,
         'conteudo' => $request->conteudo,
-        'dia' => now()->format('Y-m-d'),
-        'horario' => now()->format('H:i:s'),
+        'dateTime' => Carbon::now(),
+        'tipo' => 'Professora Gabriela'
     ]);
 
     return redirect()->route('pesquisarAlunos')->with('success', 'Mensagem enviada com sucesso!');
@@ -178,8 +184,8 @@ public function formEnviarMensagem($idAluno)
     if (!$aluno) {
         return redirect()->route('pesquisarAlunos')->with('error', 'Aluno não encontrado.');
     }
-
-    return view('Mensagens.enviarMensagem', compact('aluno'));
+    $mensagens = Mensagem::where('idAluno', $aluno->id)->orderByDesc('dateTime')->get();
+    return view('Mensagens.enviarMensagem', compact('aluno', 'mensagens'));
 }
 
 public function pesquisarAlunosAjax(Request $request)
