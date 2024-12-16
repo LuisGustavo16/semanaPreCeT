@@ -14,7 +14,7 @@
 /*CSS das tabelas dos treinos*/
 .linkIcone {
     text-decoration: none;
-    
+
 }
 
 .icone {
@@ -33,15 +33,15 @@
 
 /*CSS da pagina de um treino especifico*/
 .divListarTreinoEscolhido {
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(4, 13rem);
     grid-template-rows: repeat(3, 5rem);
 }
 
 .pageListarTreinoEscolhido {
-    display:grid;
+    display: grid;
     width: 100%;
-    height:100%;
+    height: 100%;
     padding-left: 3rem;
     grid-template-columns: repeat(2, 45rem);
     grid-template-rows: repeat(1, 5rem);
@@ -51,15 +51,15 @@
     width: 56rem;
 }
 
-.divListar .observacao h2{
+.divListar .observacao h2 {
     width: 55rem;
     max-width: 45rem;
-    word-wrap:break-word;
+    word-wrap: break-word;
     align-items: center;
     justify-content: center;
 }
 
-.divListar .observacao{
+.divListar .observacao {
     padding-top: 5.9rem;
 }
 
@@ -72,7 +72,7 @@
     font-size: 1rem;
 }
 
-.botoes a{
+.botoes a {
     text-decoration: none;
     position: relative;
     bottom: -9.5rem;
@@ -153,9 +153,12 @@
 .linhaTituloTreino {
     padding-left: 0.8rem;
     display: grid;
-    grid-template-columns: repeat(2, 28rem);
-    border-bottom: 1px solid black;
+    grid-template-columns: repeat(3, 15rem);
     font-family: "Inter", sans-serif;
+}
+
+.linhaTituloTreino h1 {
+    font-size: 1.4rem;
 }
 
 .linhaInformacoesTreino {
@@ -164,8 +167,8 @@
     font-size: 0.9rem;
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(2, 26rem);
-    grid-template-rows: repeat(2, 1rem);
+    grid-template-columns: repeat(3, 15rem);
+    grid-template-rows: repeat(2, 2.6rem);
 }
 
 .tabelaRolagemTreino {
@@ -177,5 +180,61 @@
 }
 
 .h1RolagemTreino {
-   width: 2rem; 
+    width: 2rem;
+}
+
+.formularioEscondidoAlunos {
+    border-radius: 0rem;
+    box-shadow: 0rem 0rem 0rem var(--white);
+    margin: 0rem;
+    margin-top: 0rem;
+    padding: 0rem;
+    padding-top: 0;
+    background-color: transparent;
+    border: 0px solid black;
+    height: 100%;
+    width: 25rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1rem);
+    grid-template-rows: repeat(3, 5rem);
+}
+
+.botaoMarcarPresenca {
+    font-size: 1.4rem;
+    color: var(--white);
+    background-color: var(--blue);
+    margin-right: 2rem;
+    font-family: "Inter", sans-serif;
+    border-radius: 1rem;
+    width: 16rem;
+    position: absolute;
+    bottom: 12rem;
+    right: 15rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.botaoMarcarPresenca:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
+}
+
+.gerarPDF {
+    font-size: 1.4rem;
+    color: var(--white);
+    background-color: var(--blue);
+    margin-right: 2rem;
+    font-family: "Inter", sans-serif;
+    border-radius: 1rem;
+    width: 10rem;
+    height: 2rem;
+    position: absolute;
+    bottom: 12rem;
+    right: 35rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.gerarPDF:hover {
+    box-shadow: 0.1rem 0.1rem 1rem black;
 }

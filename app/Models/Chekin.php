@@ -9,7 +9,7 @@ class Chekin extends Model
 {
     use HasFactory;
     protected $primaryKey = 'idCheckin';
-    protected $fillable = ['idAluno', 'idTreino'];
+    protected $fillable = ['idAluno', 'idTreino', 'situacao'];
     
     public function Aluno()
     {

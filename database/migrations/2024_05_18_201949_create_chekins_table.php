@@ -15,6 +15,7 @@ return new class extends Migration
             $table->bigIncrements('idCheckin');
             $table->unsignedBigInteger('idAluno');
             $table->unsignedBigInteger('idTreino');
+            $table->boolean('situacao')->nullable();
             $table->timestamps();
     
             // Definição das chaves estrangeiras

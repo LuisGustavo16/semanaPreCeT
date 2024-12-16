@@ -177,6 +177,5 @@ class controllerCronograma extends Controller
         // Enviando o PDF para o navegador
         return $dompdf->stream('treinos.pdf');
 
-
     }
 }

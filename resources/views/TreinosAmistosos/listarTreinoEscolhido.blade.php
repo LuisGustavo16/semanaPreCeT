@@ -1,3 +1,4 @@
+
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
@@ -55,19 +56,27 @@
         </div>
 
         <div class="listarTreinoEscolhido">
-            <div class="linhaTituloTreino">
-                <h1>Nome</h1>
-                <h1 class="h1RolagemTreino">Curso</h1>
-            </div>
-            <div class="tabelaRolagemTreino">
-                @foreach ($chekins as $item)
-                    <div class="linhaInformacoesTreino">
-                        <h2>{{$item->nomeAluno}}</h2>
-                        <h2>{{$item->turmaAluno}}</h2>
-                    </div>
-                @endforeach
-            </div>
+            <form class="formularioEscondidoAlunos" action="/treino_amistosos/marcarPresenca/{{$dados->idTreino}}" method="post">
+                @csrf
+                <div class="linhaTituloTreino">
+                    <h1>Nome</h1>
+                    <h1>Curso</h1>
+                    <h1>Marcar presença</h1>
+                </div>
+                <div class="tabelaRolagemTreino">
+                    @foreach ($chekins as $item)
+                        <div class="linhaInformacoesTreino">
+                            <h2 style="font-size: 1.2rem">{{$item->nomeAluno}}</h2>
+                            <h2 style="font-size: 1.2rem;">{{$item->turmaAluno}}</h2>
+                            <input class="checkboxCheckins" type="checkbox" name="checkins[]" value="{{$item->idCheckin}}"
+                                {{ $item->situacao ? 'checked' : '' }}>
+                        </div>
+                    @endforeach
+                </div>
+                <button class="botaoMarcarPresenca" type="submit">Marcar presença</button>
+            </form>
         </div>
     </div>
+    <a class="gerarPDF" href="/treino_amistosos/gerarPDF/{{$dados->idTreino}}">Gerar PDF</a>
 </div>
 @endsection

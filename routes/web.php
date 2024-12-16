@@ -111,6 +111,8 @@ Route::get('/treino_amistosos/apagar/{idTreino}', [App\Http\Controllers\controll
 Route::get('/treino_amistosos/verTreino/{idTreino}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'verTreino']); // Rota que envia o dado para ser vizualizado
 Route::post('/treino_amistosos/apagarVarios', [App\Http\Controllers\controllerTreinoAmistoso::class, 'destroyMany']); // Rota para apagar vários
 Route::get('/treino_amistosos/apagarTreinosAntigos', [App\Http\Controllers\controllerTreinoAmistoso::class, 'apagarTreinosAntigos'])->name('apagarTreinosAntigos'); // Rota para apagar os treinos antigos
+Route::post('/treino_amistosos/marcarPresenca/{id}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'marcarPresenca']); // Rota para marcar presença
+Route::get('/treino_amistosos/gerarPDF/{id}', [App\Http\Controllers\controllerTreinoAmistoso::class, 'gerarPDF']);
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Modalidades*/
@@ -183,10 +185,10 @@ Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
 ////////////////////////////////////////////////
-Route::get ('/alunos/adicionarAluno/{idAluno}/{idTime}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])/*-> middleware('auth')*/;
-Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])/*-> middleware('auth')*/;
-Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")/*-> middleware('auth')*/;
-Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])/*-> middleware('auth')*/;
+Route::get ('/alunos/adicionarAluno/{idAluno}/{idTime}', [App\Http\Controllers\controllerAluno::class, 'adicionaAlunoTime'])-> middleware('auth');
+Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])-> middleware('auth');
+Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")-> middleware('auth');
+Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
 Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
 
 

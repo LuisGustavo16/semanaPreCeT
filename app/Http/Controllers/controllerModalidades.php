@@ -45,8 +45,13 @@ class controllerModalidades extends Controller
     {
         $dados = Modalidade::find($idModalidade);
         if (isset($dados)) {
-            $dados->delete();
-            return redirect()->route('indexModalidade');
+            try {
+                $dados->delete();
+                return redirect()->route('indexModalidade')->with('success', 'Modalidade apagada com sucesso!');;
+            } catch (\Exception $e) {
+                return redirect()->back()->with('danger', 'Não é possível apagar essa modalidade pois existe um treino/time que possui ela. 
+                Apague primeiro o time ou treino para poder apagar está modalidade.');
+            }
         }
     }
 

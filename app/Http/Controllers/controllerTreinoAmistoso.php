@@ -8,16 +8,21 @@ use App\Models\TreinoAmistoso;
 use App\Models\Modalidade;
 use App\Models\Chekin;
 use App\Http\Controllers\Controller;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use View;
 
 class controllerTreinoAmistoso extends Controller
 {
-    public function __construct () {
-        $this -> middleware('auth');
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
     /*Envia todos os dados para serem listados*/
-    public function index() {
+    public function index()
+    {
         $dados = TreinoAmistoso::all();
         foreach ($dados as $item) {
             $modalidade = Modalidade::find($item->idModalidade);
@@ -31,13 +36,15 @@ class controllerTreinoAmistoso extends Controller
     }
 
     /*Pega as modalidades e retorna a página de cadastro de treino, para que as modalidades fiquem como opção*/
-    public function create() {
+    public function create()
+    {
         $modalidades = Modalidade::all();
         return view('TreinosAmistosos/cadastrarTreino', compact('modalidades'));
     }
 
     /*Ao clicar em um treino, os dados dele serão enviados*/
-    public function verTreino(string $idTreino) {
+    public function verTreino(string $idTreino)
+    {
         $dados = TreinoAmistoso::find($idTreino);
         /*Pegar os chekins do treino*/
         $chekins = Chekin::all()->where('idTreino', $idTreino);
@@ -56,7 +63,8 @@ class controllerTreinoAmistoso extends Controller
     }
 
     /*Recebe o id de um dado para ser editado e posteriormente edita ele*/
-    public function update (string $idTreino, Request $request) {
+    public function update(string $idTreino, Request $request)
+    {
         $dados = TreinoAmistoso::find($idTreino);
         if (isset($dados)) {
             $dados->idModalidade = $request->input('idModalidade');
@@ -78,7 +86,8 @@ class controllerTreinoAmistoso extends Controller
     }
 
     /*Cadastra um novo dado na tabela*/
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $dados = new TreinoAmistoso();
         $dados->idModalidade = $request->input('idModalidade');
         $dados->dia = $request->input('dia');
@@ -93,33 +102,35 @@ class controllerTreinoAmistoso extends Controller
         $dados->vagasOcupadas = 0;
         if ($dados->save())
             return redirect()->route('indexTreino')->with('success', 'Treino cadastrado com sucesso!!');
-        else    
+        else
             return redirect()->route('indexTreino')->with('danger', 'Erro ao tentar cadastrar um novo treino...');
     }
 
     /*Apaga um dado da tabela*/
-    public function destroy(string $id) {
+    public function destroy(string $id)
+    {
         $dados = TreinoAmistoso::find($id);
         if (isset($dados)) {
             //Cria a mensagem para enviar ao aluno
             $modalidade = Modalidade::find($dados->idModalidade);
             $checkins = Chekin::where('idTreino', $id)->get();
-            foreach($checkins as $item) {
+            foreach ($checkins as $item) {
                 $mensagem = new Mensagem();
-                $mensagem->conteudo = 'O treino de ' . $modalidade->nome . ' ' . $dados->genero . 
-                ', do dia ' . $dados->horarioInicio . ' - ' . $dados->horarioFim . ' que iria ocorrer no(a) ' . $dados->local . ' foi cancelado';
+                $mensagem->conteudo = 'O treino de ' . $modalidade->nome . ' ' . $dados->genero .
+                    ', do dia ' . $dados->horarioInicio . ' - ' . $dados->horarioFim . ' que iria ocorrer no(a) ' . $dados->local . ' foi cancelado';
                 $mensagem->idAluno = $item->idAluno;
                 $mensagem->dia = Carbon::now();
                 $mensagem->horario = Carbon::now();
                 $mensagem->save();
             }
-            
+
 
             $dados->delete();
             return redirect()->route('indexTreino');
         }
     }
-    public function destroyMany(Request $request) {
+    public function destroyMany(Request $request)
+    {
         $dados = $request['treino'];
         if (isset($dados)) {
             foreach ($dados as $item) {
@@ -132,7 +143,8 @@ class controllerTreinoAmistoso extends Controller
     }
 
     /*Envia os dados para serem editados*/
-    public function edit(string $idTreino) {
+    public function edit(string $idTreino)
+    {
         $dados = TreinoAmistoso::find($idTreino);
         $modalidades = Modalidade::all();
         $nomeModalidade = Modalidade::find($dados->idModalidade);
@@ -140,13 +152,91 @@ class controllerTreinoAmistoso extends Controller
             return view('TreinosAmistosos/editarTreino', compact('dados', 'modalidades', 'nomeModalidade'));
     }
 
-    public function apagarTreinosAntigos() {
+    public function apagarTreinosAntigos()
+    {
         $dataHoje = new Carbon();
         $dados = TreinoAmistoso::where('dia', '<', $dataHoje)->get();
         foreach ($dados as $item) {
             $item->delete();
         }
         return redirect()->route('indexTreino')->with('success', 'Treinos apagados sucesso!!');
+    }
+
+    public function marcarPresenca(Request $request, string $idTreino)
+    {
+        $dados = $request['checkins'];
+        if (isset($dados)) {
+            // Primeiro limpa a presença, pra que quando ela desmarque um, ele tenha sua presença tirada
+            $checkins = Chekin::where('idTreino', $idTreino)->get();
+            foreach ($checkins as $item) {
+                $checkin = Chekin::find($item->idCheckin);
+                $checkin->situacao = false;
+                $checkin->save();
+            }
+            foreach ($dados as $item) {
+                $checkin = Chekin::find($item);
+                $checkin->situacao = true;
+                $checkin->save();
+            }
+            return redirect()->back()->with('success', 'Presença registrada com sucesso!');
+        }
+        return redirect()->back()->with('danger', 'Selecione ao menos um aluno.');
+    }
+
+    public function gerarPDF(string $idTreino)
+    {
+        Carbon::setLocale('pt_BR');
+        $chekins = Chekin::where('idTreino', $idTreino)->get();
+        $alunos = [];
+        foreach ($chekins as $item) {
+            $aluno = Aluno::find($item->idAluno);
+            if ($item->situacao == true)
+                $aluno->situacao = 'Presente';
+            else if ($item->situacao == false)
+                $aluno->situacao = 'Falta';
+            array_push($alunos, $aluno);
+        }
+        usort($alunos, function ($a, $b) {
+            return $a['name'] > $b['name'];
+        });
+
+        // Passar o nome da modalidade
+        $treino = TreinoAmistoso::find($idTreino);
+        $modalidade = Modalidade::find($treino->idModalidade);
+        $treino->modalidade = $modalidade->nome;
+        //Formatar o dia
+        $diaCarbon = Carbon::parse($treino->dia);
+        $treino->dia = $diaCarbon->format('d/m') . ' (' . $diaCarbon->translatedFormat('l') . ')';
+        //formatar o horario
+        $treino->horarioInicio = Carbon::parse($treino->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+        $treino->horarioFim = Carbon::parse($treino->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
+        $info = 'Lista gerada no dia ' . Carbon::now()->format('d/m') . ' à(s) ' . Carbon::now()->
+            timezone('America/Sao_Paulo')->format('H:i:s') . ' pelo SIGEE.';
+        ///////////////////////////////////////////////////////////////////
+        $dompdf = new Dompdf();
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isPhpEnabled', true); // Habilita PHP no HTML (se necessário)
+        $dompdf->setOptions($options);
+
+        // Renderiza a view Blade para HTML
+        $html = View::make('TreinosAmistosos/chamadaGerarPDF', [
+            'alunos' => $alunos,
+            'treino' => $treino,
+            'info' => $info
+        ])->render();
+
+        $dompdf->loadHtml($html);
+
+        // Define o papel e a orientação
+        $dompdf->setPaper('A4');
+
+        // Renderizando o HTML como PDF
+
+        $dompdf->render();
+
+        // Enviando o PDF para o navegador
+        return $dompdf->stream('chamada.pdf');
     }
 
 }

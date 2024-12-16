@@ -14,17 +14,17 @@ $classe = 'branco';
     <form class="formularioTreinoEscondido" action="/treino_amistosos/apagarVarios" method="post">
         @csrf
         <div class="divNotificacao" style="display: flex;">
-                @if(session()->get('danger'))
-                    <div class="danger">
-                        {{ session()->get('danger') }}
-                        <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
-                    </div>
-                @elseif (session()->get('success'))
-                    <div class="success">
-                        {{ session()->get('success') }}
-                        <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
-                    </div>
-                @endif
+            @if(session()->get('danger'))
+                <div class="danger">
+                    {{ session()->get('danger') }}
+                    <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
+                </div>
+            @elseif (session()->get('success'))
+                <div class="success">
+                    {{ session()->get('success') }}
+                    <a onclick="statusNotificacao()" href="#" class="apagarNotificacao">X</a>
+                </div>
+            @endif
         </div>
 
         <table>
@@ -41,14 +41,14 @@ $classe = 'branco';
             <tbody>
                 @foreach ($dados as $item)
                                 <?php 
-                                                                                        if ($aux == true) {
+                                                                                                                        if ($aux == true) {
                         $classe = 'amarelo';
                         $aux = false;
                     } elseif ($aux == false) {
                         $classe = 'branco';
                         $aux = true;
                     }
-                                                                                    ?>
+                                                                                                                    ?>
                                 <tr class="{{$classe}}">
                                     <td>
                                         <input class="checkboxTreinos" type="checkbox" name="treino[]" value="{{$item->idTreino}}">
@@ -74,11 +74,14 @@ $classe = 'branco';
                 @endforeach
             </tbody>
         </table>
-        <div class="divCentralizaBotaoApagarTreinos">
-            <button class="botaoApagarSelecionados" type="submit">Apagar selecionados</buttonc>
+        <div>
+            <div class="divCentralizaBotaoApagarTreinos">
+                <button class="botaoApagarSelecionados" type="submit">Apagar selecionados</buttonc>
+            </div>
+            <a onclick="return confirm('Deseja apagar todos os treinos antigos?')"
+                href="{{route('apagarTreinosAntigos')}}">Apagar Treinos antigos</a>
         </div>
-        <a onclick="return confirm('Deseja apagar todos os treinos antigos?')"
-        href="{{route('apagarTreinosAntigos')}}">Apagar Treinos antigos</a>
+
     </form>
 
 </div>
