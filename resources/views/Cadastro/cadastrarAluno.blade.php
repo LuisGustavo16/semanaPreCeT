@@ -9,11 +9,35 @@
 
     <style>
         /* Responsividade */
+       
         @media (max-width: 1200px) {
     .linhaFormAluno {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+@media (max-width: 1670px) {
+    .linhaFormAluno {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .formRegistroAluno {
+        width: 100%;
+        max-width: 100%;
+        padding: 2rem;
+    }
+    #nome {
+        grid-template-columns: repeat(1, 25rem);
+        grid-template-rows: repeat(2, 7rem);
+    }
+    #nome2 {
+    
+        grid-template-columns: repeat(1, 25rem);
+        grid-template-rows: repeat(2, 7rem);
+    }
+}
+
 
 @media (max-width: 768px) {
     .linhaFormAluno {
@@ -80,7 +104,7 @@
 
         <form class="formRegistroAluno" action="/cadastro/registrarAluno" method="POST">
             @csrf
-            <div class='linhaFormAluno'>
+            <div id="nome" class='linhaFormAluno'>
                 <div style="display: none;">
                     <input type="text" name="name" value="{{$user['name']}}">
                     <input type="text" name="email" value="{{$user['email']}}">
@@ -106,7 +130,7 @@
 
             </div>
 
-            <div class='linhaFormAluno'>
+            <div id="nome2"  class='linhaFormAluno'>
                 <div class="campo">
                     <label for="genero">*Gênero:</label><br>
                     <select name="genero" required>
