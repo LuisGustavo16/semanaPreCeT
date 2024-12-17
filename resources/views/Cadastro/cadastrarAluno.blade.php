@@ -6,6 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGEE</title>
     @vite(['resources/js/app.js'])
+
+    <style>
+        /* Responsividade */
+        @media (max-width: 1200px) {
+    .linhaFormAluno {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .linhaFormAluno {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .formRegistroAluno {
+        width: 100%;
+        max-width: 100%;
+        padding: 2rem;
+    }
+
+    .botaoFormAluno {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        font-size: 120%;
+    }
+
+    .inputNome, .inputEmail, .inputCurso {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sigee {
+        font-size: 250%;
+    }
+
+    .titulo {
+        font-size: 1.5rem;
+    }
+
+    .desc {
+        font-size: 1rem;
+    }
+
+    .campo label {
+        font-size: 0.9rem;
+    }
+
+    .formRegistroAluno {
+        padding: 1rem;
+    }
+
+    .botaoFormAluno {
+        font-size: 110%;
+    }
+}
+    </style>
 </head>
 
 <body class="container">

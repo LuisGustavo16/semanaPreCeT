@@ -58,15 +58,15 @@ $classe = 'branco';
                                     <td>{{$item->horarioInicio}} - {{$item->horarioFim}}</td>
                                     <td>{{$item->vagasOcupadas}}/{{$item->numeroMaximoParticipantes}}</td>
                                     <td>
+                                    <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
+                                            <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
+                                        </a>
                                         <a class="linkIcone" href="../treino_amistosos/editar/{{$item->idTreino}}">
                                             <img class="icone" src="/storage/assets/editar.png" alt="editar">
                                         </a>
-                                        <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
-                                            <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
-                                        </a>
                                         <a class="linkIcone" href="../treino_amistosos/apagar/{{$item->idTreino}}"
                                             onclick="return confirm('Deseja apagar o treino do dia {{$item->dia}}?')">
-                                            <img class="icone apagar" src="/storage/assets/excluir.png" alt="apagar">
+                                            <img class="icone apagar" src="/storage/assets/apagar.png" alt="apagar">
                                         </a>
                                     </td>
                                 </tr>

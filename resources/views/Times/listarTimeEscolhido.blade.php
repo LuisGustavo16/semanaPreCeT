@@ -30,14 +30,14 @@ $classe = 'branco';
                             <h2>{{$jogo->horario}}</h2>
                             <h2>{{$jogo->local}}</h2>
                             <h2><a class="linkIcone" href="/jogos/selecionado/{{$jogo->idJogoTime}}">
-                                    <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
+                                    <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
                                 </a>
                                 <a class="linkIcone" href="/jogos/editar/{{$jogo->idJogoTime}}">
-                                    <img class="icone" src="/storage/imagens/editar.png" alt="editar">
+                                    <img class="icone" src="/storage/assets/editar.png" alt="editar">
                                 </a>
                                 <a class="linkIcone" href="/jogos/apagar/{{$jogo->idJogoTime}}/{{$jogo->idTime}}"
                                     onclick="return confirm('Deseja apagar o jogo do dia {{$jogo->dia}} ?')">
-                                    <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
+                                    <img class="icone apagar" src="/storage/assets/apagar.png" alt="apagar">
                                 </a>
                             </h2>
                         </div>
@@ -60,10 +60,10 @@ $classe = 'branco';
                         <h2>{{$aluno->turma}} {{$aluno->curso}}</h2>
                         <div class="opcoesIcones">
                             <a href="/alunos/verPerfilAluno/{{$aluno->id}}">
-                                <img class="icone verMais" src="/storage/imagens/verMais.png" alt="verMais">
+                                <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
                             </a>
                             <a class="linkIcone" href="../../../times/retirarAluno/{{$aluno->id}}/{{$dados->idTime}}">
-                                <img class="icone apagar" src="/storage/imagens/apagar.png" alt="apagar">
+                                <img class="icone apagar" src="/storage/assets/apagar.png" alt="apagar">
                             </a>
                         </div>
                     </div>
