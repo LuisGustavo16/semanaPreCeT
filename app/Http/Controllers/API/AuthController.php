@@ -48,7 +48,8 @@ class AuthController extends Controller
                 'turma' => $user->turma,
                 'dtNascimento' => Carbon::parse($user->dataNascimento)->format('d/m/y'),
                 'matricula' => $user->matricula,
-                'genero' => $user->genero
+                'genero' => $user->genero,
+                'tipo' => $user->tipo
             ], "Login realizado!!!");
 
         } catch (\Throwable $th) {
