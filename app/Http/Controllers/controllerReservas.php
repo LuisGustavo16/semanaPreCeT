@@ -32,25 +32,29 @@ class controllerReservas extends Controller
         $dados = Reserva::all()->where('status', $status);
         foreach ($dados as $item) {
             /*Trocar o formato do dia e do horário*/
-            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->dia = Carbon::parse($item->dia);
             $item->diaSemana = Carbon::parse($item->dia)->translatedFormat('l');
             $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
             $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
         }
         return view('Reservas/listarReservas', compact('dados', 'status'));
     }
 
     /*Ao clicar em uma reserva, os dados dele serão enviados*/
     public function enviaReservaEscolhido(string $idReserva) {
+        Carbon::setLocale('pt_BR');
         $dados = Reserva::find($idReserva);
         /*Trocar o formato do dia e do horário*/
-        $dados->dia = Carbon::parse($dados->dia)->format('d/m');
+        $dados->dia = Carbon::parse($dados->dia);
         if ($dados->diaCancelamento)
             $dados->diaCancelamento = Carbon::parse($dados->diaCancelamento)->format('d/m');
-            $dados->diaSemana = Carbon::parse($dados->dia)->format('d/m');
-            $dados->diaSemana = Carbon::parse($dados->diaSemana)->translatedFormat('l');
+        $dados->diaSemana = Carbon::parse($dados->dia);
+        $dados->diaSemana = Carbon::parse($dados->diaSemana)->translatedFormat('l');
+        $dados->dia = Carbon::parse($dados->dia)->format('d/m');
         $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
         $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
+
         $aluno = Aluno::find($dados->idAluno);
         if (isset($dados))
             return view('Reservas/listarReservaEscolhida', compact('dados', 'aluno'));
