@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\CronogramaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -29,3 +30,5 @@ Route::post('/listarJogos', [TimeController::class, 'indexJogos']);
 Route::post('/listarAlunos', [TimeController::class, 'indexAlunos']);
 
 Route::post('/listarMensagens', [MensagemController::class, 'index']);
+
+Route::get('/cronograma', [CronogramaController::class, 'index']);

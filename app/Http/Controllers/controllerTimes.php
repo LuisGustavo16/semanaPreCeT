@@ -39,7 +39,8 @@ class controllerTimes extends Controller
         foreach ($jogos as $item) {
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia)->format('d/m');
-            $item->horario = Carbon::parse($item->horario)->format('h:m');
+            $item->horarioInicio = Carbon::parse($item->horario)->format('h:m');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
         }
         $alunos_times = AlunosTime::all()->where('idTime', $idTime);
         $alunos = [];

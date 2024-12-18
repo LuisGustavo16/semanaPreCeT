@@ -27,7 +27,7 @@ $classe = 'branco';
                     @foreach ($jogos as $jogo)
                         <div class="linhaInformacoesJogos">
                             <h2>{{$jogo->dia}}</h2>
-                            <h2>{{$jogo->horario}}</h2>
+                            <h2>{{$jogo->horarioInicio}} - {{$jogo->horarioFim}}</h2>
                             <h2>{{$jogo->local}}</h2>
                             <h2><a class="linkIcone" href="/jogos/selecionado/{{$jogo->idJogoTime}}">
                                     <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
