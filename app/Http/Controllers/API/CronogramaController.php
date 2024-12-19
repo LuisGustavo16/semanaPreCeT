@@ -42,11 +42,11 @@ class CronogramaController extends Controller
         /*Passa o formato da data do BD para dia/mês*/
         foreach ($treinos as $treino) {
             $diaCarbon = Carbon::parse($treino->dia);
-            $treino->dia = $diaCarbon->translatedFormat('l');
+            $treino->diaSemana = $diaCarbon->translatedFormat('l');
         }
         foreach ($jogos as $jogo) {
             $diaCarbon = Carbon::parse($jogo->dia);
-            $jogo->dia = $diaCarbon->translatedFormat('l');
+            $jogo->diaSemana = $diaCarbon->translatedFormat('l');
         }
 
         /*Passa o formato da hora do BD para hora:minuto*/
