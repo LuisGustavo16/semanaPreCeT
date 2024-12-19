@@ -73,7 +73,9 @@ class CronogramaController extends Controller
 
         return response()->json([
             'jogos' => $jogos,
-            'treinos' => $treinos
+            'treinos' => $treinos,
+            'inicioSemana' => $inicioSemana,
+            'fimSemana' => $fimSemana
         ]);
     }
 
