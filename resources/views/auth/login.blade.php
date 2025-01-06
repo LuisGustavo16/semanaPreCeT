@@ -9,7 +9,7 @@
 </head>
 
 <body class="containerLogin">
-        <div>
+        <div class="divLogin">
             <h1 class="tituloLogin">Entrar como Administrador</h1>
             <form class="formLogin" method="POST" action="{{ route('login') }}">
                 @csrf
@@ -34,7 +34,7 @@
 
                     <div>
                         <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required
+                            class="form-control @error('password') is-invalid @enderror inputEmailLogin" name="password" required
                             autocomplete="current-password">
 
                         @error('password')
