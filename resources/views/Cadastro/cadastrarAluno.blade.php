@@ -93,7 +93,7 @@
 </head>
 
 <body class="container">
-    <div>
+    <div class="textoRegistro">
         <h1 class="sigee">SIGEE</h1>
         <h1 class="titulo">Crie seu cadastro</h1>
         <h3 class="desc">Para acessar o aplicativo SIGEE, é necessáio preencher corretamente o formulário abaixo.
@@ -112,7 +112,7 @@
                 </div>
                 <div class="campo">
                     <label for="turma">*Série</label><br>
-                    <select name="turma" required>
+                    <select style="width: 70%" name="turma" required>
                         <option value="1º">1º Ano</option>
                         <option value="2º">2º Ano</option>
                         <option value="3º">3º Ano</option>
@@ -121,7 +121,7 @@
 
                 <div class="campo">
                     <label for="curso">*Curso:</label><br>
-                    <select name="curso" required>
+                    <select style="width: 70%" name="curso" required>
                         <option value="Edificações">Edificações</option>
                         <option value="Informática">Informática</option>
                         <option value="Mecatrônica">Mecatrônica</option>
@@ -133,7 +133,7 @@
             <div id="nome2"  class='linhaFormAluno'>
                 <div class="campo">
                     <label for="genero">*Gênero:</label><br>
-                    <select name="genero" required>
+                    <select style="width: 70%" name="genero" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                     </select>

@@ -21,7 +21,7 @@ class controllerCadastro extends Controller
     {
         try {
             $validatedData = Validator::make($request->all(), [
-                'name' => 'required|string|max:255|unique:alunos',
+                'name' => 'required|string|max:255',
                 'email' => 'required|string|max:255|unique:alunos',
                 'password' => 'required|string',
             ]);

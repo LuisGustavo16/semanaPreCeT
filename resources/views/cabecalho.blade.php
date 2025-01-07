@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/js/app.js'])
-
+    <title>SIGEE</title>
 </head>
 
 <body class="padrao">
@@ -95,6 +95,9 @@
                         <a class="titulo" href="{{route("pesquisarAlunos")}}">
                             <h4>Mensagens</h4>
                         </a>
+                        <a class="titulo" href="{{ route('logout') }}">
+                            <h4>Sair</h4>
+                        </a>
                     </div>
                 </div>
 
@@ -151,6 +154,9 @@
             </a>
             <a class="titulo" href="{{route("pesquisarAlunos")}}">
                 <h3>Mensagens</h3>
+            </a>
+            <a class="titulo" href="{{ route('logout') }}">
+                <h3>Sair</h3>
             </a>
 
         </div>

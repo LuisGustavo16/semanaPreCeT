@@ -8,6 +8,11 @@ use App\Http\Controllers\controllerAluno;
 // Rotas para a autenticação
 Auth::routes();
 
+Route::get('/logout', function () {
+    Auth::logout(); // Faz o logout do usuário
+    return redirect('/'); // Redireciona para a página inicial
+});
+
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Treinos/Amistosos*/
 //////////////////////////////////////////////////////////
