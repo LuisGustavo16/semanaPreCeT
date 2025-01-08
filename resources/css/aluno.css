@@ -351,5 +351,47 @@ hr {
     }
 }
 
+/*CSS da página de desvalidação*/
 
+.fundoDesvalidar {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(1, 100%);
+    grid-template-rows: repeat(1, 4rem);
+}
 
+.textoDesvalidar {
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    padding-top: 2rem;
+    text-align: center;
+}
+
+.formDesvalidar {
+    border-radius: 2rem;
+    box-shadow: 0.1rem 0.1rem 1rem var(--white);
+    margin: 0rem;
+    margin-top: 4.3rem;
+    padding: 0rem;
+    padding-top: 0;
+    background-color: var(--white);
+    border: 0px solid black;
+    display: block;
+    height: 28rem;
+    width: 100%;
+}
+
+.botaoDesvalidar {
+    width: 12rem;
+    height: 4rem;
+    font-size: 2rem;
+    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    font-weight: 800;
+    background-color: var(--white);
+    color: var(--blue);
+    cursor: pointer;
+}
+
+.botaoDesvalidar:hover {
+    background-color: var(--blue);
+    color: var(--white);
+}

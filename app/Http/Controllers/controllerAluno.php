@@ -44,8 +44,8 @@ class controllerAluno extends Controller
             //Cria a mensagem para enviar ao aluno
             $time = Time::find($idTime);
             $modalidade = Modalidade::find($time->idModalidade);
-            $this->gerarMensagemAutomatica($idAluno, 'Você foi adicionado ao time ' . 
-            $modalidade->nome . ' ' . $time->genero . '. Veja as informações detalhadas na página de times.');
+            $this->gerarMensagemAutomatica($idAluno, 'Você foi adicionado ao time ' .
+                $modalidade->nome . ' ' . $time->genero . '. Veja as informações detalhadas na página de times.');
         }
         return redirect()->route('verTime', ['idTime' => $idTime]);
     }
@@ -151,56 +151,77 @@ class controllerAluno extends Controller
     /*teste <mensagens>*/
     // listar e pesquisar alunos
     public function pesquisarAlunos(Request $request)
-{
-    $query = $request->get('query');
-    $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
-        ->orWhere('email', 'LIKE', '%' . $query . '%')
-        ->get();
-    
-    return view('Mensagens.pesquisarAlunos', compact('alunos'));
-}
+    {
+        $query = $request->get('query');
+        $alunos = Aluno::where('name', 'LIKE', '%' . $query . '%')
+            ->orWhere('email', 'LIKE', '%' . $query . '%')
+            ->get();
 
-//enviar mensagens
-public function enviarMensagem(Request $request, string $idAluno)
-{
-    $request->validate([
-        'conteudo' => 'required|string|max:500',
-    ]);
-
-    Mensagem::create([
-        'idAluno' => $idAluno,
-        'conteudo' => $request->conteudo,
-        'dateTime' => Carbon::now(),
-        'tipo' => 'Professora Gabriela'
-    ]);
-
-    return redirect()->route('pesquisarAlunos')->with('success', 'Mensagem enviada com sucesso!');
-}
-
-public function formEnviarMensagem($idAluno)
-{
-    $aluno = Aluno::find($idAluno);
-
-    if (!$aluno) {
-        return redirect()->route('pesquisarAlunos')->with('error', 'Aluno não encontrado.');
+        return view('Mensagens.pesquisarAlunos', compact('alunos'));
     }
-    $mensagens = Mensagem::where('idAluno', $aluno->id)->orderByDesc('dateTime')->get();
-    return view('Mensagens.enviarMensagem', compact('aluno', 'mensagens'));
-}
 
-public function pesquisarAlunosAjax(Request $request)
-{
-    // Pega a pesquisa
-    $query = $request->get('query');
+    //enviar mensagens
+    public function enviarMensagem(Request $request, string $idAluno)
+    {
+        $request->validate([
+            'conteudo' => 'required|string|max:500',
+        ]);
+
+        Mensagem::create([
+            'idAluno' => $idAluno,
+            'conteudo' => $request->conteudo,
+            'dateTime' => Carbon::now(),
+            'tipo' => 'Professora Gabriela'
+        ]);
+
+        return redirect()->route('pesquisarAlunos')->with('success', 'Mensagem enviada com sucesso!');
+    }
+
+    public function formEnviarMensagem($idAluno)
+    {
+        $aluno = Aluno::find($idAluno);
+
+        if (!$aluno) {
+            return redirect()->route('pesquisarAlunos')->with('error', 'Aluno não encontrado.');
+        }
+        $mensagens = Mensagem::where('idAluno', $aluno->id)->orderByDesc('dateTime')->get();
+        return view('Mensagens.enviarMensagem', compact('aluno', 'mensagens'));
+    }
+
+    public function pesquisarAlunosAjax(Request $request)
+    {
+        // Pega a pesquisa
+        $query = $request->get('query');
+
+        // Realiza a busca
+        $alunos = Aluno::where('name', 'LIKE', '' . $query . '%')
+            ->orWhere('email', 'LIKE', '' . $query . '%')
+            ->get();
+
+        // Retorna a resposta em formato JSON
+        return response()->json($alunos);
+    }
+
+    public function desvalidarAlunos()
+    {
+        $alunos = Aluno::all();
+        foreach ($alunos as $aluno) {
+            $aluno->status = 'espera';
+            $aluno->save();
+        }
+        return redirect()->route('inicio')->with('success','');
+    }
     
-    // Realiza a busca
-    $alunos = Aluno::where('name', 'LIKE', '' . $query . '%')
-        ->orWhere('email', 'LIKE', ''. $query . '%')
-        ->get();
+    public function validarCadastro(Request $request)
+    {
+        $aluno = Aluno::where('email', $request->get('email'))->first();
 
-    // Retorna a resposta em formato JSON
-    return response()->json($alunos);
-}
+        if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
+            return view("Alunos/telaEspera", compact('aluno'));
+        } else {
+            return redirect()->route("telaEspera")->with('danger', "Email ou senha inválido(os)!");
+        }
+    }
 
 
 }

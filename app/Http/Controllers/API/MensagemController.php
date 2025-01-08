@@ -18,11 +18,11 @@ class MensagemController extends Controller
 
     public function index(Request $request)
     {
-        $mensagens = Mensagem::where('idAluno', $request->idAluno)->orderBy('dia')->get();
+        $mensagens = Mensagem::where('idAluno', $request->idAluno)->orderByDesc('dateTime')->get();
         /*Passa o formato da hora do BD para hora:minuto*/
         foreach ($mensagens as $item) {
-            $item->horario = Carbon::parse($item->horario)->timezone('America/Sao_Paulo')->format('H:i'); 
-            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horario = Carbon::parse($item->dateTime)->timezone('America/Sao_Paulo')->format('H:i'); 
+            $item->dia = Carbon::parse($item->dateTime)->format('d/m');
         }
         return response()->json([
             'mensagens' => $mensagens,

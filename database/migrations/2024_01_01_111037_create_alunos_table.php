@@ -25,6 +25,7 @@ return new class extends Migration {
             $table->string('descricaoEsportiva', 2000)->nullable();
             $table->string('tipo');
             $table->string('status');
+            $table->string('validado')->nullable();
             $table->string('genero')->nullable();
             $table->date('dataNascimento')->nullable();
             $table->timestamps();

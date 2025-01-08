@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
+use App\Models\Modalidade;
 use App\Models\User;
 use App\Traits\ApiResponse;
 use Illuminate\Http\Request;
@@ -29,6 +30,9 @@ class TreinoController extends Controller
             $item->dia = Carbon::parse($item->dia)->format('d/m');
             $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
             $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
+
+            $modalidade = Modalidade::find($item->idModalidade);
+            $item->nomeModalidade = $modalidade->nome;
         }
         $checkins = Chekin::where("idAluno", $request->get('idAluno'))->get();
         return response()->json([

@@ -11,7 +11,7 @@ class Aluno extends Model
 {
     use HasFactory, Notifiable;
     use HasApiTokens;
-    protected $fillable = ['name', 'email', 'password', 'turma', 'curso', 'matricula', 'descricaoEsportiva', 'tipo', 'status', 'genero', 'dataNascimento'];
+    protected $fillable = ['name', 'email', 'password', 'turma', 'curso', 'matricula', 'descricaoEsportiva', 'tipo', 'status', 'validado', 'genero', 'dataNascimento'];
 
     public function Reserva()
     {

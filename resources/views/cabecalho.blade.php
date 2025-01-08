@@ -155,6 +155,9 @@
             <a class="titulo" href="{{route("pesquisarAlunos")}}">
                 <h3>Mensagens</h3>
             </a>
+            <a class="titulo" href="{{ route('desvalidarCadastro') }}">
+                <h3>Desvalidar o cadastro dos usuários</h3>
+            </a>
             <a class="titulo" href="{{ route('logout') }}">
                 <h3>Sair</h3>
             </a>

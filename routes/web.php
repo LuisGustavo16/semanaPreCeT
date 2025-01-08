@@ -107,6 +107,14 @@ Route::get('/entrar', function () {
     return view('Alunos/entrarPerfilAluno');
 }) -> name('entrarAluno');
 
+Route::get('/desvalidarCadastro', function () {
+    return view('Alunos/desvalidarCadastro');
+}) -> name('desvalidarCadastro')->middleware();
+
+Route::get('/validarCadastro', function () {
+    return view('Cadastro/validarCadastro');
+});
+
 
 
 ////////////////////////////////////////////////////////
@@ -191,6 +199,7 @@ Route::post('/cadastro/registrarProfessor', [App\Http\Controllers\controllerCada
 Route::post('/cadastro/registrarUniversitario', [App\Http\Controllers\controllerCadastro::class, 'registerUniversitario'])->name("cadastroUniversitario");
 Route::post('/cadastro/entrar', [App\Http\Controllers\controllerAluno::class, 'entrarPerfil']);
 Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'update']);
+Route::post('/alunos/validarCadastro', [App\Http\Controllers\controllerAluno::class, 'validarCadastro']);
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
@@ -200,6 +209,8 @@ Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controller
 Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")-> middleware('auth');
 Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
 Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
+Route::get('/alunos/desvalidarAlunos', [App\Http\Controllers\controllerAluno::class, 'desvalidarAlunos']);
+
 
 
 //////////////////////////////////////////////////////////
