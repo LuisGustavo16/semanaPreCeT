@@ -13,6 +13,11 @@ Route::get('/logout', function () {
     return redirect('/'); // Redireciona para a página inicial
 });
 
+//Rota inicial
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
 //////////////////////////////////////////////////////////
 /*Rotas para as páginas referentes aos Treinos/Amistosos*/
 //////////////////////////////////////////////////////////

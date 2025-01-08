@@ -129,9 +129,6 @@
     padding: 20px;
 }
 
-.containerRegistro {
-
-}
 
 .titulo {
     font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
@@ -189,7 +186,7 @@
 
 .linhaFormAluno{
     display: grid;
-    grid-template-columns: repeat(3, 10rem);
+    grid-template-columns: repeat(3, 25rem);
     grid-template-rows: repeat(1, 8rem);
     gap: 20px;
 }
@@ -241,7 +238,8 @@ select {
 
 /*tela espera*/
 .modal {
-    display: flex;
+    display: grid;
+    
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -257,7 +255,6 @@ select {
     background-color: #fff;
     padding: 2rem;
     border-radius: 8px;
-    width: 80%;
     max-width: 600px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -269,7 +266,7 @@ select {
     margin-bottom: 2rem;
 }
 
-.h3 {
+.contato {
     font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-size: 1.2rem;
 }
@@ -323,11 +320,34 @@ hr {
         width: 8rem;
         font-size: 100%;
     }
+
+    .fundoCadastrarAluno {
+        margin-left: 8rem;
+    }
 }
 
 @media (max-width: 632px) {
     .divSenhas {
         display: block;
+    }
+
+
+}
+
+@media (max-width: 690px) {
+    .modal-content {
+        width: 20rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .modal-content {
+        width: 10rem;
+    }
+
+    .divLinksLogin {
+        width: 10rem;
+        margin-left: 1.5rem;
     }
 }
 

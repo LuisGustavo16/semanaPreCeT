@@ -13,7 +13,7 @@
             <h1 class="msg">Seu cadastro foi realizado com sucesso! <br> Espere a professora Gabriela avaliar seu registro para que você possa acessar o aplicativo...</h1>
             <hr>
             <div class="contact-info">
-                <h3>Informações de Contato</h3>
+                <p class="contato">Informações de Contato</p>
                 <p><span class="label">Email:</span> <span class="info">britotpleticia@gmail.com</span></p>
                 <p><span class="label">Telefone:</span> <span class="info">(35) 98828-9379</span></p>
             </div>
