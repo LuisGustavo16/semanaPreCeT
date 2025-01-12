@@ -20,7 +20,7 @@
 
         <form class="formRegistroAluno" action="/cadastro/registrarUniversitario" method="POST">
             @csrf
-            <div class='linhaFormAluno'>
+            <div class='linhaFormUniversitario'>
                 <div style="display: none;">
                     <input type="text" name="name" value="{{$user['name']}}">
                     <input type="text" name="email" value="{{$user['email']}}">
@@ -28,7 +28,7 @@
                 </div>
                 <div class="campo" id="campo-cursoGraduação">
                     <label for="curso">*Curso:</label><br>
-                    <select name="curso" required>
+                    <select style="width: 70%" name="curso" required>
                         <option value="Sistemas de Informação">Sistemas de Informação</option>
                         <option value="Engenharia Civil">Engenharia Civil</option>
                     </select>
@@ -42,7 +42,9 @@
     </div>
 
     </div>
-    <button class="botaoFormAluno" type="submit">Registrar</button>
+    <div style="display: flex; width: 100%; align-itens: center; justify-content: center; margin-top: 2rem">
+        <button class="botaoFormAluno" type="submit">Registrar</button>
+    </div>
     </form>
     </div>
 

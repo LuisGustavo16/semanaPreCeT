@@ -53,8 +53,8 @@
 
     </div>
 
-    <div style="width: 100%; display: flex; align-itens: center">
-        <button id="botao" class="botaoFormAluno" type="submit">Registrar</button>
+    <div style="display: flex; width: 100%; align-itens: center; justify-content: center; margin-top: 2rem">
+        <button class="botaoFormAluno" type="submit">Registrar</button>
     </div>
 
     </form>

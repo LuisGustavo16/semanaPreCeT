@@ -9,86 +9,85 @@
 
     <style>
         /* Responsividade */
-       
+
         @media (max-width: 1200px) {
-    .linhaFormAluno {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
+            .linhaFormAluno {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
 
-@media (max-width: 1670px) {
-    .linhaFormAluno {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
+        @media (max-width: 1670px) {
+            .linhaFormAluno {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
 
-    .formRegistroAluno {
-        width: 100%;
-        max-width: 100%;
-        padding: 2rem;
-    }
-    #nome {
-        grid-template-columns: repeat(1, 25rem);
-        grid-template-rows: repeat(2, 7rem);
-    }
-    #nome2 {
-    
-        grid-template-columns: repeat(1, 25rem);
-        grid-template-rows: repeat(2, 7rem);
-    }
-}
+            #nome {
+                grid-template-columns: repeat(1, 25rem);
+                grid-template-rows: repeat(2, 7rem);
+            }
+
+            #nome2 {
+
+                grid-template-columns: repeat(1, 25rem);
+                grid-template-rows: repeat(2, 7rem);
+            }
+        }
 
 
-@media (max-width: 768px) {
-    .linhaFormAluno {
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
+        @media (max-width: 768px) {
+            .linhaFormAluno {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
 
-    .formRegistroAluno {
-        width: 100%;
-        max-width: 100%;
-        padding: 2rem;
-    }
+            .formRegistroAluno {
+                width: 100%;
+                max-width: 100%;
+                padding: 2rem;
+            }
 
-    .botaoFormAluno {
-        width: 100%;
-        max-width: 100%;
-        padding-left: 2rem;
-        padding-right: 2rem;
-        font-size: 120%;
-    }
+            .botaoFormAluno {
+                width: 100%;
+                max-width: 100%;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                font-size: 120%;
+            }
 
-    .inputNome, .inputEmail, .inputCurso {
-        width: 100%;
-    }
-}
+            .inputNome,
+            .inputEmail,
+            .inputCurso {
+                width: 100%;
+            }
+        }
 
-@media (max-width: 480px) {
-    .sigee {
-        font-size: 250%;
-    }
+        @media (max-width: 480px) {
+            .sigee {
+                font-size: 250%;
+            }
 
-    .titulo {
-        font-size: 1.5rem;
-    }
+            .titulo {
+                font-size: 1.5rem;
+            }
 
-    .desc {
-        font-size: 1rem;
-    }
+            .desc {
+                font-size: 1rem;
+            }
 
-    .campo label {
-        font-size: 0.9rem;
-    }
+            .campo label {
+                font-size: 0.9rem;
+            }
 
-    .formRegistroAluno {
-        padding: 1rem;
-    }
+            .formRegistroAluno {
+                padding: 1rem;
+                width: 100%;
+            }
 
-    .botaoFormAluno {
-        font-size: 110%;
-    }
-}
+            .botaoFormAluno {
+                font-size: 110%;
+            }
+        }
     </style>
 </head>
 
@@ -130,7 +129,7 @@
 
             </div>
 
-            <div id="nome2"  class='linhaFormAluno'>
+            <div id="nome2" class='linhaFormAluno'>
                 <div class="campo">
                     <label for="genero">*Gênero:</label><br>
                     <select style="width: 70%" name="genero" required>
@@ -153,7 +152,11 @@
     </div>
 
     </div>
-    <button class="botaoFormAluno" type="submit">Registrar</button>
+
+    <div style="display: flex; width: 100%; align-itens: center; justify-content: center; margin-top: 2rem">
+        <button class="botaoFormAluno" type="submit">Registrar</button>
+    </div>
+
     </form>
     </div>
 

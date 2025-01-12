@@ -52,7 +52,7 @@
 
                 @if ($aluno->tipo == 'Aluno')
                     <div class="linhaFormAluno">
-                        <div class="campo">
+                        <div style="width: 3rem"  class="campo">
                             <label for="turma">*Série</label><br>
                             <input type="text" name="turma" required value="{{$aluno->turma}}" readonly>
                         </div>

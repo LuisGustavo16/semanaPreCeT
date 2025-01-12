@@ -10,7 +10,7 @@
 
 <body class="containerLogin">
         <div>
-            <h1 class="tituloLogin">Entrar como Estudante</h1>
+            <h1 class="tituloLogin">Entrar como Usuário</h1>
             <form class="formLogin" method="POST" action="/cadastro/entrar">
                 @csrf
 
@@ -43,7 +43,7 @@
             </form>
             <div class="divLinksLogin">
                 <a class="linkCadastro" href="/login">Entrar como administrador</a>
-                <a class="linkCadastro" href="/CadastroInicial">Se registrar como estudante</a>
+                <a class="linkCadastro" href="/CadastroInicial">Se registrar como usuário</a>
             </div>
         </div>
 </body>
