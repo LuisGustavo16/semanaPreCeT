@@ -103,7 +103,7 @@
 
         <form class="formRegistroAluno" action="/cadastro/registrarAluno" method="POST">
             @csrf
-            <div id="nome" class='linhaFormAluno'>
+            <div style="grid-template-columns: repeat(1, 100%);" id="nome" class='linhaFormAluno'>
                 <div style="display: none;">
                     <input type="text" name="name" value="{{$user['name']}}">
                     <input type="text" name="email" value="{{$user['email']}}">
@@ -111,7 +111,7 @@
                 </div>
                 <div class="campo">
                     <label for="turma">*Série</label><br>
-                    <select style="width: 70%" name="turma" required>
+                    <select style="width: 100%" name="turma" required>
                         <option value="1º">1º Ano</option>
                         <option value="2º">2º Ano</option>
                         <option value="3º">3º Ano</option>
@@ -120,7 +120,7 @@
 
                 <div class="campo">
                     <label for="curso">*Curso:</label><br>
-                    <select style="width: 70%" name="curso" required>
+                    <select style="width: 100%" name="curso" required>
                         <option value="Edificações">Edificações</option>
                         <option value="Informática">Informática</option>
                         <option value="Mecatrônica">Mecatrônica</option>
@@ -129,16 +129,16 @@
 
             </div>
 
-            <div id="nome2" class='linhaFormAluno'>
+            <div style="grid-template-columns: repeat(1, 100%);" id="nome2" class='linhaFormAluno'>
                 <div class="campo">
                     <label for="genero">*Gênero:</label><br>
-                    <select style="width: 70%" name="genero" required>
+                    <select style="width: 100%" name="genero" required>
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
                     </select>
                 </div>
                 <div class="campo">
-                    <label for="matricula">*Matrícula:</label><br>
+                    <label style="width: 100%" for="matricula">*Matrícula:</label><br>
                     <input type="text" name="matricula" required>
                 </div>
             </div>

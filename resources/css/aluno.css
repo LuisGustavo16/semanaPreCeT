@@ -185,13 +185,6 @@
     padding-top: 3rem;
 }
 
-.linhaFormAluno{
-    display: grid;
-    grid-template-columns: repeat(3, 25rem);
-    grid-template-rows: repeat(1, 8rem);
-    gap: 20px;
-}
-
 .linhaFormUniversitario{
     display: grid;
     grid-template-columns: repeat(1, 25rem);
@@ -209,7 +202,7 @@
 .labelTipoUser {
     padding-top: 3rem;
 }
-.inputNome, .inputEmail, .inputCurso {
+.inputNome, .inputCurso, .inputEmail {
     width: 100%;
 }
 
@@ -298,14 +291,7 @@ hr {
 
 /*Responsivo da página de cadastro*/
 @media (max-width: 768px) {
-    .formRegistroAluno {
-        padding: 1.5rem;
-        width: 100%;
-        max-width: 100%;
-        box-sizing: border-box;
-        margin: 0;
-        overflow-x: hidden;
-    }
+
 
     .linhaFormAluno {
         grid-template-columns: repeat(2, 1fr);
@@ -319,7 +305,7 @@ hr {
 
     .inputNome, .inputEmail, .inputCurso, .inputSenha {
         width: 100%;
-        box-sizing: border-box;
+        font-size: 1rem;
     }
 
     .botaoFormAluno {

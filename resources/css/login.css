@@ -87,9 +87,24 @@
 
 }
 
+.linhaFormAluno{
+    display: grid;
+    grid-template-columns: repeat(3, 50%);
+    grid-template-rows: repeat(1, 8rem);
+    gap: 20px;
+}
+
+
 /*CSS da página de editar perfil*/
 .editarPerfil {
     margin-top: 2rem;
+}
+
+@media (max-width: 1003px) {
+    .linhaFormAluno {
+        grid-template-columns: repeat(1, 100%);
+        grid-template-rows: repeat(2, 6rem);
+    }
 }
 
 @media (max-width: 320px) {

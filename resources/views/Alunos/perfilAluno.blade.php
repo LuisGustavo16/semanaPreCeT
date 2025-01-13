@@ -39,16 +39,18 @@
             @csrf
             <div class="colunaFormAluno">
 
-                <label for="Nome">*Nome:</label><br>
-                <input class="inputNome" type="text" name="name" required value="{{$aluno->name}}" readonly>
+                <div class="campo">
+                    <label for="Nome">*Nome:</label>
+                    <input class="inputNome" type="text" name="name" required value="{{$aluno->name}}" readonly>
+                </div>
 
-                <div class="linhaFormAlunoEmail">
+
                     <div class="campo">
                         <label for="email">*Email:</label><br>
                         <input class="inputEmail" type="email" name="email" required readonly value="{{$aluno->email}}">
                     </div>
 
-                </div>
+              
 
                 @if ($aluno->tipo == 'Aluno')
                     <div class="linhaFormAluno">
@@ -67,7 +69,7 @@
 
                     <div class="linhaFormAluno">
                         <div class="campo">
-                            <label for="dataNascimento">*Data de Nascimento:</label><br>
+                            <label style="font-size: 1.2rem" for="dataNascimento">*Data de Nascimento:</label><br>
                             <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}" readonly>
                         </div>
                         <div class="campo">

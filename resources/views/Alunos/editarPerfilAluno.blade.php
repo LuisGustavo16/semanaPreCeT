@@ -3,7 +3,7 @@ $aux = true;
 $aux2 = true;
 $aux3 = true;
 $aux4 = true;
-$generos = ["Masculino", "Feminino", "Misto"];
+$generos = ["Masculino", "Feminino"];
 $cursos = ['Edificações', 'Informática', 'Mecatrônica'];
 $cursosGraduacao = ['Sistemas de Informação', 'Engenharia Civil'];
 $turmas = ['1º', '2º', '3º']
@@ -22,7 +22,7 @@ $turmas = ['1º', '2º', '3º']
 <body class="container">
     <div>
         <h1 class="sigee">SIGEE</h1>
-        <h1 class="titulo">Perfil do {{$aluno->tipo}}</h1>
+        <h1 class="titulo">Editar Perfil</h1>
     </div>
 
     <div class="fundoCadastrarAluno">
@@ -32,21 +32,21 @@ $turmas = ['1º', '2º', '3º']
             @csrf
             <div class="colunaFormAluno">
 
-                <label for="Nome">*Nome:</label><br>
-                <input class="inputNome" type="text" name="name" required value="{{$aluno->name}}">
+                <div class="campo">
+                    <label for="Nome">*Nome:</label><br>
+                    <input class="inputNome" type="text" name="name" required value="{{$aluno->name}}">
+                </div>
 
-                <div class="linhaFormAlunoEmail">
                     <div class="campo">
                         <label for="email">*Email:</label><br>
                         <input class="inputEmail" type="email" name="email" required value="{{$aluno->email}}">
-                    </div>
 
                 </div>
                 @if ($aluno->tipo == 'Aluno')
                     <div class="linhaFormAluno">
                         <div class="campo">
                             <label for="turma">*Série</label><br>
-                            <select class="selectGenero" type="checkbox" name="curso">
+                            <select style="width: 5rem" class="selectGenero" type="checkbox" name="curso">
                                 @foreach ($turmas as $item)
                                     @if ($aux3)
                                         <option value="{{$aluno->turma}}">{{$aluno->turma}}</option>
