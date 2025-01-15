@@ -105,7 +105,7 @@ class controllerAluno extends Controller
         $aluno = Aluno::where('email', $request->get('email'))->first();
 
         if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
-            return view("Alunos/perfilAluno", compact('aluno'));
+            return view("Alunos/verOpcoesAluno", compact('aluno'));
         } else {
             return redirect()->route("entrarAluno")->with('danger', "Email ou senha inválido(os)!");
         }

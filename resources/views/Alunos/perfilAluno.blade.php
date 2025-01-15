@@ -34,7 +34,7 @@
     </div>
 
     <div class="">
-
+        
         <form class="formRegistroAluno">
             @csrf
             <div class="colunaFormAluno">

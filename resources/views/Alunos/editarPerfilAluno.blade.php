@@ -61,7 +61,7 @@ $turmas = ['1º', '2º', '3º']
 
                         <div class="campo">
                             <label for="curso">*Curso:</label><br>
-                            <select class="selectGenero" type="checkbox" name="curso">
+                            <select style="width: 100%" class="selectGenero" type="checkbox" name="curso">
                                 @foreach ($cursos as $item)
                                     @if ($aux2)
                                         <option value="{{$aluno->curso}}">{{$aluno->curso}}</option>
@@ -93,7 +93,7 @@ $turmas = ['1º', '2º', '3º']
                     <div class="linhaFormAluno">
                         <div class="campo">
                             <label for="genero">*Gênero:</label><br>
-                            <select class="selectGenero" type="checkbox" name="genero">
+                            <select style="width: 110%" class="selectGenero" type="checkbox" name="genero">
                                 @foreach ($generos as $genero)
                                     @if ($aux)
                                         <option value="{{$aluno->genero}}">{{$aluno->genero}}</option>
