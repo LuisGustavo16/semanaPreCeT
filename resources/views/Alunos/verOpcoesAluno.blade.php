@@ -16,7 +16,6 @@ $turmas = ['1º', '2º', '3º']
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGEE</title>
-    @vite(['resources/js/app.js'])
 </head>
 
 <style>
@@ -31,18 +30,21 @@ $turmas = ['1º', '2º', '3º']
     .containerOpcoes {
         width: 100%;
         height: 100vh;
-        display: flex;
+        display: grid;
+        grid-template-rows: repeat(2, 15rem);
         align-items: center;
         justify-content: center;
         margin: 0rem;
         background-color: var(--white);
+        text-align: center;
     }
 
     .modalOpcoes {
         display: grid;
         grid-template-columns: repeat(3, 20rem);
         justify-items: center;
-        align-items: center; 
+        align-items: center;
+        width: 100%;
     }
 
     .opcaoAluno {
@@ -56,13 +58,30 @@ $turmas = ['1º', '2º', '3º']
         align-items: center;
         justify-content: center;
     }
-    
+
+    .opcaoAluno:hover {
+        background-color: rgba(255, 252, 71, 0.5);
+    }
+
 
     h2 {
         width: 100%;
         text-align: center;
-        font-family: "Inter", sans-serif;
+        font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     }
+
+    .apagarNotificacao {
+        font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+        font-size: 1.4rem;
+    }
+
+    .linkMsg {
+        font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+        font-weight: 900;
+        text-decoration: none;
+        font-size: 1.4rem;
+    }
+
 
     @media (max-width: 991px) {
         .modalOpcoes {
@@ -76,8 +95,13 @@ $turmas = ['1º', '2º', '3º']
 
     @media (max-width: 825px) {
         .modalOpcoes {
-            grid-template-columns: repeat(1, 18rem);
+            grid-template-columns: repeat(1, 100%);
             grid-template-rows: repeat(3, 13rem);
+        }
+
+        .containerOpcoes {
+            grid-template-rows: repeat(2, 22rem);
+            grid-template-columns: repeat(1, 100%);
         }
 
         .opcaoAluno {
@@ -86,19 +110,38 @@ $turmas = ['1º', '2º', '3º']
     }
 </style>
 
+<script>
+    function statusNotificacao() {
+        const notificacao = document.getElementsByClassName("apagarNotificacao")[0];
+        notificacao.style.display = 'none';
+    }
+</script>
+
 <body class="containerOpcoes">
+    <div style="display: flex; align-items: center; justify-content: center; widht: 100%;">
+        @if (isset($success))
+            <div class="apagarNotificacao">
+                {{$success}}
+                <a class="linkMsg" onclick="statusNotificacao()" href="#">X</a>
+            </div>
+        @endif
+    </div>
     <div class="modalOpcoes">
-        <div class="opcaoAluno">
-            <h2>Ver dados do perfil</h2>
-        </div>
+        <a href='/alunos/perfil/{{$aluno->id}}'>
+            <div class="opcaoAluno">
+                <h2>Ver dados do perfil</h2>
+            </div>
+        </a>
 
         <div style="" class="opcaoAluno">
             <h2>Realizar checkin</h2>
         </div>
 
-        <div class="opcaoAluno">
-            <h2>Realizar reserva</h2>
-        </div>
+        <a href="/alunos/enviarFormReserva/{{$aluno->id}}">
+            <div class="opcaoAluno">
+                <h2>Realizar reserva</h2>
+            </div>
+        </a>
     </div>
 </body>
 

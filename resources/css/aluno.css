@@ -334,7 +334,6 @@ hr {
     }
 
     .divLinksLogin {
-        width: 10rem;
         grid-template-rows: repeat(2, 5rem);
     }
 }

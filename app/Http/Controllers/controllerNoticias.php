@@ -56,8 +56,7 @@ class controllerNoticias extends Controller
                 $reserva = Reserva::find($item->idReserva); // Não estava conseguindo salvar/apagar porr meio do $item no banco de dados depois de alterar
 
                 //Pega o nome do dia da semana (segunda, terçça, etc)
-                $diaSemana = Carbon::parse($reserva->dia)->format('d/m'); // pega o dia 
-                $diaSemana = Carbon::parse($diaSemana)->translatedFormat('l'); // passa o dia para o nome do dia da semana
+                $diaSemana = Carbon::parse($reserva->dia)->translatedFormat('l');
 
                 // Pegar o dia de renovação
                 $dia = Carbon::parse($reserva->dia); // pegando o dia no formato exigido pelo Carbon

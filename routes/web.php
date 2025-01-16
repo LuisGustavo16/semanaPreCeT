@@ -79,10 +79,6 @@ Route::get('/noticias/novaNoticia', function () {
 /*Rotas para as páginas referentes ao cadastro de alunos, professores e graduandos*/
 //////////////////////////////////////////////////////////
 
-Route::get('/entrarPerfil', function () {
-    return view('Alunos/entrarPerfilAluno');
-});
-
 Route::get('/CadastroInicial', function () {
     return view('Cadastro/cadastrarInicial');
 }) -> name('CadastroInicial');
@@ -106,6 +102,10 @@ Route::get('/Espera', function () {
 Route::get('/entrar', function () {
     return view('Alunos/entrarPerfilAluno');
 }) -> name('entrarAluno');
+
+Route::get('/perfil', function () {
+    return view('Alunos/perfilAluno');
+}) -> name('perfil');
 
 Route::get('/desvalidarCadastro', function () {
     return view('Alunos/desvalidarCadastro');
@@ -210,7 +210,10 @@ Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAlun
 Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
 Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
 Route::get('/alunos/desvalidarAlunos', [App\Http\Controllers\controllerAluno::class, 'desvalidarAlunos']);
-
+// Rota das opções que os alunos possuem dentrro do site (checkins e reservas)
+Route::get('/alunos/enviarFormReserva/{id}', [App\Http\Controllers\controllerAluno::class, 'enviarFormReserva']);
+Route::post('/alunos/realizarReserva', [App\Http\Controllers\controllerAluno::class, 'store']);
+Route::get('/alunos/perfil/{id}', [App\Http\Controllers\controllerAluno::class, 'mandaDadosAluno']);
 
 
 //////////////////////////////////////////////////////////

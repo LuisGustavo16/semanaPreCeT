@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Mensagem;
+use App\Models\Reserva;
 use App\Models\TreinoAmistoso;
 use App\Traits\ApiResponse;
 use Carbon\Carbon;
@@ -100,11 +101,28 @@ class controllerAluno extends Controller
         return redirect()->route("listarAlunosPendentes");
     }
 
+    public function verificaLogin(string $id)
+    {
+        $aluno = Aluno::find($id);
+        session_start();
+        if (isset($_SESSION['senha'])) {
+            if ($_SESSION['senha'] == $aluno->password) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+
+    }
     public function entrarPerfil(Request $request)
     {
         $aluno = Aluno::where('email', $request->get('email'))->first();
 
         if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
+            session_start();
+            // Armazena um dado na sessão
+            $_SESSION['senha'] = $aluno->password;
             return view("Alunos/verOpcoesAluno", compact('aluno'));
         } else {
             return redirect()->route("entrarAluno")->with('danger', "Email ou senha inválido(os)!");
@@ -209,9 +227,9 @@ class controllerAluno extends Controller
             $aluno->status = 'espera';
             $aluno->save();
         }
-        return redirect()->route('inicio')->with('success','');
+        return redirect()->route('inicio')->with('success', '');
     }
-    
+
     public function validarCadastro(Request $request)
     {
         $aluno = Aluno::where('email', $request->get('email'))->first();
@@ -224,4 +242,42 @@ class controllerAluno extends Controller
     }
 
 
+    //Todas funcçoes que o user tem acesso
+    //////////////////////////////////////////
+
+    //Manda os dados para o aluno ver
+    public function mandaDadosAluno(string $id)
+    {
+        $aluno = Aluno::find($id);
+        if ($this->verificaLogin($id)) {
+            return view("Alunos/perfilAluno", compact('aluno'));
+        }
+        return redirect()->route("entrarAluno")->with('danger', "É preciso entrar com seu login primeiro!");
+    }
+
+    // Função para mandar o id do aluno para o formulário de criação da reserva
+    public function enviarFormReserva(string $id)
+    {
+        $aluno = Aluno::find($id);
+        return view("OpcoesAluno/registrarReserva", compact('aluno'));
+    }
+
+    // Função para os alunos que não possuem acesso ao App puderem fazer reservas
+    public function store(Request $request)
+    {
+        $aluno = Aluno::find($request->input('idAluno'));
+        if (isset($aluno)) {
+            $dados = Reserva::create($request->all());
+            return view("Alunos/verOpcoesAluno", compact('aluno'))->with([
+                'success' => 'Reserva Cadastrada com sucesso! espere a professora Gabriela aceitá-la',
+            ]);
+        } else {
+            return redirect()->route("entrarAluno")->with('danger', "É preciso entrarcom suua conta para poder realizar uma reserva!");
+        }
+    }
+
+    // Função para mandar os treinos pro aluno poder marcar checkin
+    public function mandarTreinos () {
+        
+    }
 }
