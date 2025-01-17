@@ -133,9 +133,11 @@ $turmas = ['1º', '2º', '3º']
             </div>
         </a>
 
-        <div style="" class="opcaoAluno">
-            <h2>Realizar checkin</h2>
-        </div>
+        <a href="/alunos/enviarTreinos/{{$aluno->id}}">
+            <div style="" class="opcaoAluno">
+                <h2>Realizar checkin</h2>
+            </div>
+        </a>
 
         <a href="/alunos/enviarFormReserva/{{$aluno->id}}">
             <div class="opcaoAluno">

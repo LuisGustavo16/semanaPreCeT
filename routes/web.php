@@ -14,7 +14,7 @@ Route::get('/logout', function () {
 });
 
 //Rota inicial
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
@@ -169,7 +169,7 @@ Route::post('/times/apagarVarios', [App\Http\Controllers\controllerTimes::class,
 /*Rotas do controller da tabela de Noticias*/
 ////////////////////////////////////////////////
 Route::get ('/home', [App\Http\Controllers\controllerNoticias::class, 'index']) ->name('inicio'); // Rota para exibir
-Route::get ('/', [App\Http\Controllers\controllerNoticias::class, 'index']) ->name('inicio'); // Rota para exibir
+Route::get ('/inicio', [App\Http\Controllers\controllerNoticias::class, 'index']) ->name('inicio'); // Rota para exibir
 Route::post('/noticias/cadastrarNoticia', [App\Http\Controllers\controllerNoticias::class, 'store'])->name('cadastrarNoticia'); // Rota para cadastrar
 Route::get('/noticias/selecionado/{idNoticia}', [App\Http\Controllers\controllerNoticias::class, 'enviaNoticiaEscolhida']); // Rota que manda os dados de uma noticia para ela ser listada
 Route::post('/noticias/atualizar/{idNoticia}', [App\Http\Controllers\controllerNoticias::class, 'update']); // Rota para editar
@@ -214,12 +214,14 @@ Route::get('/alunos/desvalidarAlunos', [App\Http\Controllers\controllerAluno::cl
 Route::get('/alunos/enviarFormReserva/{id}', [App\Http\Controllers\controllerAluno::class, 'enviarFormReserva']);
 Route::post('/alunos/realizarReserva', [App\Http\Controllers\controllerAluno::class, 'store']);
 Route::get('/alunos/perfil/{id}', [App\Http\Controllers\controllerAluno::class, 'mandaDadosAluno']);
-
+Route::get('/alunos/enviarTreinos/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'enviarTreinos'])->name('enviaTreinos');
+Route::get('/alunos/realizarCheckin/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'realizarCheckin']);
+Route::get('/alunos/cancelarCheckin/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'cancelarCheckin']);
 
 //////////////////////////////////////////////////////////
 /*Rotas do controller do Cronograma*/
 //////////////////////////////////////////////////////////
-Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma');
+Route::get ('/cronograma', [App\Http\Controllers\controllerCronograma::class, 'index']) ->name('indexCronograma')->middleware();
 Route::get ('/cronograma/gerarPDF', [App\Http\Controllers\controllerCronograma::class, 'gerarPDF']) ->name('gerarPDF');
 
 Route::get('/mensagens/pesquisar', [controllerAluno::class, 'pesquisarAlunos'])->name('pesquisarAlunos');

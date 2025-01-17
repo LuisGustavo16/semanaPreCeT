@@ -239,4 +239,6 @@ class controllerTreinoAmistoso extends Controller
         return $dompdf->stream('chamada.pdf');
     }
 
+   
+
 }

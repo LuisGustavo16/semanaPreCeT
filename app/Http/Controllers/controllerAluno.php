@@ -276,8 +276,55 @@ class controllerAluno extends Controller
         }
     }
 
-    // Função para mandar os treinos pro aluno poder marcar checkin
-    public function mandarTreinos () {
-        
+
+    // Envia os treinos pro aluno poder fazer checkin
+    public function enviarTreinos(string $idAluno)
+    {
+        $dados = TreinoAmistoso::all();
+        foreach ($dados as $item) {
+            /*Trocar o formato do dia e do horário*/
+            $item->dia = Carbon::parse($item->dia)->format('d/m');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
+
+            $modalidade = Modalidade::find($item->idModalidade);
+            $item->nomeModalidade = $modalidade->nome;
+
+            $checkin = Chekin::where("idAluno", $idAluno)
+                ->where("idTreino", $item->idTreino)
+                ->first();
+
+            if ($checkin != null) {
+                $item->status = "realizado";
+            } else {
+                $item->status = "branco";
+            }
+        }
+        return view("OpcoesAluno/realizarCheckin", compact('dados', "idAluno"));
+    }
+
+    public function realizarCheckin(string $idAluno, string $idTreino)
+    {
+        $testeVerificacao = Chekin::where("idAluno", $idAluno)->where("idTreino", $idTreino)->first();
+        if (!isset($testeVerificacao)) {
+            $dados = new Chekin();
+            $dados->idTreino = $idTreino;
+            $dados->idAluno = $idAluno;
+            $dados->save();
+            $treino = TreinoAmistoso::find($idTreino);
+            $treino->vagasOcupadas += 1;
+            $treino->save();
+            return redirect()->route('enviaTreinos', ['idTime' => $idTreino, 'idAluno' => $idAluno]);
+        }
+    }
+
+    public function cancelarCheckin(string $idAluno, string $idTreino)
+    {
+        $dados = Chekin::where("idAluno", $idAluno)->where("idTreino", $idTreino);
+        $treino = TreinoAmistoso::find($idTreino);
+        $treino->vagasOcupadas -= 1;
+        $treino->save();
+        $dados->delete();
+        return redirect()->route('enviaTreinos', ['idTime' => $idTreino, 'idAluno' => $idAluno]);
     }
 }
