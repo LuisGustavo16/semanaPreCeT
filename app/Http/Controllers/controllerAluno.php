@@ -117,9 +117,9 @@ class controllerAluno extends Controller
     }
     public function entrarPerfil(Request $request)
     {
-        $aluno = Aluno::where('email', $request->get('email'))->first();
+        $aluno = Aluno::where('email', $request->input('email'))->first();
 
-        if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
+        if ($aluno && Hash::check($request->input('password'), $aluno->password)) {
             session_start();
             // Armazena um dado na sessão
             $_SESSION['senha'] = $aluno->password;
