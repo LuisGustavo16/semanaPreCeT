@@ -153,10 +153,13 @@
 </head>
 
 <body>
-    <header>
-        <h1>SIGEE Varginha</h1>
-        <p>Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p>
-    </header>
+<a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
+            <header>
+                <img src="leticia.jpg" alt="logo">
+                <h1>SIGEE Varginha</h1>
+                <p">Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p>
+            </header>
+        </a>
 
 
     <nav>
