@@ -82,6 +82,11 @@ $turmas = ['1º', '2º', '3º']
         font-size: 1.4rem;
     }
 
+    a {
+        text-decoration: none;
+        color: black
+    }
+
 
     @media (max-width: 991px) {
         .modalOpcoes {

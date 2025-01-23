@@ -281,7 +281,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {

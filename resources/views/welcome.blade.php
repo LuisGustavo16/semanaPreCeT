@@ -97,7 +97,6 @@
 
         .menu {
             display: flex;
-
             padding: 10px;
         }
 
@@ -133,7 +132,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {

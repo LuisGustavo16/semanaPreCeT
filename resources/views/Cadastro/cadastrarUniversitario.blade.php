@@ -97,7 +97,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {
@@ -267,8 +266,12 @@ form {
             padding-left: 0.5rem;
             font-size: 1.1rem;
             height: 2rem;
-            width: 10rem;
             font-family: "Inter", sans-serif;
+            width: 90%;
+        }
+
+        .matricula {
+            width: 60%;
         }
 
         /*BOTÃO*/
@@ -326,13 +329,12 @@ form {
             }
 
             .formRegistroAluno {
-                width: 100%;
+                width: 50%;
                 max-width: 100%;
                 padding: 2rem;
             }
 
             .botaoFormAluno {
-                width: 100%;
                 max-width: 100%;
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -365,7 +367,6 @@ form {
 
             .formRegistroAluno {
                 padding: 1rem;
-                width: 100%;
             }
 
             .botaoFormAluno {
@@ -429,8 +430,8 @@ form {
                     </select>
                 </div>
                 <div class="campo">
-                    <label for="matricula">*Matrícula:</label><br>
-                    <input type="text" name="matricula" required>
+                    <label  for="matricula">*Matrícula:</label><br>
+                    <input class="matricula" type="text" name="matricula" required>
                 </div>
 
             </div>

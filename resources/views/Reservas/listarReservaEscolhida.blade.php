@@ -34,14 +34,17 @@ $popup = true;
             </div>
 
             <div class="campoListarReservaEscolhida">
-                <h1 class="textoSolicitacao">Horário de Inicio:</h1>
-                <h2>{{$dados->horarioInicio}}</h2>
+                <h1 class="textoSolicitacao">Horário:</h1>
+                <h2>{{$dados->horarioInicio}} - {{$dados->horarioFim}}</h2>
             </div>
 
+            @if ($dados->tipo == 'regular')
             <div class="campoListarReservaEscolhida">
-                <h1 class="textoSolicitacao">Horário de Finalização:</h1>
-                <h2>{{$dados->horarioFim}}</h2>
+                <h1 class="textoSolicitacao">Data de Encerramento:</h1>
+                <h2>{{$dados->dataEncerramento}}</h2>
             </div>
+            @endif
+            
 
             <div class="campoListarReservaEscolhida">
                 <h1 class="textoSolicitacao">Finalidade:</h1>
@@ -60,7 +63,7 @@ $popup = true;
 
             @if ($dados->status == 'A')
                 <div class="campoListarReservaEscolhida">
-                    <h1 class="textoSolicitacao">Observação</h1>
+                    <h1 class="textoSolicitacao">Observação:</h1>
                     <h2>{{$dados->observacao}}</h2>
                 </div>
             @endif

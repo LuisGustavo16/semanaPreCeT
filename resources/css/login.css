@@ -56,7 +56,6 @@
         grid-template-columns: repeat(1, 100%);
         grid-template-rows: repeat(2, 8rem);
         width: 70%;
-        margin-left: 10%;
     }
     .inputEmailLogin {
         width: 95%;

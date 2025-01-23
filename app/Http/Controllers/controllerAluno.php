@@ -105,8 +105,8 @@ class controllerAluno extends Controller
     {
         $aluno = Aluno::find($id);
         session_start();
-        if (isset($_SESSION['senha'])) {
-            if ($_SESSION['senha'] == $aluno->password) {
+        if (isset($_SESSION['email'])) {
+            if ($_SESSION['email'] == $aluno->email) {
                 return true;
             } else {
                 return false;
@@ -115,56 +115,6 @@ class controllerAluno extends Controller
         return false;
 
     }
-    public function entrarPerfil(Request $request)
-    {
-        $aluno = Aluno::where('email', $request->input('email'))->first();
-
-        if ($aluno && Hash::check($request->input('password'), $aluno->password)) {
-            session_start();
-            // Armazena um dado na sessão
-            $_SESSION['senha'] = $aluno->password;
-            return view("Alunos/verOpcoesAluno", compact('aluno'));
-        } else {
-            return redirect()->route("entrarAluno")->with('danger', "Email ou senha inválido(os)!");
-        }
-    }
-
-    public function edit(string $idAluno)
-    {
-        $aluno = Aluno::find($idAluno);
-        return view("Alunos/editarPerfilAluno", compact('aluno'));
-    }
-
-    public function update(Request $request, string $idAluno)
-    {
-
-        try {
-            $aluno = Aluno::find($idAluno);
-            $aluno->update([
-                'name' => $request->get('name'),
-                'email' => $request->get('email'),
-                'turma' => $request->get('turma'),
-                'curso' => $request->get('curso'),
-                'matricula' => $request->get('matricula'),
-                'descricaoEsportiva' => $request->get('descricaoEsportiva'),
-                'dataNascimento' => $request->get('dataNascimento'),
-                'genero' => $request->get('genero'),
-                'tipo' => $aluno->tipo,
-                'status' => $aluno->status,
-            ]);
-            return view("Alunos/perfilAluno", [
-                'aluno' => $aluno,
-                'success' => "Perfil editado com sucesso!"
-            ]);
-        } catch (\Throwable $th) {
-            $aluno = Aluno::find($idAluno);
-            return view("Alunos/perfilAluno", [
-                'aluno' => $aluno,
-                'danger' => "Erro ao editar perfil!"
-            ]);
-        }
-    }
-
 
     /*teste <mensagens>*/
     // listar e pesquisar alunos
@@ -230,27 +180,79 @@ class controllerAluno extends Controller
         return redirect()->route('inicio')->with('success', '');
     }
 
-    public function validarCadastro(Request $request)
-    {
-        $aluno = Aluno::where('email', $request->get('email'))->first();
 
-        if ($aluno && Hash::check($request->get('password'), $aluno->password)) {
-            return view("Alunos/telaEspera", compact('aluno'));
+
+    /////////////////////////////////
+    // OPÇÕES QUE OS USUÁRIOS ACESSAM
+    /////////////////////////////////
+    public function entrarPerfil(Request $request)
+    {
+        $aluno = Aluno::where('email', $request->input('email'))->first();
+
+        if ($aluno && Hash::check($request->input('password'), $aluno->password)) {
+            session_start();
+            // Armazena um dado na sessão
+            $_SESSION['email'] = $aluno->email;
+            return redirect()->route('validarLogin');
         } else {
-            return redirect()->route("telaEspera")->with('danger', "Email ou senha inválido(os)!");
+            return redirect()->route("entrarAluno")->with('danger', "Email ou senha inválido(os)!");
         }
     }
 
+    public function validarLogin() {
+        session_start();
+        $aluno = Aluno::where('email', $_SESSION['email'])->first();
+        return view("Alunos/verOpcoesAluno", compact('aluno'));
+    }
 
-    //Todas funcçoes que o user tem acesso
-    //////////////////////////////////////////
+    public function edit(string $idAluno)
+    {
+        if ($this->verificaLogin($idAluno)) {
+            $aluno = Aluno::find($idAluno);
+            return view("OpcoesAluno/editarPerfilAluno", compact('aluno'));
+        }
+        return redirect()->route("entrarAluno")->with('danger', "É preciso entrar com seu login primeiro!");
+    }
+
+    public function update(Request $request, string $idAluno)
+    {
+        if ($this->verificaLogin($idAluno)) {
+            try {
+                $aluno = Aluno::find($idAluno);
+                $aluno->update([
+                    'name' => $request->get('name'),
+                    'email' => $request->get('email'),
+                    'turma' => $request->get('turma'),
+                    'curso' => $request->get('curso'),
+                    'matricula' => $request->get('matricula'),
+                    'descricaoEsportiva' => $request->get('descricaoEsportiva'),
+                    'dataNascimento' => $request->get('dataNascimento'),
+                    'genero' => $request->get('genero'),
+                    'tipo' => $aluno->tipo,
+                    'status' => $aluno->status,
+                ]);
+                return view("OpcoesAluno/perfilAluno", [
+                    'aluno' => $aluno,
+                    'success' => "Perfil editado com sucesso!"
+                ]);
+            } catch (\Throwable $th) {
+                $aluno = Aluno::find($idAluno);
+                return view("OpcoesAluno/perfilAluno", [
+                    'aluno' => $aluno,
+                    'danger' => "Erro ao editar perfil!"
+                ]);
+            }
+        }
+        return redirect()->route("entrarAluno")->with('danger', "É preciso entrar com seu login primeiro!");
+    }
 
     //Manda os dados para o aluno ver
     public function mandaDadosAluno(string $id)
     {
+        
         $aluno = Aluno::find($id);
         if ($this->verificaLogin($id)) {
-            return view("Alunos/perfilAluno", compact('aluno'));
+            return view("OpcoesAluno/perfilAluno", compact('aluno'));
         }
         return redirect()->route("entrarAluno")->with('danger', "É preciso entrar com seu login primeiro!");
     }
@@ -262,12 +264,19 @@ class controllerAluno extends Controller
         return view("OpcoesAluno/registrarReserva", compact('aluno'));
     }
 
+
+
     // Função para os alunos que não possuem acesso ao App puderem fazer reservas
-    public function store(Request $request)
+    public function realizarReserva(Request $request)
     {
         $aluno = Aluno::find($request->input('idAluno'));
         if (isset($aluno)) {
             $dados = Reserva::create($request->all());
+            if ($dados->tipo == 'regular') {
+                $diaHoje = Carbon::now();
+                $dados->diaEncerramento = $diaHoje->addMonths(6);
+                $dados->save();
+            }
             return view("Alunos/verOpcoesAluno", compact('aluno'))->with([
                 'success' => 'Reserva Cadastrada com sucesso! espere a professora Gabriela aceitá-la',
             ]);
@@ -275,7 +284,6 @@ class controllerAluno extends Controller
             return redirect()->route("entrarAluno")->with('danger', "É preciso entrarcom suua conta para poder realizar uma reserva!");
         }
     }
-
 
     // Envia os treinos pro aluno poder fazer checkin
     public function enviarTreinos(string $idAluno)

@@ -129,8 +129,7 @@
         </div>
 
         <div id="campoDiaEncerramento" style="margin-bottom: 2rem; display: none">
-            <label>*Data de encerramento:</label>
-            <input type="date" name="diaEncerramento">
+            <h3>Sua reserva será cancelada automaticamente em 6 meses.</h3>
         </div>
 
         <div>

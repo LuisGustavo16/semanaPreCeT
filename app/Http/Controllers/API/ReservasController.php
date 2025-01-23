@@ -34,6 +34,11 @@ class ReservasController extends Controller
 
         try {
             $dados = Reserva::create($request->all());
+            if ($dados->tipo == 'regular') {
+                $diaHoje = Carbon::now();
+                $dados->diaEncerramento = $diaHoje->addMonths(6);
+                $dados->save();
+            }
             return $this->success([], "Cadastro realizado com sucesso!!!");
         } catch (\Throwable $th) {
             return $this->error("Erro ao registrar reserva!!!", 401, $th->getMessage());

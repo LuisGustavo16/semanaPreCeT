@@ -37,7 +37,7 @@ class controllerNoticias extends Controller
         /*Essa lógica vai ser usada pois, quando a semana vira, a reserva regular passa a não estar entre
         o primeiro dia da semana (domingo) e o último dia (sabado). Quando ela não estiver mais entre esses dias
         é por que ela deve ser renovada. Ela será renovada somente se:
-            - 1: Ela não tiver um dia de cancelamento no dia da renovação, o seja, se ela nao foi cancelada pela professora
+            - 1: Ela não tiver um dia de cancelamento no dia da renovação, ou seja, se ela nao foi cancelada pela professora
             - 2: Se o dia de encerramento dela já expirou
         */
 
@@ -50,7 +50,7 @@ class controllerNoticias extends Controller
         foreach ($reservas as $item) {
             if ($item->tipo == 'regular') {
                 /*  Se (O dia da reserva for menor que o dia do inicio da semana) &&
-                    (A data de expiração *NÃO* for menor que o dia da renovação) 
+                    (A data de encerramento *NÃO* for menor que o dia da renovação) 
                     quer dizer que ela deve ser renovada
                 */
                 $reserva = Reserva::find($item->idReserva); // Não estava conseguindo salvar/apagar porr meio do $item no banco de dados depois de alterar
@@ -68,8 +68,7 @@ class controllerNoticias extends Controller
                     $this->gerarMensagemAutomatica($reserva->idAluno, 'Sua reserva regular de ' . $diaSemana . ' foi renovada para o dia ' . $diaRenovadoFormatado);
                 } else if ($reserva->diaEncerramento <= $inicioSemana) {
                     // Caso o dia de expiração tenha passado, ele apaga a reserva e manda uma mensagem ao usuario
-                    $this->gerarMensagemAutomatica($reserva->idAluno, 'Sua reserva regular de ' . $diaSemana . ' foi expirada. Faça uma 
-                    nova reserva regular para poder continuar utilizando a(o) ' . $reserva->local);
+                    $this->gerarMensagemAutomatica($reserva->idAluno, 'Sua reserva regular de ' . $diaSemana . ' foi expirada. Faça uma nova reserva regular para poder continuar utilizando a(o) ' . $reserva->local);
                     $reserva->delete();
                 }
             } else {

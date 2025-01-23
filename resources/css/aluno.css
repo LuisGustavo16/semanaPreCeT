@@ -233,6 +233,7 @@
     font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
     font-weight: bold;
     cursor: pointer;
+    margin-top: 2rem;
 }
 
 select {

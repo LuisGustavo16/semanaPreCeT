@@ -34,8 +34,8 @@ class controllerReservas extends Controller
             /*Trocar o formato do dia e do horário*/
             $item->dia = Carbon::parse($item->dia);
             $item->diaSemana = Carbon::parse($item->dia)->translatedFormat('l');
-            $item->horarioInicio = Carbon::parse($item->horarioInicio)->format('h:m');
-            $item->horarioFim = Carbon::parse($item->horarioFim)->format('h:m');
+            $item->horarioInicio = Carbon::parse($item->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');;
+            $item->horarioFim = Carbon::parse($item->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
             $item->dia = Carbon::parse($item->dia)->format('d/m');
         }
         return view('Reservas/listarReservas', compact('dados', 'status'));
@@ -52,18 +52,18 @@ class controllerReservas extends Controller
         $dados->diaSemana = Carbon::parse($dados->dia);
         $dados->diaSemana = Carbon::parse($dados->diaSemana)->translatedFormat('l');
         $dados->dia = Carbon::parse($dados->dia)->format('d/m');
-        $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->format('h:m');
-        $dados->horarioFim = Carbon::parse($dados->horarioFim)->format('h:m');
+        $dados->horarioInicio = Carbon::parse($dados->horarioInicio)->timezone('America/Sao_Paulo')->format('H:i');
+        $dados->horarioFim = Carbon::parse($dados->horarioFim)->timezone('America/Sao_Paulo')->format('H:i');
 
         $aluno = Aluno::find($dados->idAluno);
         if (isset($dados))
             return view('Reservas/listarReservaEscolhida', compact('dados', 'aluno'));
     }
 
-    /*Quando uma reserva é cancelada, rejitada ou expirada*/
+    /*Quando uma reserva é cancelada*/
     public function destroy(string $idSolicitacao, string $status, Request $request) {
         $dados = Reserva::find($idSolicitacao);
-        $dados->observacao = $request->input('observacao');
+        $this->gerarMensagemAutomatica($dados->idAluno, "Sua reserva foi negada/cancelada com a seguinte observação: " . $request->input('observacao'));
         $dados->status = 'N';
         $dados->save();
         return redirect()->route('indexReserva', ['status' => $status]);

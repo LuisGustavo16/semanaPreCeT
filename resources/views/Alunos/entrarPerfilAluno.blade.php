@@ -173,7 +173,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {
@@ -252,6 +251,61 @@
         .caixa {
             align-items: center;
         }
+
+        @media (max-width: 320px) {
+            .divLogin {
+                width: 100%;
+                display: block;
+                align-items: center;
+            }
+
+            .formLogin {
+                margin: 1rem;
+                padding: 1rem;
+                grid-template-columns: repeat(1, 100%);
+                grid-template-rows: repeat(2, 8rem);
+                width: 70%;
+                margin-left: 2rem;
+
+            }
+
+            .inputEmailLogin {
+                width: 95%;
+            }
+
+            .botaoLogin {
+                position: relative;
+                height: 3rem;
+                width: 6rem;
+            }
+        }
+
+        @media (max-width: 546px) {
+            .divLogin {
+                width: 100%;
+                display: block;
+                align-items: center;
+            }
+
+            .formLogin {
+                margin: 1rem;
+                padding: 1rem;
+                grid-template-columns: repeat(1, 100%);
+                grid-template-rows: repeat(2, 8rem);
+                width: 70%;
+                margin-left: 10%;
+            }
+
+            .inputEmailLogin {
+                width: 95%;
+            }
+
+            .botaoLogin {
+                position: relative;
+                height: 3rem;
+                width: 6rem;
+            }
+        }
     </style>
 
 
@@ -289,35 +343,38 @@
 
 
     <h1 class="tituloLogin">Entrar como Usuário</h1>
-    <form class="formLogin" method="POST" action="/cadastro/entrar">
-        @csrf
-
-        <div>
-            <label for="email">{{ __('Email:') }}</label>
+    <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+        <form class="formLogin" method="POST" action="/cadastro/entrar">
+            @csrf
 
             <div>
-                <input id="email" type="email" class="inputEmailLogin" name="email" value="{{ old('email') }}" required
-                    autocomplete="email" autofocus>
-            </div>
-        </div>
+                <label for="email">{{ __('Email:') }}</label>
 
-        <div>
-            <label for="password">{{ __('Senha:') }}</label>
+                <div>
+                    <input id="email" type="email" class="inputEmailLogin" name="email" value="{{ old('email') }}"
+                        required autocomplete="email" autofocus>
+                </div>
+            </div>
 
             <div>
-                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                    name="password" required autocomplete="current-password">
-            </div>
-        </div>
+                <label for="password">{{ __('Senha:') }}</label>
 
-        <div>
-            <div>
-                <button type="submit" class="botaoLogin">
-                    {{ __('Entrar') }}
-                </button>
+                <div>
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
+                        name="password" required autocomplete="current-password">
+                </div>
             </div>
-        </div>
-    </form>
+
+            <div>
+                <div>
+                    <button type="submit" class="botaoLogin">
+                        {{ __('Entrar') }}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
 
 </body>
 

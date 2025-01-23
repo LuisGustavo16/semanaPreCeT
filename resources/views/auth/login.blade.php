@@ -173,7 +173,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {
@@ -252,13 +251,68 @@
         .caixa {
             align-items: center;
         }
+
+        @media (max-width: 320px) {
+            .divLogin {
+                width: 100%;
+                display: block;
+                align-items: center;
+            }
+
+            .formLogin {
+                margin: 1rem;
+                padding: 1rem;
+                grid-template-columns: repeat(1, 100%);
+                grid-template-rows: repeat(2, 8rem);
+                width: 70%;
+                margin-left: 2rem;
+
+            }
+
+            .inputEmailLogin {
+                width: 95%;
+            }
+
+            .botaoLogin {
+                position: relative;
+                height: 3rem;
+                width: 6rem;
+            }
+        }
+
+        @media (max-width: 546px) {
+            .divLogin {
+                width: 100%;
+                display: block;
+                align-items: center;
+            }
+
+            .formLogin {
+                margin: 1rem;
+                padding: 1rem;
+                grid-template-columns: repeat(1, 100%);
+                grid-template-rows: repeat(2, 8rem);
+                width: 70%;
+                margin-left: 10%;
+            }
+
+            .inputEmailLogin {
+                width: 95%;
+            }
+
+            .botaoLogin {
+                position: relative;
+                height: 3rem;
+                width: 6rem;
+            }
+        }
     </style>
 
 </head>
 
 <body class="containerLogin">
-<div>
-<a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
+    <div>
+        <a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
             <header>
                 <img src="leticia.jpg" alt="logo">
                 <h1>SIGEE Varginha</h1>
@@ -275,7 +329,7 @@
             </label>
 
             <div class="menu">
-                <a class="linkCadastro" href="{{route('entrarAluno')}}">Entrar como estudante</a>
+                <a class="linkCadastro" href="{{route('entrarAluno')}}">Entrar como usuário</a>
                 <a class="linkCadastro" href="/login">Entrar como administrador</a>
                 <a class="linkCadastro" href="/CadastroInicial">Se registrar</a>
                 <a class="linkCadastro"
@@ -285,8 +339,9 @@
             </div>
         </nav>
     </div>
-        <div>
-            <h1 class="tituloLogin">Entrar como Administrador</h1>
+    <div>
+        <h1 class="tituloLogin">Entrar como Administrador</h1>
+        <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
             <form class="formLogin" method="POST" action="{{ route('login') }}">
                 @csrf
 
@@ -310,8 +365,8 @@
 
                     <div>
                         <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror inputEmailLogin" name="password" required
-                            autocomplete="current-password">
+                            class="form-control @error('password') is-invalid @enderror inputEmailLogin" name="password"
+                            required autocomplete="current-password">
 
                         @error('password')
                             <span class="invalid-feedback" role="alert">
@@ -330,6 +385,8 @@
                 </div>
             </form>
         </div>
+
+    </div>
 </body>
 
 </html>

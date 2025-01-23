@@ -97,7 +97,6 @@
             .menu {
                 display: none;
                 flex-direction: column;
-                width: 100%;
             }
 
             .menu a {
@@ -114,127 +113,127 @@
 
         }
 
-/*formulário*/
+        /*formulário*/
 
-.container {
-    display: block;              
-    height: 100vh; 
-}
-
-
-.titulo {
-    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    text-align: center;
-}
-
-.desc {
-    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    font-size: larger;
-    text-align: center;
-    padding: 0rem;
-    font-weight: normal;
-}
-
-.sigee {
-    font-family: Blippo, fantasy;
-    font-size: 350%;
-    text-align: center;
-}
-
-.fundoCadastrarAluno {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-}
-
-.formRegistroInicio {
-    box-shadow:  2px 2px 5px black;
-    padding: 3rem;
-    padding-top: 0;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    height: auto;                     
-    width: 60%;                      
-    margin: 0 auto;
-}
-
-.formRegistroAluno {
-    box-shadow:  2px 2px 5px black;
-    padding: 3rem;
-    padding-top: 0;
-    border: 1px solid black;
-    display: flex;
-    flex-direction: column;
-    height: auto;                     
-    width: 40%;                      
-    max-width: 70rem;                
-    margin: 0 auto;
-}
+        .container {
+            display: block;
+            height: 100vh;
+        }
 
 
-.colunaFormAluno {
-    width: 90%;
-    padding-top: 3rem;
-}
+        .titulo {
+            font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+            text-align: center;
+        }
 
-.linhaFormUniversitario{
-    display: grid;<header>
-        <img src="leticia.jpg" alt="logo">
-        <h1>SIGEE Varginha</h1>
-        <p>Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p>
-    </header>
-    grid-template-columns: repeat(1, 25rem);
-    grid-template-rows: repeat(1, 8rem);
-    gap: 20px;
-}
+        .desc {
+            font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+            font-size: larger;
+            text-align: center;
+            padding: 0rem;
+            font-weight: normal;
+        }
 
-.linhaFormAlunoEmail{
-    display: grid;
-    grid-template-columns: repeat(3, 25rem);
-    grid-template-rows: repeat(1, 8rem);
-    gap: 20px;
-}
+        .sigee {
+            font-family: Blippo, fantasy;
+            font-size: 350%;
+            text-align: center;
+        }
 
-.labelTipoUser {
-    padding-top: 3rem;
-}
-.inputNome, .inputCurso, .inputEmail {
-    width: 100%;
-}
+        .fundoCadastrarAluno {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
 
-.divSenhas {
-    display: flex;
-    gap: 20px;
-}
+        .formRegistroInicio {
+            box-shadow: 2px 2px 5px black;
+            padding: 3rem;
+            padding-top: 0;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .formRegistroAluno {
+            box-shadow: 2px 2px 5px black;
+            padding: 3rem;
+            padding-top: 0;
+            border: 1px solid black;
+            display: flex;
+            flex-direction: column;
+            height: auto;
+            width: 40%;
+            max-width: 70rem;
+            margin: 0 auto;
+        }
 
 
-.inputSenha {
-    margin-left: 0;
-}
+        .colunaFormAluno {
+            width: 90%;
+            padding-top: 3rem;
+        }
 
-.botaoFormAluno {
-    height: 3rem;
-    width: 10rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    border-radius: 5px;
-    background-color: var(--blue);
-    color: white;
-    font-size: 130%;
-    font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
-    font-weight: bold;
-    cursor: pointer;
-}
+        .linhaFormUniversitario {
+            display: grid;
+            <header><img src="leticia.jpg" alt="logo"><h1>SIGEE Varginha</h1><p>Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p></header>grid-template-columns: repeat(1, 25rem);
+            grid-template-rows: repeat(1, 8rem);
+            gap: 20px;
+        }
 
-select {
-    padding-left: 0.5rem;
-    font-size: 1.1rem;
-    height: 3rem;
-    width: 100%;
-    font-family: "Inter", sans-serif;
-}
-form {
+        .linhaFormAlunoEmail {
+            display: grid;
+            grid-template-columns: repeat(3, 25rem);
+            grid-template-rows: repeat(1, 8rem);
+            gap: 20px;
+        }
+
+        .labelTipoUser {
+            padding-top: 3rem;
+        }
+
+        .inputNome,
+        .inputCurso,
+        .inputEmail {
+            width: 100%;
+        }
+
+        .divSenhas {
+            display: flex;
+            gap: 20px;
+        }
+
+
+        .inputSenha {
+            margin-left: 0;
+        }
+
+        .botaoFormAluno {
+            height: 3rem;
+            width: 10rem;
+            padding-left: 2rem;
+            padding-right: 2rem;
+            border-radius: 5px;
+            background-color: var(--blue);
+            color: white;
+            font-size: 130%;
+            font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        select {
+            padding-left: 0.5rem;
+            font-size: 1.1rem;
+            height: 3rem;
+            width: 100%;
+            font-family: "Inter", sans-serif;
+        }
+
+        form {
             border-radius: 2rem;
             box-shadow: 0.1rem 0.1rem 1rem black;
             margin: 5rem;
@@ -292,7 +291,7 @@ form {
             font-weight: 700;
         }
 
-         /* Responsividade */
+        /* Responsividade */
 
         @media (max-width: 1200px) {
             .linhaFormAluno {
@@ -326,13 +325,11 @@ form {
             }
 
             .formRegistroAluno {
-                width: 100%;
                 max-width: 100%;
                 padding: 2rem;
             }
 
             .botaoFormAluno {
-                width: 100%;
                 max-width: 100%;
                 padding-left: 2rem;
                 padding-right: 2rem;
@@ -365,7 +362,6 @@ form {
 
             .formRegistroAluno {
                 padding: 1rem;
-                width: 100%;
             }
 
             .botaoFormAluno {
@@ -377,7 +373,7 @@ form {
 
 <body class="container">
     <div>
-    <a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
+        <a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
             <header>
                 <img src="leticia.jpg" alt="logo">
                 <h1>SIGEE Varginha</h1>

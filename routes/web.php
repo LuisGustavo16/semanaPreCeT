@@ -95,27 +95,29 @@ Route::get('/CadastroUniversitario', function () {
     return view('Cadastro/cadastrarUniversitario');
 }) -> name('CadastroUniversitario');
 
+// Tela quando o usuário termina o cadastro
 Route::get('/Espera', function () {
     return view('Cadastro/telaEspera');
 }) -> name('telaEspera');
 
+//Tela de entrar do usuário
 Route::get('/entrar', function () {
     return view('Alunos/entrarPerfilAluno');
 }) -> name('entrarAluno');
 
+//Tela dos dados do perfil do usuário
 Route::get('/perfil', function () {
     return view('Alunos/perfilAluno');
 }) -> name('perfil');
-
-Route::get('/desvalidarCadastro', function () {
-    return view('Alunos/desvalidarCadastro');
-}) -> name('desvalidarCadastro')->middleware();
 
 Route::get('/validarCadastro', function () {
     return view('Cadastro/validarCadastro');
 });
 
-
+// Tela com a opção de apagar os usuários
+Route::get('/desvalidarCadastro', function () {
+    return view('Alunos/desvalidarCadastro');
+}) -> name('desvalidarCadastro')->middleware();
 
 ////////////////////////////////////////////////////////
 /*Rotas do controller da tabela de Treinos e Amistosos*/
@@ -199,7 +201,8 @@ Route::post('/cadastro/registrarProfessor', [App\Http\Controllers\controllerCada
 Route::post('/cadastro/registrarUniversitario', [App\Http\Controllers\controllerCadastro::class, 'registerUniversitario'])->name("cadastroUniversitario");
 Route::post('/cadastro/entrar', [App\Http\Controllers\controllerAluno::class, 'entrarPerfil']);
 Route::post('/alunos/editarPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'update']);
-Route::post('/alunos/validarCadastro', [App\Http\Controllers\controllerAluno::class, 'validarCadastro']);
+Route::get('/alunos/validarLogin', [App\Http\Controllers\controllerAluno::class, 'validarLogin'])->name('validarLogin');
+
 
 ////////////////////////////////////////////////
 /*Rotas do controller da tabela de Alunos*/
@@ -208,12 +211,12 @@ Route::get ('/alunos/adicionarAluno/{idAluno}/{idTime}', [App\Http\Controllers\c
 Route::get ('/alunos/verPerfilAluno/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'show'])-> middleware('auth');
 Route::get('/alunos/listarAlunosPendentes', [App\Http\Controllers\controllerAluno::class, 'listarAlunosPendentes'])->name("listarAlunosPendentes")-> middleware('auth');
 Route::get('/alunos/aceitarNegarRegistro/{idAluno}/{opcao}', [App\Http\Controllers\controllerAluno::class, 'aceitarNegarRegistro'])-> middleware('auth');
-Route::get('/alunos/formEditPerfil/{id}', [App\Http\Controllers\controllerAluno::class, 'edit']);
 Route::get('/alunos/desvalidarAlunos', [App\Http\Controllers\controllerAluno::class, 'desvalidarAlunos']);
-// Rota das opções que os alunos possuem dentrro do site (checkins e reservas)
-Route::get('/alunos/enviarFormReserva/{id}', [App\Http\Controllers\controllerAluno::class, 'enviarFormReserva']);
-Route::post('/alunos/realizarReserva', [App\Http\Controllers\controllerAluno::class, 'store']);
-Route::get('/alunos/perfil/{id}', [App\Http\Controllers\controllerAluno::class, 'mandaDadosAluno']);
+// Rota das opções que os alunos possuem dentrro do site
+Route::get('/alunos/formEditPerfil/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'edit']);
+Route::get('/alunos/enviarFormReserva/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'enviarFormReserva']);
+Route::post('/alunos/realizarReserva', [App\Http\Controllers\controllerAluno::class, 'realizarReserva']);
+Route::get('/alunos/perfil/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'mandaDadosAluno']);
 Route::get('/alunos/enviarTreinos/{idAluno}', [App\Http\Controllers\controllerAluno::class, 'enviarTreinos'])->name('enviaTreinos');
 Route::get('/alunos/realizarCheckin/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'realizarCheckin']);
 Route::get('/alunos/cancelarCheckin/{idAluno}/{idTreino}', [App\Http\Controllers\controllerAluno::class, 'cancelarCheckin']);

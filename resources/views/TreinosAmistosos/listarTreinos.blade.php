@@ -8,6 +8,19 @@ $classe = 'branco';
         notificacao.style.display = 'none';
     }
 </script>
+<style>
+    .apagarTreinosAntigos {
+        text-decoration: none;
+        color: black;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: Avantgardef, TeX Gyre Adventor, URW Gothic L, sans-serif;
+    }
+
+    .apagarTreinosAntigos:hover {
+        color: brown;
+    }
+</style>
 @extends ('cabecalho')
 @section('content')
 <div class="fundo">
@@ -41,14 +54,14 @@ $classe = 'branco';
             <tbody>
                 @foreach ($dados as $item)
                                 <?php 
-                                                                                                                        if ($aux == true) {
+                                                                                                                                        if ($aux == true) {
                         $classe = 'amarelo';
                         $aux = false;
                     } elseif ($aux == false) {
                         $classe = 'branco';
                         $aux = true;
                     }
-                                                                                                                    ?>
+                                                                                                                                    ?>
                                 <tr class="{{$classe}}">
                                     <td>
                                         <input class="checkboxTreinos" type="checkbox" name="treino[]" value="{{$item->idTreino}}">
@@ -58,7 +71,7 @@ $classe = 'branco';
                                     <td>{{$item->horarioInicio}} - {{$item->horarioFim}}</td>
                                     <td>{{$item->vagasOcupadas}}/{{$item->numeroMaximoParticipantes}}</td>
                                     <td>
-                                    <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
+                                        <a class="linkIcone" href="../treino_amistosos/verTreino/{{$item->idTreino}}">
                                             <img class="icone verMais" src="/storage/assets/ver.png" alt="verMais">
                                         </a>
                                         <a class="linkIcone" href="../treino_amistosos/editar/{{$item->idTreino}}">
@@ -78,8 +91,11 @@ $classe = 'branco';
             <div class="divCentralizaBotaoApagarTreinos">
                 <button class="botaoApagarSelecionados" type="submit">Apagar selecionados</buttonc>
             </div>
-            <a onclick="return confirm('Deseja apagar todos os treinos antigos?')"
-                href="{{route('apagarTreinosAntigos')}}">Apagar Treinos antigos</a>
+            <div style="width: 100%; display: flex; align-items: center; justify-content: center;">
+                <a class="apagarTreinosAntigos" onclick="return confirm('Deseja apagar todos os treinos antigos?')"
+                    href="{{route('apagarTreinosAntigos')}}">Apagar treinos antigos</a>
+            </div>
+
         </div>
 
     </form>
