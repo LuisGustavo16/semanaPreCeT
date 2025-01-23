@@ -30,7 +30,6 @@ $turmas = ['1º', '2º', '3º']
     .containerOpcoes {
         width: 100%;
         height: 100vh;
-        display: grid;
         grid-template-rows: repeat(2, 15rem);
         align-items: center;
         justify-content: center;
@@ -44,7 +43,6 @@ $turmas = ['1º', '2º', '3º']
         grid-template-columns: repeat(3, 20rem);
         justify-items: center;
         align-items: center;
-        width: 100%;
     }
 
     .opcaoAluno {
@@ -121,35 +119,41 @@ $turmas = ['1º', '2º', '3º']
         notificacao.style.display = 'none';
     }
 </script>
+@extends ('cabecalho3')
+@section('content')
 
 <body class="containerOpcoes">
-    <div style="display: flex; align-items: center; justify-content: center; widht: 100%;">
-        @if (isset($success))
-            <div class="apagarNotificacao">
-                {{$success}}
-                <a class="linkMsg" onclick="statusNotificacao()" href="#">X</a>
-            </div>
-        @endif
-    </div>
-    <div class="modalOpcoes">
-        <a href='/alunos/perfil/{{$aluno->id}}'>
-            <div class="opcaoAluno">
-                <h2>Ver dados do perfil</h2>
-            </div>
-        </a>
+    <div style="display: flex; align-items: center; justify-content: center; widht: 100%; margin-top: 10rem">
+        <div style="display: flex; align-items: center; justify-content: center; widht: 100%;">
+            @if (isset($success))
+                <div class="apagarNotificacao">
+                    {{$success}}
+                    <a class="linkMsg" onclick="statusNotificacao()" href="#">X</a>
+                </div>
+            @endif
+        </div>
 
-        <a href="/alunos/enviarTreinos/{{$aluno->id}}">
-            <div style="" class="opcaoAluno">
-                <h2>Realizar checkin</h2>
-            </div>
-        </a>
+        <div class="modalOpcoes">
+            <a href='/alunos/perfil/{{$aluno->id}}'>
+                <div class="opcaoAluno">
+                    <h2>Ver dados do perfil</h2>
+                </div>
+            </a>
 
-        <a href="/alunos/enviarFormReserva/{{$aluno->id}}">
-            <div class="opcaoAluno">
-                <h2>Realizar reserva</h2>
-            </div>
-        </a>
+            <a href="/alunos/enviarTreinos/{{$aluno->id}}">
+                <div style="" class="opcaoAluno">
+                    <h2>Realizar checkin</h2>
+                </div>
+            </a>
+
+            <a href="/alunos/enviarFormReserva/{{$aluno->id}}">
+                <div class="opcaoAluno">
+                    <h2>Realizar reserva</h2>
+                </div>
+            </a>
+        </div>
     </div>
 </body>
+@endsection
 
 </html>

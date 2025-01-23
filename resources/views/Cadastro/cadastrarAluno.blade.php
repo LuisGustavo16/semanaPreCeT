@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGEE</title>
+
     <style>
         :root {
             /*Cores do Site*/
@@ -270,6 +271,14 @@
             font-family: "Inter", sans-serif;
         }
 
+        textarea {
+            padding: 0.5rem;
+            font-size: 1.1rem;
+            width: 100%; 
+            height: 4rem;
+            font-family: "Inter", sans-serif;
+        }
+
         /*BOTÃO*/
         button.botao {
             position: relative;
@@ -371,35 +380,9 @@
     </style>
 </head>
 
+@extends ('cabecalho2')
+@section('content')
 <body class="container">
-    <div>
-        <a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
-            <header>
-                <img src="leticia.jpg" alt="logo">
-                <h1>SIGEE Varginha</h1>
-                <p">Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p>
-            </header>
-        </a>
-
-        <nav>
-            <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-            <label for="menu-toggle" class="menu-icon">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
-
-            <div class="menu">
-                <a class="linkCadastro" href="{{route('entrarAluno')}}">Entrar como estudante</a>
-                <a class="linkCadastro" href="/login">Entrar como administrador</a>
-                <a class="linkCadastro" href="/CadastroInicial">Se registrar</a>
-                <a class="linkCadastro"
-                    href="https://www.varginha.cefetmg.br/wp-content/uploads/sites/11/2024/11/resolucao_dcvg-4-ginasio.pdf"
-                    target="_blank">Regulamento</a>
-                <a class="linkCadastro" href="{{route('gerarPDF')}}">Gerar PDF da Semana</a>
-            </div>
-        </nav>
-    </div>
     <div>
         <div class="textoRegistro">
             <h1 class="titulo">Crie seu cadastro</h1>
@@ -457,6 +440,13 @@
                         <input name="dtNascimento" type="date">
                     </div>
                 </div>
+
+                <div class="linhaFormAluno">
+                    <div class="campo">
+                        <label for="desc">Descrição Esportiva:</label><br>
+                        <textarea name="descricaoEsportiva" id=""></textarea>
+                    </div>
+                </div>
         </div>
 
     </div>
@@ -470,5 +460,5 @@
     </div>
 
 </body>
-
+@endsection
 </html>

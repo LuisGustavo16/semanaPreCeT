@@ -139,7 +139,7 @@ $turmas = ['1º', '2º', '3º']
                 </select>
             </div>
 
-             <div>
+            <div>
                 <label for="genero">*Gênero:</label><br>
                 <select type="checkbox" name="genero">
                     @foreach ($generos as $genero)
@@ -162,6 +162,13 @@ $turmas = ['1º', '2º', '3º']
             <div>
                 <label for="matricula">*Matrícula:</label><br>
                 <input type="text" name="matricula" required value="{{$aluno->matricula}}">
+            </div>
+
+            <div>
+                <div class="campo">
+                    <label for="desc">Descrição Esportiva:</label><br>
+                    <textarea name="descricaoEsportiva" id="" >{{$aluno->descricaoEsportiva}}</textarea>
+                </div>
             </div>
 
 

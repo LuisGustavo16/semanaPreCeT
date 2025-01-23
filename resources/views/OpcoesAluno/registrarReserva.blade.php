@@ -17,13 +17,14 @@
     }
 
     .container {
-        display: grid;
         width: 100%;
         height: 100vh;
         align-items: center;
         justify-content: center;
         background: var(--white);
         margin: 0px;
+        grid-template-rows: repeat(3, 12rem);
+        font-family: Arial, sans-serif;
     }
 
 
@@ -41,10 +42,12 @@
         background-color: white;
         display: grid;
         grid-template-columns: repeat(1, 100%);
-        grid-template-rows: repeat(8, 5.6rem);
+        grid-template-rows: repeat(8, 5rem);
         padding: 1rem;
         width: 20rem;
+        height: 37rem;
         box-shadow: 0.1rem 0.1rem 0.9rem black;
+        margin-top: 1rem;
     }
 
     label {
@@ -79,65 +82,70 @@
     }
 </style>
 
+@extends ('cabecalho3')
+@section('content')
+
 <body class="container">
     <h2>Realizar Reserva</h2>
-    <form action="/alunos/realizarReserva" method="post">
-        @csrf
+    <div style="display: flex; width: 100%; align-itens: center; justify-content: center; margin-top: 2rem">
+        <form action="/alunos/realizarReserva" method="post">
+            @csrf
 
-        <input style="display: none;" type="text" name="idAluno" value="{{$aluno->id}}">
-        <input style="display: none;" type="text" name="status" value="P">
+            <input style="display: none;" type="text" name="idAluno" value="{{$aluno->id}}">
+            <input style="display: none;" type="text" name="status" value="P">
 
-        <div>
-            <label for="">*Local:</label>
-            <select name="local" id="">
-                <option value="Ginásio">Ginásio</option>
-                <option value="Quadra">Quadra</option>
-            </select>
-        </div>
+            <div>
+                <label for="">*Local:</label>
+                <select name="local" id="">
+                    <option value="Ginásio">Ginásio</option>
+                    <option value="Quadra">Quadra</option>
+                </select>
+            </div>
 
-        <div>
-            <label for="">*Data:</label>
-            <input type="date" name="dia" required>
-        </div>
+            <div>
+                <label for="">*Data:</label>
+                <input type="date" name="dia" required>
+            </div>
 
-        <div>
-            <label for="">*Horário de inicio:</label>
-            <input type="time" name="horarioInicio" required>
-        </div>
+            <div>
+                <label for="">*Horário de inicio:</label>
+                <input type="time" name="horarioInicio" required>
+            </div>
 
-        <div>
-            <label for="">*Horário de fim:</label>
-            <input type="time" name="horarioFim" required>
-        </div>
+            <div>
+                <label for="">*Horário de fim:</label>
+                <input type="time" name="horarioFim" required>
+            </div>
 
-        <div>
-            <label for="">*Finalidade:</label>
-            <input type="text" name="finalidade" required>
-        </div>
+            <div>
+                <label for="">*Finalidade:</label>
+                <input type="text" name="finalidade" required>
+            </div>
 
-        <div>
-            <label for="">*Número de pessoas:</label>
-            <input style="height: 2rem" type="number" name="numeroPessoas" required>
-        </div>
+            <div>
+                <label for="">*Número de pessoas:</label>
+                <input style="height: 2rem" type="number" name="numeroPessoas" required>
+            </div>
 
-        <div>
-            <label for="">*Tipo de reserva</label>
-            <select onchange="conferirCampo()" id="tipoReserva" name="tipo">
-                <option value="normal">Normal</option>
-                <option value="regular">Regular</option>
-            </select>
-        </div>
+            <div>
+                <label for="">*Tipo de reserva</label>
+                <select onchange="conferirCampo()" id="tipoReserva" name="tipo">
+                    <option value="normal">Normal</option>
+                    <option value="regular">Regular</option>
+                </select>
+            </div>
 
-        <div id="campoDiaEncerramento" style="margin-bottom: 2rem; display: none">
-            <h3>Sua reserva será cancelada automaticamente em 6 meses.</h3>
-        </div>
+            <div id="campoDiaEncerramento" style="margin-bottom: 2rem; display: none">
+                <h3>Sua reserva será cancelada automaticamente em 6 meses.</h3>
+            </div>
 
-        <div>
-            <button type="submit">Enviar</button>
-        </div>
-    </form>
+            <div>
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+    </div>
 </body>
-
+@endsection
 <script>
     function conferirCampo() {
         const campoDiaEncerramento = document.getElementById('campoDiaEncerramento');

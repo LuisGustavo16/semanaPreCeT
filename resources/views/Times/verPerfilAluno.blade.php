@@ -15,7 +15,7 @@
         <div class="divColunaInformacoesAluno">
             <h2 class="informacaoAluno"><strong>Nome:</strong> {{$dados->name}}</h2>
             <h2 class="informacaoAluno"><strong>Matricula:</strong> {{$dados->matricula}}</h2>
-            <h2 class="informacaoAluno"><strong>Data de Nascimento:</strong> {{$dados->dtNascimento}} ({{$dados->idade}}
+            <h2 class="informacaoAluno"><strong>Data de Nascimento:</strong> {{$dados->dataNascimento}} ({{$dados->idade}}
                 anos)</h2>
             <h2 class="informacaoAluno"><strong>Curso:</strong> {{$dados->turma}} {{$dados->curso}}</h2>
             <h2 class="informacaoAluno"><strong>Gênero:</strong> {{$dados->genero}}</h2>

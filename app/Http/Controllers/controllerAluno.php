@@ -56,8 +56,8 @@ class controllerAluno extends Controller
         $dados = Aluno::find($idAluno);
         /*Formatação da data e calculo da idade*/
         $dataAtual = Carbon::now();
-        $dados->idade = $dataAtual->diffInYears($dados->dtNascimento);
-        $dados->dtNascimento = Carbon::parse($dados->dtNascimento)->format('d/m/y');
+        $dados->idade = $dataAtual->diffInYears($dados->dataNascimento);
+        $dados->dataNascimento = Carbon::parse($dados->dataNascimento)->format('d/m/Y');
         /*Times do aluno*/
         $alunos_time = AlunosTime::all()->where('idAluno', $idAluno);
         $times = Time::all();
@@ -172,10 +172,9 @@ class controllerAluno extends Controller
 
     public function desvalidarAlunos()
     {
-        $alunos = Aluno::all();
+        $alunos = Aluno::all()->where('turma', '3º');
         foreach ($alunos as $aluno) {
-            $aluno->status = 'espera';
-            $aluno->save();
+            $aluno->delete();
         }
         return redirect()->route('inicio')->with('success', '');
     }
@@ -199,7 +198,8 @@ class controllerAluno extends Controller
         }
     }
 
-    public function validarLogin() {
+    public function validarLogin()
+    {
         session_start();
         $aluno = Aluno::where('email', $_SESSION['email'])->first();
         return view("Alunos/verOpcoesAluno", compact('aluno'));
@@ -249,7 +249,7 @@ class controllerAluno extends Controller
     //Manda os dados para o aluno ver
     public function mandaDadosAluno(string $id)
     {
-        
+
         $aluno = Aluno::find($id);
         if ($this->verificaLogin($id)) {
             return view("OpcoesAluno/perfilAluno", compact('aluno'));

@@ -33,7 +33,6 @@
         }
 
         .container {
-            display: grid;
             width: 100%;
             height: 100vh;
             align-items: center;
@@ -41,6 +40,7 @@
             background: var(--white);
             margin: 0px;
             grid-template-rows: repeat(3, 12rem);
+            font-family: Arial, sans-serif;
         }
 
 
@@ -61,7 +61,9 @@
             grid-template-rows: repeat(8, 5rem);
             padding: 1rem;
             width: 20rem;
+            height: 37rem;
             box-shadow: 0.1rem 0.1rem 0.9rem black;
+            margin-top: 1rem;
         }
 
         label {
@@ -97,6 +99,9 @@
     </style>
 </head>
 
+@extends ('cabecalho3')
+@section('content')
+
 <body class="container">
     <h1>Perfil do {{$aluno->tipo}}</h1>
     <div class="divNotificacao" style="display: flex;">
@@ -112,61 +117,66 @@
             </div>
         @endif
     </div>
-    <form>
-        @csrf
 
-        <div>
-            <label for="Nome">*Nome:</label>
-            <input type="text" name="name" required value="{{$aluno->name}}" readonly>
-        </div>
-
-
-        <div>
-            <label for="email">*Email:</label><br>
-            <input type="email" name="email" required readonly value="{{$aluno->email}}">
-        </div>
-
-
-
-        @if ($aluno->tipo == 'Aluno')
-            <div>
-                <label for="turma">*Série</label><br>
-                <input type="text" name="turma" required value="{{$aluno->turma}}" readonly>
-            </div>
+    <div style="display: flex; width: 100%; align-itens: center; justify-content: center;">
+        <form>
+            @csrf
 
             <div>
-                <label for="curso">*Curso:</label><br>
-                <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
-            </div>
-
-            <div>
-                <label for="dataNascimento">*Data de Nascimento:</label><br>
-                <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}" readonly>
-            </div>
-            <div>
-
-                <label for="matricula">*Matrícula:</label><br>
-                <input type="text" name="matricula" required value="{{$aluno->matricula}}" readonly>
-            </div>
-
-            <div>
-                <label for="genero">*Gênero:</label><br>
-                <input type="text" name="genero" required value="{{$aluno->genero}}" readonly>
+                <label for="Nome">*Nome:</label>
+                <input type="text" name="name" required value="{{$aluno->name}}" readonly>
             </div>
 
 
-        @elseif ($aluno->tipo == 'Universitário')
             <div>
-                <label for="curso">*Curso:</label><br>
-                <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
+                <label for="email">*Email:</label><br>
+                <input type="email" name="email" required readonly value="{{$aluno->email}}">
             </div>
-            <div>
 
-                <label for="matricula">*Matrícula:</label><br>
-                <input type="text" name="matricula" required value="{{$aluno->matricula}}" readonly>
-            </div>
-        @endif
-        <a class="linkEditarPerfil" href="/alunos/formEditPerfil/{{$aluno->id}}">Editar Perfil</a>
-    </form>
+
+
+            @if ($aluno->tipo == 'Aluno')
+                <div>
+                    <label for="turma">*Série</label><br>
+                    <input type="text" name="turma" required value="{{$aluno->turma}}" readonly>
+                </div>
+
+                <div>
+                    <label for="curso">*Curso:</label><br>
+                    <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
+                </div>
+
+                <div>
+                    <label for="dataNascimento">*Data de Nascimento:</label><br>
+                    <input type="date" name="dataNascimento" required value="{{$aluno->dataNascimento}}" readonly>
+                </div>
+                <div>
+
+                    <label for="matricula">*Matrícula:</label><br>
+                    <input type="text" name="matricula" required value="{{$aluno->matricula}}" readonly>
+                </div>
+
+                <div>
+                    <label for="genero">*Gênero:</label><br>
+                    <input type="text" name="genero" required value="{{$aluno->genero}}" readonly>
+                </div>
+
+
+            @elseif ($aluno->tipo == 'Universitário')
+                <div>
+                    <label for="curso">*Curso:</label><br>
+                    <input type="text" name="curso" required value="{{$aluno->curso}}" readonly>
+                </div>
+                <div>
+
+                    <label for="matricula">*Matrícula:</label><br>
+                    <input type="text" name="matricula" required value="{{$aluno->matricula}}" readonly>
+                </div>
+            @endif
+            <a class="linkEditarPerfil" href="/alunos/formEditPerfil/{{$aluno->id}}">Editar Perfil</a>
+        </form>
+    </div>
+
+    @endsection
 
 </html>

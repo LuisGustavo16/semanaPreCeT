@@ -47,7 +47,10 @@
 
             <div class="campo">
                 <label for="local">*Local:</label><br>
-                <input type="text" name="local" required>
+                <select style="width: 15rem;" type="checkbox" name="local" required>
+                    <option value="Ginásio">Ginásio</option>
+                    <option value="Quadra">Quadra</option>
+                </select>
             </div>
 
             <div class="campo">

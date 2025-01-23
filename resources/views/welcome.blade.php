@@ -149,35 +149,9 @@
         }
     </style>
 </head>
-
+@extends ('cabecalho2')
+@section('content')
 <body>
-<a href="{{route(name: 'welcome')}}" style="color: white; text-decoration: none;">
-            <header>
-                <img src="leticia.jpg" alt="logo">
-                <h1>SIGEE Varginha</h1>
-                <p">Bem-vindo ao Sistema de Gerenciamento Esportivo Escolar</p>
-            </header>
-        </a>
-
-
-    <nav>
-        <input type="checkbox" id="menu-toggle" class="menu-toggle" hidden>
-        <label for="menu-toggle" class="menu-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-        </label>
-
-        <div class="menu">
-            <a class="linkCadastro" href="{{route('entrarAluno')}}">Entrar como estudante</a>
-            <a class="linkCadastro" href="/login">Entrar como administrador</a>
-            <a class="linkCadastro" href="/CadastroInicial">Se registrar</a>
-            <a href="https://www.varginha.cefetmg.br/wp-content/uploads/sites/11/2024/11/resolucao_dcvg-4-ginasio.pdf"
-                target="_blank">Regulamento</a>
-            <a class="buttonGerarPDF" href="{{route('gerarPDF')}}">Gerar PDF da Semana</a>
-        </div>
-    </nav>
-
     <div class="container">
         <h2>Sobre o Projeto</h2>
         <p>O SIGEE é uma ferramenta para facilitar o gerenciamento de atividades esportivas, permitindo:</p>
@@ -227,5 +201,6 @@
         <p>&copy; 2025 SIGEE Varginha - Todos os direitos reservados.</p>
     </footer>
 </body>
+@endsection
 
 </html>
